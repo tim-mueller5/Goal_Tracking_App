@@ -14,6 +14,9 @@ class User(db.Model, SerializerMixin):
 
     goals = db.relationship('Goal', backref='user', cascade='all, delete-orphan')
 
+    # serialize_rules = ('-goals.user_id')
+    serialize_only = ('id', 'username')
+
     @hybrid_property
     def password_hash(self):
         return self._password_hash
@@ -40,11 +43,16 @@ class Goal(db.Model, SerializerMixin):
     __tablename__ = 'goals'
 
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    details = db.Column(db.String)
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     habits = db.relationship('Habit', backref='goal', cascade='all, delete-orphan')
     tasks = db.relationship('Task', backref='goal', cascade='all, delete-orphan')
+
+    serialize_rules = ('-habits.goal', '-tasks.goal')
+
 
 
 class Habit(db.Model, SerializerMixin):

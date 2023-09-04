@@ -14,13 +14,11 @@ def index():
 
 
 
-
-
 class CheckSession(Resource):
     def get(self):
         user = User.query.filter(User.id == session.get('user_id')).first()
         if user:
-            return make_response(user.to_dict(rules=('-cart_items',)), 200)
+            return make_response(user.to_dict(), 200)
         else:
             return make_response({'message': '401: Not Authorized'}, 401)
 

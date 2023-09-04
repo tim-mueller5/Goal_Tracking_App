@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar'
 
 function Home({ user, setUser }) {
 
@@ -15,6 +16,7 @@ function Home({ user, setUser }) {
     return (
         <div>
             <h1>Home Page</h1>
+            <NavBar/>
             <button onClick={handleLogOut}>Log Out</button>
         </div>
     )

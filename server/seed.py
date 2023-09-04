@@ -19,10 +19,18 @@ if __name__ == '__main__':
         Habit.query.delete()
         Task.query.delete()
 
-        print('Creating User...')
+        print('Creating Users...')
         user1 = User(username='Tim', password_hash="123")
         db.session.add(user1)
         db.session.commit()
         user2 = User(username='Peter', password_hash="123")
         db.session.add(user2)
         db.session.commit()
+
+        print('Creating Goals...')
+        goal1 = Goal(user_id=1, name='Run a Marathon', details='Next marathon date is in three months.')
+        db.session.add(goal1)
+        db.session.commit()
+
+
+        print('Seeding done!')

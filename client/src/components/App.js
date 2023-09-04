@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
 import Login from "./Login";
 import Home from "./Home";
 
@@ -10,7 +9,16 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`/login`)
+    fetch("/check_session").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+        console.log('Already logged in!')
+      }
+      else{
+        navigate(`/login`)
+        console.log('Not logged in yet.')
+      }
+    });
   }, [])
   
 

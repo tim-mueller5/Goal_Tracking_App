@@ -1,8 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
+import Login from "./Login";
+import Home from "./Home";
 
 function App() {
-  return <h1>Phase 4 Project Client</h1>;
+
+  const [user, setUser] = useState(null)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(`/login`)
+  }, [])
+  
+
+  return (
+    <div>
+      <Routes>
+        <Route exact path="/login" element={<Login user={user} setUser={setUser}/>}/>
+        <Route exact path="/home" element={<Home user={user} setUser={setUser}/>}/>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

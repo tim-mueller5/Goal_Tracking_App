@@ -180,38 +180,14 @@ flask db init
 flask db upgrade head
 ```
 
-Type `tree -L 2` within the `server` folder to confirm the new directory
-structure:
-
-```console
-.
-├── app.py
-├── config.py
-├── instance
-│   └── app.db
-├── migrations
-│   ├── README
-│   ├── __pycache__
-│   ├── alembic.ini
-│   ├── env.py
-│   ├── script.py.mako
-│   └── versions
-├── models.py
-└── seed.py
-```
-
 Edit `models.py` and start creating your models. Import your models as needed in
 other modules, i.e. `from models import ...`.
-
 Remember to regularly run
 `flask db revision --autogenerate -m'<descriptive message>'`, replacing
 `<descriptive message>` with an appropriate message, and `flask db upgrade head`
 to track your modifications to the database and create checkpoints in case you
 ever need to roll those modifications back.
 
-> **Tip: It's always a good idea to start with an empty revision! This allows
-> you to roll all the way back while still holding onto your database. You can
-> create this empty revision with `flask db revision -m'Create DB'`.**
 
 If you want to seed your database, now would be a great time to write out your
 `seed.py` script and run it to generate some test data. Faker has been included

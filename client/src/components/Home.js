@@ -1,23 +1,15 @@
-import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar'
+import GoalList from './GoalList';
 
 function Home({ user, setUser }) {
 
-    const navigate = useNavigate();
-
-    const handleLogOut = () => {
-        fetch("/logout", {
-            method: "DELETE",
-        }).then(() => setUser(null) )
-        .then(navigate(`/login`))
-    }
 
 
     return (
         <div>
             <h1>Home Page</h1>
-            <NavBar/>
-            <button onClick={handleLogOut}>Log Out</button>
+            <NavBar user={user} setUser={setUser}/>
+            <GoalList user={user} setUser={setUser}/>
         </div>
     )
 }

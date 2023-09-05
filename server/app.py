@@ -12,7 +12,15 @@ def index():
 
 
 
-
+class UserById(Resource):
+    def get(self, id):
+        user = User.query.filter_by(id=id).first()
+        if user:
+            return make_response(user.to_dict(), 200)
+        else:
+            return make_response({'message': 'User not found'}, 401)
+        
+api.add_resource(UserById, '/users/<int:id>')
 
 class CheckSession(Resource):
     def get(self):
@@ -33,7 +41,7 @@ class Login(Resource):
             return make_response({"error": "User not found"}, 400)
         if user_pass == True:
             session['user_id'] = user.id
-            return make_response(user.to_dict(rules=('-cart_items',)), 200)
+            return make_response(user.to_dict(), 200)
         else:
             return make_response({"error": "Username or password incorrect"}, 400)
     

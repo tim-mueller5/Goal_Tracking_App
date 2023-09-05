@@ -1,11 +1,21 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-function NavBar() {
+function NavBar({ user, setUser }) {
 
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        fetch("/logout", {
+            method: "DELETE",
+        }).then(() => setUser(null) )
+        .then(navigate(`/login`))
+    }
 
     return (
         <div>
             <h3>NavBar Component</h3>
+            <button>Create New Goal</button>
+            <button onClick={handleLogOut}>Log Out</button>
         </div>
     )
 }

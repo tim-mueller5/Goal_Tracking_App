@@ -10,8 +10,6 @@ app.secret_key = b'\xf6\xd03L\x0fq%\xbat\xe0\x15r\x054\xbe\xcc'
 def index():
     return '<h1>Phase 5 Project Server</h1>'
 
-
-
 class UserById(Resource):
     def get(self, id):
         user = User.query.filter_by(id=id).first()
@@ -21,6 +19,23 @@ class UserById(Resource):
             return make_response({'message': 'User not found'}, 401)
         
 api.add_resource(UserById, '/users/<int:id>')
+
+class Goals(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            new_goal = Goal(
+                name = data['name'],
+                details = data['details'],
+                user_id = data['user_id']
+            )
+            db.session.add(new_goal)
+            db.session.commit()
+            return make_response(new_goal.to_dict(), 201)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+api.add_resource(Goals, '/goals')
 
 class CheckSession(Resource):
     def get(self):

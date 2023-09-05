@@ -11,6 +11,10 @@ function NavBar({ user, setUser }) {
         .then(navigate(`/login`))
     }
 
+    const createNewGoal = () => {
+        
+    }
+
     return (
         <div>
             <h3>NavBar Component</h3>

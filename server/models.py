@@ -67,5 +67,6 @@ class Task(db.Model, SerializerMixin):
     __tablename__ = 'tasks'
 
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))

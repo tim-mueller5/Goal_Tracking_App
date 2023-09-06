@@ -5,7 +5,7 @@ import GoalList from './GoalList';
 
 
 
-function Home({ user, setUser }) {
+function Home({ user, setUser, setGoal }) {
 
 
 
@@ -13,7 +13,7 @@ function Home({ user, setUser }) {
         <div>
             <h2>Home Page Component</h2>
             <NavBar user={user} setUser={setUser}/>
-            <GoalList user={user} setUser={setUser}/>
+            <GoalList user={user} setGoal={setGoal}/>
         </div>
     )
 }

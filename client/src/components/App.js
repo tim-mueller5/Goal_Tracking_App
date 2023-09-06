@@ -5,6 +5,7 @@ import Home from "./Home";
 import CreateGoal from "./CreateGoal"
 import CreateHabit from "./CreateHabit"
 import CreateTask from "./CreateTask";
+import EditGoal from "./EditGoal";
 
 
 function App() {
@@ -32,10 +33,11 @@ function App() {
     <div>
       <Routes>
         <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
-        <Route path="/home" element={<Home user={user} setUser={setUser}/>}/>
+        <Route path="/home" element={<Home user={user} setUser={setUser} setGoal={setGoal}/>}/>
         <Route path="/home/create-goal" element={<CreateGoal user={user} setGoal={setGoal}/>}/>
         <Route path="/home/create-goal/habit" element={<CreateHabit goal={goal}/>}/>
         <Route path="/home/create-goal/task" element={<CreateTask goal={goal}/>}/>
+        <Route path="/home/edit-goal/:goalId" element={<EditGoal goal={goal}/>}/>
       </Routes>
     </div>
   );

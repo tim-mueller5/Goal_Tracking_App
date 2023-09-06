@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar({ user, setUser }) {
 
@@ -11,14 +11,15 @@ function NavBar({ user, setUser }) {
         .then(navigate(`/login`))
     }
 
-    const createNewGoal = () => {
-        
-    }
+    // const goCreateGoal = () => {
+    //     navigate('/create-goal')
+    // }
 
     return (
         <div>
             <h3>NavBar Component</h3>
-            <button>Create New Goal</button>
+            {/* <button onClick={goCreateGoal}>Create New Goal</button> */}
+            <Link to='/create-goal'>Create New Goal</Link>
             <button onClick={handleLogOut}>Log Out</button>
         </div>
     )

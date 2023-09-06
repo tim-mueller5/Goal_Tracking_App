@@ -6,7 +6,6 @@ import GoalCard from "./GoalCard";
 function GoalList({ user, setUser }) {
     let goalsToDisplay
 
-    console.log(user)
     if (user != null){
         goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal}/>)
     }

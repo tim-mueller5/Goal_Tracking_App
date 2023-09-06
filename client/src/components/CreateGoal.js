@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
-import NavBar from './NavBar'  
+ 
 
 function CreateGoal({ user, setUser }) {
 
@@ -48,7 +48,6 @@ function CreateGoal({ user, setUser }) {
     return (
         <div>
             <h2>CreateGoal Component</h2>
-            <NavBar user={user} setUser={setUser}/>
             <button onClick={goHome}>Home</button>
             <form onSubmit={formik.handleSubmit}>
                 <h3>Create New Goal Form:</h3>

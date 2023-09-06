@@ -5,7 +5,7 @@ function GoalCard({ goal }) {
 
     return (
         <div>
-            <h3>GoalCard Component</h3>
+            <h2>GoalCard Component</h2>
             <p>Goal: {goal.name}</p>
         </div>
     )

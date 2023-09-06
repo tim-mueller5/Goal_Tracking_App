@@ -15,7 +15,7 @@ function GoalList({ user, setUser }) {
 
     return (
         <div>
-            <h3>Goal List Component</h3>
+            <h2>Goal List Component</h2>
             {(user != null)? goalsToDisplay : "No user"}
         </div>
     )

@@ -12,14 +12,14 @@ function NavBar({ user, setUser }) {
     }
 
     // const goCreateGoal = () => {
-    //     navigate('/create-goal')
+    //     navigate('/home/create-goal')
     // }
 
     return (
         <div>
-            <h3>NavBar Component</h3>
+            <h2>NavBar Component</h2>
             {/* <button onClick={goCreateGoal}>Create New Goal</button> */}
-            <Link to='/create-goal'>Create New Goal</Link>
+            <Link to='/home/create-goal'>Create New Goal</Link>
             <button onClick={handleLogOut}>Log Out</button>
         </div>
     )

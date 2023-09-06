@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
-import CreateGoal from "./CreateGoal";
+import CreateGoal from "./CreateGoal"
+
 
 function App() {
 
@@ -27,9 +28,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/login" element={<Login user={user} setUser={setUser}/>}/>
-        <Route exact path="/home" element={<Home user={user} setUser={setUser}/>}/>
-        <Route exact path="/create-goal" element={<CreateGoal user={user} setUser={setUser}/>}/>
+        <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
+        <Route path="/home" element={<Home user={user} setUser={setUser}/>}/>
+        <Route path="/home/create-goal" element={<CreateGoal user={user} setUser={setUser}/>}/>
       </Routes>
     </div>
   );

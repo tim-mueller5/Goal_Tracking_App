@@ -33,8 +33,10 @@ function CreateGoal({ user, setUser }) {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-            }).then(console.log("posted"))
-            .then((data) => {
+            }).then((resp) => {
+                resp = resp.json()
+                console.log("posted")
+            }).then((data) => {
                 console.log("responce: ", data)
                 navigate('/home')
             })

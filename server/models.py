@@ -62,6 +62,8 @@ class Habit(db.Model, SerializerMixin):
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))
 
+    serialize_rules = ('-goal.habits', '-goal.tasks')
+
 
 class Task(db.Model, SerializerMixin):
     __tablename__ = 'tasks'
@@ -70,3 +72,5 @@ class Task(db.Model, SerializerMixin):
     name = db.Column(db.String)
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))
+
+    serialize_rules = ('-goal.tasks', '-goal.habits')

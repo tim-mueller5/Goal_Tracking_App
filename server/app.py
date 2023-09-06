@@ -37,6 +37,36 @@ class Goals(Resource):
 
 api.add_resource(Goals, '/goals')
 
+class Habits(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            new_habit = Habit()
+            for key in data:
+                setattr(new_habit, key, data[key])
+            db.session.add(new_habit)
+            db.session.commit()
+            return make_response(new_habit.to_dict(), 201)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+        
+api.add_resource(Habits, '/habits')
+
+class Tasks(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            new_task = Task()
+            for key in data:
+                setattr(new_task, key, data[key])
+            db.session.add(new_task)
+            db.session.commit()
+            return make_response(new_task.to_dict(), 201)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+        
+api.add_resource(Tasks, '/tasks')
+
 class CheckSession(Resource):
     def get(self):
         user = User.query.filter(User.id == session.get('user_id')).first()

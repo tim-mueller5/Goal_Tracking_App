@@ -44,7 +44,12 @@ class GoalById(Resource):
             goal = Goal.query.filter_by(id=id).first()
             data = request.get_json()
             for key in data:
-                setattr(goal, key, data[key])
+                if data[key] != '':
+                    if key == "password":
+                        key = "password_hash"
+                        setattr(goal, key, data["password"])
+                    else:
+                        setattr(goal, key, data[key])
             db.session.add(goal)
             db.session.commit()
             return make_response(goal.to_dict(), 200)

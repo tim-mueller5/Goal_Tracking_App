@@ -37,7 +37,7 @@ function App() {
         <Route path="/home/create-goal" element={<CreateGoal user={user} setGoal={setGoal}/>}/>
         <Route path="/home/create-goal/habit" element={<CreateHabit goal={goal}/>}/>
         <Route path="/home/create-goal/task" element={<CreateTask goal={goal}/>}/>
-        <Route path="/home/edit-goal/:goalId" element={<EditGoal goal={goal}/>}/>
+        <Route path="/home/edit-goal/:goalId" element={<EditGoal goal={goal} setGoal={setGoal}/>}/>
       </Routes>
     </div>
   );

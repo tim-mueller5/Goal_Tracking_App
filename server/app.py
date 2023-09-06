@@ -34,8 +34,25 @@ class Goals(Resource):
             return make_response(new_goal.to_dict(), 201)
         except ValueError as e:
             return make_response({"error": str(e)}, 400)
+        
 
 api.add_resource(Goals, '/goals')
+
+class GoalById(Resource):
+    def patch(self, id):
+        try:
+            goal = Goal.query.filter_by(id=id).first()
+            data = request.get_json()
+            for key in data:
+                setattr(goal, key, data[key])
+            db.session.add(goal)
+            db.session.commit()
+            return make_response(goal.to_dict(), 200)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+
+api.add_resource(GoalById, '/goals/<int:id>')
 
 class Habits(Resource):
     def post(self):
@@ -52,6 +69,22 @@ class Habits(Resource):
         
 api.add_resource(Habits, '/habits')
 
+class HabitById(Resource):
+    def patch(self, id):
+        try:
+            habit = Habit.query.filter_by(id=id).first()
+            data = request.get_json()
+            for key in data:
+                setattr(habit, key, data[key])
+            db.session.add(habit)
+            db.session.commit()
+            return make_response(habit.to_dict(), 200)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+
+api.add_resource(HabitById, '/habits/<int:id>')
+
 class Tasks(Resource):
     def post(self):
         try:
@@ -66,6 +99,22 @@ class Tasks(Resource):
             return make_response({"error": str(e)}, 400)
         
 api.add_resource(Tasks, '/tasks')
+
+class TaskById(Resource):
+    def patch(self, id):
+        try:
+            task = Task.query.filter_by(id=id).first()
+            data = request.get_json()
+            for key in data:
+                setattr(task, key, data[key])
+            db.session.add(task)
+            db.session.commit()
+            return make_response(task.to_dict(), 200)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+
+api.add_resource(TaskById, '/tasks/<int:id>')
 
 class CheckSession(Resource):
     def get(self):

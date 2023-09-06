@@ -5,7 +5,6 @@ import * as yup from "yup";
 
 function CreateGoal({ user, setUser }) {
 
-    console.log(user)
 
     const navigate = useNavigate();
     const goHome = ()=> {

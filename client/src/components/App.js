@@ -3,11 +3,14 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
 import CreateGoal from "./CreateGoal"
+import CreateHabit from "./CreateHabit"
+import CreateTask from "./CreateTask";
 
 
 function App() {
 
   const [user, setUser] = useState(null)
+  const [goal, setGoal] = useState(null)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +33,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
         <Route path="/home" element={<Home user={user} setUser={setUser}/>}/>
-        <Route path="/home/create-goal" element={<CreateGoal user={user} setUser={setUser}/>}/>
+        <Route path="/home/create-goal" element={<CreateGoal user={user} setGoal={setGoal}/>}/>
+        <Route path="/home/create-goal/habit" element={<CreateHabit goal={goal}/>}/>
+        <Route path="/home/create-goal/task" element={<CreateTask goal={goal}/>}/>
       </Routes>
     </div>
   );

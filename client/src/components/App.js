@@ -7,6 +7,7 @@ import CreateHabit from "./CreateHabit"
 import CreateTask from "./CreateTask";
 import EditGoal from "./EditGoal";
 import EditHabit from "./EditHabit";
+import EditTask from "./EditTask";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/home/create-goal/task" element={<CreateTask goal={goal}/>}/>
         <Route path="/home/edit-goal/:goalId" element={<EditGoal goal={goal} setGoal={setGoal}/>}/>
         <Route path="/home/edit-habit/:habitId/:habitName" element={<EditHabit/>}/>
+        <Route path="/home/edit-task/:taskId/:taskName" element={<EditTask/>}/>
       </Routes>
     </div>
   );

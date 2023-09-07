@@ -80,7 +80,8 @@ class HabitById(Resource):
             habit = Habit.query.filter_by(id=id).first()
             data = request.get_json()
             for key in data:
-                setattr(habit, key, data[key])
+                if data[key] != '':
+                    setattr(habit, key, data[key])
             db.session.add(habit)
             db.session.commit()
             return make_response(habit.to_dict(), 200)
@@ -111,7 +112,8 @@ class TaskById(Resource):
             task = Task.query.filter_by(id=id).first()
             data = request.get_json()
             for key in data:
-                setattr(task, key, data[key])
+                if data[key] != '':
+                    setattr(task, key, data[key])
             db.session.add(task)
             db.session.commit()
             return make_response(task.to_dict(), 200)

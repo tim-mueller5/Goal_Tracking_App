@@ -1,26 +1,27 @@
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function EditGoal({ goal, setGoal }) {
+function EditHabit() {
+
+    let  { habitId, habitName } = useParams();
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/home')
     }
 
+
     const formShema = yup.object().shape({
-        name: yup.string(),
-        details: yup.string()
+        name: yup.string()
     })
 
     const formik = useFormik({
         initialValues: {
-            name: "",
-            details: ""
+            name: ""
         },
         validationSchema: formShema,
         onSubmit: (values) => {
-            fetch(`/goals/${goal.id}`, {
+            fetch(`/habits/${habitId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -38,25 +39,19 @@ function EditGoal({ goal, setGoal }) {
         }
     })
 
-    if(goal) {
-
-        return(
-            <div>
-                <h3>Edit Goal Component</h3>
-                <p>{goal.name}</p>
-                <button onClick={goHome}>Home</button>
+    return (
+        <div>
+            <h3>EditHabit Component</h3>
+            <p>{habitName}</p>
+            <button onClick={goHome}>Home</button>
                 <form onSubmit={formik.handleSubmit}>
-                    <h3>Edit Goal Form:</h3>
-                    <label htmlFor="name">Goal: </label>
+                    <h3>Edit Habit Form:</h3>
+                    <label htmlFor="name">Habit: </label>
                     <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
-                    <label htmlFor='details'>Details: </label>
-                    <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details}/>
                     <button type='submit'>Submit</button>
                 </form>
-            </div>
-        )
-    }
-    
+        </div>
+    )
 }
 
-export default EditGoal;
+export default EditHabit;

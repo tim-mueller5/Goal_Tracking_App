@@ -10,6 +10,21 @@ app.secret_key = b'\xf6\xd03L\x0fq%\xbat\xe0\x15r\x054\xbe\xcc'
 def index():
     return '<h1>Phase 5 Project Server</h1>'
 
+class Users(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            new_user = User(
+                username = data['username'],
+                password_hash = data['password']
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            return make_response(new_user.to_dict(), 201)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+api.add_resource(Users, '/users')
+
 class UserById(Resource):
     def get(self, id):
         user = User.query.filter_by(id=id).first()

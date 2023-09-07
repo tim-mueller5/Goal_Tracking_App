@@ -34,7 +34,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
+        <Route path="/login" element={<Login setUser={setUser}/>}/>
         <Route path="/home" element={<Home user={user} setUser={setUser} setGoal={setGoal}/>}/>
         <Route path="/home/create-goal" element={<CreateGoal user={user} setGoal={setGoal}/>}/>
         <Route path="/home/create-goal/habit" element={<CreateHabit goal={goal}/>}/>

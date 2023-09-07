@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
 
-function Login( { user, setUser } ) {
+function Login( { setUser } ) {
 
     const navigate = useNavigate();
 
@@ -11,7 +11,7 @@ function Login( { user, setUser } ) {
         password: yup.string().required("Must have password")
     })
 
-    const formik = useFormik({
+    const formikLogin = useFormik({
         initialValues: {
             username: "",
             password: ""
@@ -27,8 +27,28 @@ function Login( { user, setUser } ) {
             }).then((response) => {
                 if (response.ok) {
                     response.json().then((user) => setUser(user));
-                    formik.values.username = ""
-                    formik.values.password = ""
+                    navigate(`/home`)
+                  }
+            })
+        }
+    })
+
+    const formikNew = useFormik({
+        initialValues: {
+            username: "",
+            password: ""
+        },
+        validationSchema: formSchema,
+        onSubmit: (values) => {
+            fetch("/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+            }).then((response) => {
+                if (response.ok) {
+                    response.json().then((user) => setUser(user));
                     navigate(`/home`)
                   }
             })
@@ -37,22 +57,35 @@ function Login( { user, setUser } ) {
 
 
     return (
-        <div>
-            <div className='flex-c text-center'>
-                <h2>Login:</h2>
-                <form onSubmit={formik.handleSubmit}>
-                    <label htmlFor="username">username: </label>
-                    <input id="username" name="username" onChange={formik.handleChange} value={formik.values.username} 
-                        style={{background: '#70a7ff'}}/>
-                    <p style={{ color: "red" }}> {formik.errors.username}</p>
-                    <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
-                    <input id="password" name="password" onChange={formik.handleChange} value={formik.values.password}
-                        style={{background: '#70a7ff'}}/>
-                    <p style={{ color: "red" }}> {formik.errors.password}</p>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+
+        <div className='flex-c text-center'>
+            <h2>Login:</h2>
+            <form onSubmit={formikLogin.handleSubmit}>
+                <label htmlFor="username">username: </label>
+                <input id="username" name="username" onChange={formikLogin.handleChange} value={formikLogin.values.username} 
+                    style={{background: '#70a7ff'}}/>
+                <p style={{ color: "red" }}> {formikLogin.errors.username}</p>
+                <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
+                <input id="password" name="password" onChange={formikLogin.handleChange} value={formikLogin.values.password}
+                    style={{background: '#70a7ff'}}/>
+                <p style={{ color: "red" }}> {formikLogin.errors.password}</p>
+                <button type="submit">Login</button>
+            </form>
+            <h2>Or Create New User</h2>
+            <form onSubmit={formikNew.handleSubmit}>
+                <label htmlFor="username">username: </label>
+                <input id="username" name="username" onChange={formikNew.handleChange} value={formikNew.values.username} 
+                    style={{background: '#70a7ff'}}/>
+                <p style={{ color: "red" }}> {formikNew.errors.username}</p>
+                <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
+                <input id="password" name="password" onChange={formikNew.handleChange} value={formikNew.values.password}
+                    style={{background: '#70a7ff'}}/>
+                <p style={{ color: "red" }}> {formikNew.errors.password}</p>
+                <button type="submit">Create New User</button>
+            </form>
         </div>
+
+
     )
 }
 

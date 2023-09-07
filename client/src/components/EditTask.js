@@ -17,7 +17,7 @@ function EditTask() {
 
     const formik = useFormik({
         initialValues: {
-            name: ""
+            name: taskName
         },
         validationSchema: formShema,
         onSubmit: (values) => {

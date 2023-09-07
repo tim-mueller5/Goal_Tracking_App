@@ -15,8 +15,8 @@ function EditGoal({ goal, setGoal }) {
 
     const formik = useFormik({
         initialValues: {
-            name: "",
-            details: ""
+            name: goal ? goal.name: "",
+            details: goal ? goal.details: ""
         },
         validationSchema: formShema,
         onSubmit: (values) => {

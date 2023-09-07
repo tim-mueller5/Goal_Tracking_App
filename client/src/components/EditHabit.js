@@ -17,7 +17,7 @@ function EditHabit() {
 
     const formik = useFormik({
         initialValues: {
-            name: ""
+            name: habitName
         },
         validationSchema: formShema,
         onSubmit: (values) => {

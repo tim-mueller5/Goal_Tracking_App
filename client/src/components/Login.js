@@ -46,11 +46,19 @@ function Login( { setUser } ) {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-            }).then((response) => {
-                if (response.ok) {
-                    response.json().then((user) => setUser(user));
-                    navigate(`/home`)
-                  }
+            }).then(() => {
+                fetch("/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(values),
+                }).then((response) => {
+                    if (response.ok) {
+                        response.json().then((user) => setUser(user));
+                        navigate(`/home`)
+                      }
+                })
             })
         }
     })

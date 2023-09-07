@@ -25,8 +25,10 @@ function CreateHabit({ goal }) {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-            }).then(() => {navigate('/home/create-goal/task')})
-            .catch((e) => console.log(e))
+            }).then(() => {
+                // navigate('/home')
+                window.location.reload(true)
+            }).catch((e) => console.log(e))
         }
     })
     

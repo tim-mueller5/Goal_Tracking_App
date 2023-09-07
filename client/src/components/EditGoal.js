@@ -28,7 +28,6 @@ function EditGoal({ goal, setGoal }) {
                 body: JSON.stringify(values),
             }).then((resp) => {
                 if (resp.ok) {
-                    console.log("hi")
                     resp = resp.json().then(() => {
                         window.location.reload(true)
                         // navigate('/home')

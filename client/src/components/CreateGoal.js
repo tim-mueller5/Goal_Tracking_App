@@ -37,7 +37,8 @@ function CreateGoal({ user, setGoal }) {
                     resp = resp.json().then((goal) => setGoal(goal))
                 }
             }).then(() => {
-                navigate('/home/create-goal/habit')
+                // navigate('/home')
+                window.location.reload(true)
             }).catch(() => console.log("Caught Errot in fetch!"))
         }
     })

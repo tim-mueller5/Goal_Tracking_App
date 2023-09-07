@@ -33,6 +33,12 @@ class UserById(Resource):
         else:
             return make_response({'message': 'User not found'}, 401)
         
+    def delete(self, id):
+        user = User.query.filter_by(id=id).first()
+        db.session.delete(user)
+        db.session.commit()
+        return make_response({}, 200)
+    
 api.add_resource(UserById, '/users/<int:id>')
 
 class Goals(Resource):
@@ -70,6 +76,12 @@ class GoalById(Resource):
             return make_response(goal.to_dict(), 200)
         except ValueError as e:
             return make_response({"error": str(e)}, 400)
+        
+    def delete(self, id):
+        goal = Goal.query.filter_by(id=id).first()
+        db.session.delete(goal)
+        db.session.commit()
+        return make_response({}, 200)
 
 
 api.add_resource(GoalById, '/goals/<int:id>')
@@ -102,6 +114,12 @@ class HabitById(Resource):
             return make_response(habit.to_dict(), 200)
         except ValueError as e:
             return make_response({"error": str(e)}, 400)
+        
+    def delete(self, id):
+        habit = Habit.query.filter_by(id=id).first()
+        db.session.delete(habit)
+        db.session.commit()
+        return make_response({}, 200)
 
 
 api.add_resource(HabitById, '/habits/<int:id>')
@@ -134,6 +152,12 @@ class TaskById(Resource):
             return make_response(task.to_dict(), 200)
         except ValueError as e:
             return make_response({"error": str(e)}, 400)
+        
+    def delete(self, id):
+        task = Task.query.filter_by(id=id).first()
+        db.session.delete(task)
+        db.session.commit()
+        return make_response({}, 200)
 
 
 api.add_resource(TaskById, '/tasks/<int:id>')

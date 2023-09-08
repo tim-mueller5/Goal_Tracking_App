@@ -3,8 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
  
 
-function CreateGoal({ user, setGoal }) {
-
+function CreateGoal({ user, setUser }) {
 
     const navigate = useNavigate();
     const goHome = ()=> {
@@ -34,12 +33,14 @@ function CreateGoal({ user, setGoal }) {
                 body: JSON.stringify(values),
             }).then((resp) => {
                 if (resp.ok) {
-                    resp = resp.json().then((goal) => setGoal(goal))
+                    resp = resp.json().then((goal) => {
+                        const goals = [...user.goals, goal]
+                        setUser({...user, goals:goals})
+                    })
                 }
             }).then(() => {
-                // navigate('/home')
-                window.location.reload(true)
-            }).catch(() => console.log("Caught Errot in fetch!"))
+                navigate('/home')
+            }).catch(() => console.log("Caught Error in fetch!"))
         }
     })
 

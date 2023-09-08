@@ -36,7 +36,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login setUser={setUser}/>}/>
         <Route path="/home" element={<Home user={user} setUser={setUser} setGoal={setGoal}/>}/>
-        <Route path="/home/create-goal" element={<CreateGoal user={user} setGoal={setGoal}/>}/>
+        <Route path="/home/create-goal" element={<CreateGoal user={user} setUser={setUser}/>}/>
         <Route path="/home/create-goal/habit" element={<CreateHabit goal={goal}/>}/>
         <Route path="/home/create-goal/task" element={<CreateTask goal={goal}/>}/>
         <Route path="/home/edit-goal/:goalId" element={<EditGoal goal={goal} setGoal={setGoal}/>}/>

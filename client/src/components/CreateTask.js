@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function CreateTask({ goal }) {
+function CreateTask({ goal, user, setUser }) {
 
     const navigate = useNavigate();
 

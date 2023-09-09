@@ -19,16 +19,16 @@ function Home({ user, setUser }) {
     return (
         <div>
             <h2>Home Page Component</h2>
-            <NavBar user={user} setUser={setUser}/>
+            <NavBar setUser={setUser}/>
             
             <Routes>
-                <Route path="/"                                 element={<GoalList      user={user} setCurrentGoal={setCurrentGoal}                    />}/>
-                <Route path="/create-goal"                      element={<CreateGoal    user={user} setUser={setUser}   />}/>
-                <Route path="/create-goal/habit"                element={<CreateHabit   user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}        />}/>
-                <Route path="/create-goal/task"                 element={<CreateTask    user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}        />}/>
-                <Route path="/edit-goal"                        element={<EditGoal      user={user} setUser={setUser} currentGoal={currentGoal}        />}/>
-                <Route path="/edit-habit/:habitId/:habitName"   element={<EditHabit     user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}       />}/>
-                <Route path="/edit-task/:taskId/:taskName"      element={<EditTask      user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}       />}/>
+                <Route path="/" element={<GoalList user={user} setCurrentGoal={setCurrentGoal} />}/>
+                <Route path="/create-goal" element={<CreateGoal user={user} setUser={setUser} />}/>
+                <Route path="/create-goal/habit" element={<CreateHabit user={user} setUser={setUser} currentGoal={currentGoal} />}/>
+                <Route path="/create-goal/task" element={<CreateTask user={user} setUser={setUser} currentGoal={currentGoal} />}/>
+                <Route path="/edit-goal" element={<EditGoal user={user} setUser={setUser} currentGoal={currentGoal} />}/>
+                <Route path="/edit-habit/:habitId/:habitName" element={<EditHabit user={user} setUser={setUser} currentGoal={currentGoal} />}/>
+                <Route path="/edit-task/:taskId/:taskName" element={<EditTask user={user} setUser={setUser} currentGoal={currentGoal} />}/>
             </Routes>
         </div>
     )

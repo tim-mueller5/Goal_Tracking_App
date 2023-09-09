@@ -56,7 +56,7 @@ function Login( { setUser } ) {
                 }).then((response) => {
                     if (response.ok) {
                         response.json().then((user) => setUser(user));
-                        navigate(`/home`)
+                        navigate(`/`)
                       }
                 })
             })

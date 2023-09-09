@@ -6,7 +6,7 @@ import GoalCard from "./GoalCard";
 function GoalList({ user, setCurrentGoal }) {
     let goalsToDisplay
 
-    if (user != null){
+    if (user){
         goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal} setCurrentGoal={setCurrentGoal} />)
     }
     

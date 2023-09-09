@@ -17,7 +17,6 @@ function App() {
         console.log('Already logged in!')
       }
       else{
-        // navigate(`/login`)
         console.log('Not logged in yet.')
       }
     });

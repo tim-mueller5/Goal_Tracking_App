@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-function NavBar({ user, setUser }) {
+function NavBar({ setUser }) {
 
     const navigate = useNavigate();
 
@@ -8,7 +8,7 @@ function NavBar({ user, setUser }) {
         fetch("/logout", {
             method: "DELETE",
         }).then(() => setUser(null) )
-        .then(navigate(`/login`))
+        .then(navigate(`/`))
     }
 
     const goCreateGoal = () => {
@@ -19,7 +19,6 @@ function NavBar({ user, setUser }) {
         <div>
             <h2>NavBar Component</h2>
             <button onClick={goCreateGoal}>Create New Goal</button>
-            {/* <Link to='/home/create-goal'>Create New Goal</Link> */}
             <button onClick={handleLogOut}>Log Out</button>
         </div>
     )

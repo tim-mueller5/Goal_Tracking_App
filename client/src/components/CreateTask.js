@@ -2,9 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function CreateTask({ goal, user, setUser }) {
-
+function CreateTask({ user, setUser, currentGoal, setCurrentGoal  }) {
+    
     const navigate = useNavigate();
+    const goHome = ()=> {
+        navigate('/')
+    }
 
     const formShema = yup.object().shape({
         name: yup.string().required("Must have name"),
@@ -18,23 +21,35 @@ function CreateTask({ goal, user, setUser }) {
         },
         validationSchema: formShema,
         onSubmit: (values) => {
-            values.goal_id = goal.id
+            values.goal_id = currentGoal.id
             fetch("/tasks", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
+            }).then((resp) => {
+                if(resp.ok){
+                    resp = resp.json().then((task) => {
+                        const tasks = [...currentGoal.tasks, task]
+                        setCurrentGoal({...currentGoal, tasks:tasks})
+                        const goals = user.goals.map((goal) => {
+                            if (goal.id === currentGoal.id){
+                                return {...currentGoal, tasks:tasks}
+                            }
+                            else{
+                                return goal
+                            }
+                        })
+                        setUser({...user, goals:goals})
+                    })
+                }
             }).then(() => {
-                // navigate('/home')
-                window.location.reload(true)
+                navigate('/')
             }).catch((e) => console.log(e))
         }
     })
 
-    const goHome = ()=> {
-        navigate('/home')
-    }
 
     return (
         <div>

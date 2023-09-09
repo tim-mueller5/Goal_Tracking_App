@@ -2,15 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function CreateHabit({ goal }) {
+function CreateHabit({ user, setUser, currentGoal, setCurrentGoal }) {  
 
     const navigate = useNavigate();
+    const goHome = ()=> {
+        navigate('/')
+    }
+
 
     const formShema = yup.object().shape({
         name: yup.string().required("Must have name"),
         goal_id: yup.string()
     })
-
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -18,23 +21,36 @@ function CreateHabit({ goal }) {
         },
         validationSchema: formShema,
         onSubmit: (values) => {
-            values.goal_id = goal.id
+            values.goal_id = currentGoal.id
             fetch("/habits", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
+            }).then((resp) => {
+                if(resp.ok) {
+                    resp = resp.json().then((habit) => {
+                        const habits = [...currentGoal.habits, habit]
+                        setCurrentGoal({...currentGoal, habits:habits})
+                        const goals = user.goals.map((goal) => {
+                            if (goal.id === currentGoal.id){
+                                return {...currentGoal, habits:habits}
+                            }
+                            else{
+                                return goal
+                            }
+                            
+                        })
+                        setUser({...user, goals:goals})
+                    })
+                }
             }).then(() => {
-                // navigate('/home')
-                window.location.reload(true)
+                navigate('/')
             }).catch((e) => console.log(e))
         }
     })
     
-    const goHome = ()=> {
-        navigate('/home')
-    }
 
     return (
         <div>

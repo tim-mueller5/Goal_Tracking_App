@@ -1,16 +1,14 @@
-import { useEffect } from "react";
+
 import GoalCard from "./GoalCard";
 
 
 
-function GoalList({ user, setGoal }) {
+function GoalList({ user, setCurrentGoal }) {
     let goalsToDisplay
 
     if (user != null){
-        goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal} setGoal={setGoal}/>)
+        goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal} setCurrentGoal={setCurrentGoal} />)
     }
-    
-
     
 
     return (

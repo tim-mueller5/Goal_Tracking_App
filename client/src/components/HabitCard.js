@@ -5,8 +5,7 @@ function HabitCard({ habit }) {
     const navigate = useNavigate();
 
     const edit = () => {
-        // setGoal(goal)
-        navigate(`/home/edit-habit/${habit.id}/${habit.name}`)
+        navigate(`/edit-habit/${habit.id}/${habit.name}`)
     }
 
     return (

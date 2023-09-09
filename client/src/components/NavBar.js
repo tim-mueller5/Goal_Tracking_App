@@ -12,7 +12,7 @@ function NavBar({ user, setUser }) {
     }
 
     const goCreateGoal = () => {
-        navigate('/home/create-goal')
+        navigate('/create-goal')
     }
 
     return (

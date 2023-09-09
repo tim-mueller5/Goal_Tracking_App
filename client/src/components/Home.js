@@ -1,19 +1,35 @@
-
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import NavBar from './NavBar'
 import GoalList from './GoalList';
+import CreateGoal from "./CreateGoal"
+import CreateHabit from "./CreateHabit"
+import CreateTask from "./CreateTask";
+import EditGoal from "./EditGoal";
+import EditHabit from "./EditHabit";
+import EditTask from "./EditTask";
 
 
 
-function Home({ user, setUser, setGoal }) {
+function Home({ user, setUser }) {
 
-
+    const [currentGoal, setCurrentGoal] = useState(null)
 
     return (
         <div>
             <h2>Home Page Component</h2>
             <NavBar user={user} setUser={setUser}/>
-            <GoalList user={user} setGoal={setGoal}/>
+            
+            <Routes>
+                <Route path="/"                                 element={<GoalList      user={user} setCurrentGoal={setCurrentGoal}                    />}/>
+                <Route path="/create-goal"                      element={<CreateGoal    user={user} setUser={setUser}   />}/>
+                <Route path="/create-goal/habit"                element={<CreateHabit   user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}        />}/>
+                <Route path="/create-goal/task"                 element={<CreateTask    user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />}/>
+                <Route path="/edit-goal/:goalId"                element={<EditGoal      currentGoal={currentGoal}       />}/>
+                <Route path="/edit-habit/:habitId/:habitName"   element={<EditHabit     currentGoal={currentGoal}       />}/>
+                <Route path="/edit-task/:taskId/:taskName"      element={<EditTask      currentGoal={currentGoal}       />}/>
+            </Routes>
         </div>
     )
 }

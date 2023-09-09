@@ -5,7 +5,7 @@ import * as yup from "yup";
 function EditGoal({ goal, setGoal }) {
     const navigate = useNavigate();
     const goHome = ()=> {
-        navigate('/home')
+        navigate('/')
     }
 
     const formShema = yup.object().shape({
@@ -29,8 +29,7 @@ function EditGoal({ goal, setGoal }) {
             }).then((resp) => {
                 if (resp.ok) {
                     resp = resp.json().then(() => {
-                        window.location.reload(true)
-                        // navigate('/home')
+                        navigate('/')
                     })
                 }
             }).catch(() => console.log("Caught Error in fetch!"))

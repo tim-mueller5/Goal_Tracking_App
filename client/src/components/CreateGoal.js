@@ -7,15 +7,15 @@ function CreateGoal({ user, setUser }) {
 
     const navigate = useNavigate();
     const goHome = ()=> {
-        navigate('/home')
+        navigate('/')
     }
 
+    
     const formShema = yup.object().shape({
         name: yup.string().required("Must have name"),
         details: yup.string(),
         user_id: yup.string()
     })
-
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -39,7 +39,7 @@ function CreateGoal({ user, setUser }) {
                     })
                 }
             }).then(() => {
-                navigate('/home')
+                navigate('/')
             }).catch(() => console.log("Caught Error in fetch!"))
         }
     })

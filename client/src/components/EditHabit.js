@@ -7,7 +7,7 @@ function EditHabit() {
     let  { habitId, habitName } = useParams();
     const navigate = useNavigate();
     const goHome = ()=> {
-        navigate('/home')
+        navigate('/')
     }
 
 
@@ -31,8 +31,7 @@ function EditHabit() {
                 if (resp.ok) {
                     console.log("hi")
                     resp = resp.json().then(() => {
-                        window.location.reload(true)
-                        // navigate('/home')
+                        navigate('/')
                     })
                 }
             }).catch(() => console.log("Caught Error in fetch!"))

@@ -5,8 +5,8 @@ function TaskCard({ task }) {
     const navigate = useNavigate();
 
     const edit = () => {
-        // setGoal(goal)
-        navigate(`/home/edit-task/${task.id}/${task.name}`)
+
+        navigate(`/edit-task/${task.id}/${task.name}`)
     }
 
     return (

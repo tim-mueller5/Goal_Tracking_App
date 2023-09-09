@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function EditTask() {
+function EditTask({ user, setUser, currentGoal }) {
 
     let  { taskId, taskName } = useParams();
     const navigate = useNavigate();
@@ -14,7 +14,6 @@ function EditTask() {
     const formShema = yup.object().shape({
         name: yup.string()
     })
-
     const formik = useFormik({
         initialValues: {
             name: taskName
@@ -29,11 +28,26 @@ function EditTask() {
                 body: JSON.stringify(values),
             }).then((resp) => {
                 if (resp.ok) {
-                    console.log("hi")
-                    resp = resp.json().then(() => {
-                        navigate('/')
+                    resp = resp.json().then((newTask) => {
+                        const tasks = currentGoal.tasks.map((task) => {
+                            if(task.id === newTask.id){
+                                return newTask
+                            }else{
+                                return task
+                            }
+                        })
+                        const goals = user.goals.map((goal) => {
+                            if(goal.id === currentGoal.id){
+                                return {...currentGoal, tasks:tasks}
+                            }else{
+                                return goal
+                            }
+                        })
+                        setUser({...user, goals:goals})
                     })
                 }
+            }).then(() => {
+                navigate('/')
             }).catch(() => console.log("Caught Error in fetch!"))
         }
     })

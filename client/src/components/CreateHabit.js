@@ -32,7 +32,7 @@ function CreateHabit({ user, setUser, currentGoal, setCurrentGoal }) {
                 if(resp.ok) {
                     resp = resp.json().then((habit) => {
                         const habits = [...currentGoal.habits, habit]
-                        setCurrentGoal({...currentGoal, habits:habits})
+                        // setCurrentGoal({...currentGoal, habits:habits})
                         const goals = user.goals.map((goal) => {
                             if (goal.id === currentGoal.id){
                                 return {...currentGoal, habits:habits}

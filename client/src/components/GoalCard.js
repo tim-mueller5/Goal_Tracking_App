@@ -7,12 +7,12 @@ function GoalCard({ goal, setCurrentGoal }) {
 
     const navigate = useNavigate();
 
-    const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} />)
-    const tasksToDisplay = goal.tasks.map((task) => <TaskCard key={task.id} task={task}/>)
+    const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} goal={goal} setCurrentGoal={setCurrentGoal} />)
+    const tasksToDisplay = goal.tasks.map((task) => <TaskCard key={task.id} task={task} goal={goal} setCurrentGoal={setCurrentGoal}/>)
 
     const edit = () => {
         setCurrentGoal(goal)
-        navigate(`/edit-goal/${goal.id}`)
+        navigate(`/edit-goal`)
     }
 
     const addHabit = () => {

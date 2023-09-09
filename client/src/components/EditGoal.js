@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function EditGoal({ goal, setGoal }) {
+function EditGoal({ user, setUser, currentGoal }) {
+
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')
@@ -12,15 +13,14 @@ function EditGoal({ goal, setGoal }) {
         name: yup.string(),
         details: yup.string()
     })
-
     const formik = useFormik({
         initialValues: {
-            name: goal ? goal.name: "",
-            details: goal ? goal.details: ""
+            name: currentGoal ? currentGoal.name : "",
+            details: currentGoal ? currentGoal.details : ""
         },
         validationSchema: formShema,
         onSubmit: (values) => {
-            fetch(`/goals/${goal.id}`, {
+            fetch(`/goals/${currentGoal.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,20 +28,30 @@ function EditGoal({ goal, setGoal }) {
                 body: JSON.stringify(values),
             }).then((resp) => {
                 if (resp.ok) {
-                    resp = resp.json().then(() => {
-                        navigate('/')
+                    resp = resp.json().then((newGoal) => {
+                        const goals = user.goals.map((goal) => {
+                            if(goal.id === currentGoal.id){
+                                return newGoal
+                            }else{
+                                return goal
+                            }
+                        })
+                        setUser({...user, goals:goals})
                     })
                 }
+            })
+            .then(() => {
+                navigate('/')
             }).catch(() => console.log("Caught Error in fetch!"))
         }
     })
 
-    if(goal) {
+    if(currentGoal) {
 
         return(
             <div>
                 <h3>Edit Goal Component</h3>
-                <p>{goal.name}</p>
+                <p>{currentGoal.name}</p>
                 <button onClick={goHome}>Home</button>
                 <form onSubmit={formik.handleSubmit}>
                     <h3>Edit Goal Form:</h3>

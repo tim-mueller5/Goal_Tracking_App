@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-function TaskCard({ task }) {
+function TaskCard({ task, goal, setCurrentGoal }) {
 
     const navigate = useNavigate();
 
     const edit = () => {
-
+        setCurrentGoal(goal)
         navigate(`/edit-task/${task.id}/${task.name}`)
     }
 

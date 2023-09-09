@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function EditHabit() {
+function EditHabit({ user, setUser, currentGoal }) {
 
     let  { habitId, habitName } = useParams();
     const navigate = useNavigate();
@@ -14,7 +14,6 @@ function EditHabit() {
     const formShema = yup.object().shape({
         name: yup.string()
     })
-
     const formik = useFormik({
         initialValues: {
             name: habitName
@@ -29,11 +28,26 @@ function EditHabit() {
                 body: JSON.stringify(values),
             }).then((resp) => {
                 if (resp.ok) {
-                    console.log("hi")
-                    resp = resp.json().then(() => {
-                        navigate('/')
+                    resp = resp.json().then((newHabit) => {
+                        const habits = currentGoal.habits.map((habit) => {
+                            if(habit.id === newHabit.id){
+                                return newHabit
+                            }else{
+                                return habit
+                            }
+                        })
+                        const goals = user.goals.map((goal) => {
+                            if(goal.id === currentGoal.id){
+                                return {...currentGoal, habits:habits}
+                            }else{
+                                return goal
+                            }
+                        })
+                        setUser({...user, goals:goals})
                     })
                 }
+            }).then(() => {
+                navigate('/')
             }).catch(() => console.log("Caught Error in fetch!"))
         }
     })

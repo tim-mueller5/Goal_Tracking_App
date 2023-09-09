@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-function HabitCard({ habit }) {
+function HabitCard({ habit, goal, setCurrentGoal }) {
 
     const navigate = useNavigate();
 
     const edit = () => {
+        setCurrentGoal(goal)
         navigate(`/edit-habit/${habit.id}/${habit.name}`)
     }
 

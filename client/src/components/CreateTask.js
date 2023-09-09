@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function CreateTask({ user, setUser, currentGoal, setCurrentGoal  }) {
+function CreateTask({ user, setUser, currentGoal, setCurrentGoal }) {
     
     const navigate = useNavigate();
     const goHome = ()=> {
@@ -32,7 +32,7 @@ function CreateTask({ user, setUser, currentGoal, setCurrentGoal  }) {
                 if(resp.ok){
                     resp = resp.json().then((task) => {
                         const tasks = [...currentGoal.tasks, task]
-                        setCurrentGoal({...currentGoal, tasks:tasks})
+                        // setCurrentGoal({...currentGoal, tasks:tasks})
                         const goals = user.goals.map((goal) => {
                             if (goal.id === currentGoal.id){
                                 return {...currentGoal, tasks:tasks}

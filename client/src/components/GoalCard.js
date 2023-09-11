@@ -3,7 +3,7 @@ import HabitCard from "./HabitCard";
 import TaskCard from "./TaskCard";
 
 
-function GoalCard({ goal, setCurrentGoal }) {
+function GoalCard({ goal, user, setUser, setCurrentGoal }) {
 
     const navigate = useNavigate();
 
@@ -25,10 +25,26 @@ function GoalCard({ goal, setCurrentGoal }) {
         navigate("/create-goal/task")
     }
 
+    const deleteGoal = () => {
+        fetch(`/goals/${goal.id}`, {
+            method: "DELETE",
+        }).then((resp) => {
+            if(resp.ok) {
+                const newGoals = user.goals.filter((thisGoal) => {
+                    if(thisGoal.id != goal.id){
+                        return thisGoal
+                    }
+                })
+                setUser({...user, goals:newGoals})
+            }
+        })
+    }
+
     return (
         <div style={{borderStyle: "solid"}}>
             <h2>GoalCard Component</h2>
             <button onClick={edit}>Edit goal</button>
+            <button onClick={deleteGoal}>Delete Goal</button>
             <p>Goal: {goal.name}</p>
             <p>Habits for this goal: </p>
             {habitsToDisplay}

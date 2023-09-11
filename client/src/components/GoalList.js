@@ -3,11 +3,11 @@ import GoalCard from "./GoalCard";
 
 
 
-function GoalList({ user, setCurrentGoal }) {
+function GoalList({ user, setUser, setCurrentGoal }) {
     let goalsToDisplay
 
     if (user){
-        goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal} setCurrentGoal={setCurrentGoal} />)
+        goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal} user={user} setUser={setUser} setCurrentGoal={setCurrentGoal} />)
     }
     
 

@@ -22,7 +22,7 @@ function Home({ user, setUser }) {
             <NavBar setUser={setUser}/>
             
             <Routes>
-                <Route path="/" element={<GoalList user={user} setCurrentGoal={setCurrentGoal} />}/>
+                <Route path="/" element={<GoalList user={user} setUser={setUser} setCurrentGoal={setCurrentGoal} />}/>
                 <Route path="/create-goal" element={<CreateGoal user={user} setUser={setUser} />}/>
                 <Route path="/create-goal/habit" element={<CreateHabit user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/create-goal/task" element={<CreateTask user={user} setUser={setUser} currentGoal={currentGoal} />}/>

@@ -15,9 +15,9 @@ function HabitCard({ habit, goal, user, setUser, setCurrentGoal }) {
         }).then((resp) => {
             if(resp.ok){
                 const newHabits = goal.habits.filter((thisHabit) => {
-                    if(thisHabit.id != habit.id){
+                    if(thisHabit.id !== habit.id){
                         return thisHabit
-                    }
+                    }else{return null}
                 })
                 const newGoal = {...goal, habits:newHabits}
                 const newGoals = user.goals.map((thisGoal) => {
@@ -34,9 +34,9 @@ function HabitCard({ habit, goal, user, setUser, setCurrentGoal }) {
 
     return (
         <div>
-            <h4>Habit Card Component: {habit.name}</h4>
-            <button onClick={edit}>Edit Habit</button>
-            <button onClick={handleDelete}>Delete Habit</button>
+            <h4>Habit: {habit.name}</h4>
+            <button onClick={edit} className='border-solid border-black border-2'>Edit Habit</button>
+            <button onClick={handleDelete} className='border-solid border-black border-2'>Delete Habit</button>
         </div>
     )
 }

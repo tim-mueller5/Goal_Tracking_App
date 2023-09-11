@@ -18,7 +18,6 @@ function Home({ user, setUser }) {
 
     return (
         <div>
-            <h2>Home Page Component</h2>
             <NavBar setUser={setUser}/>
             
             <Routes>

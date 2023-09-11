@@ -15,9 +15,9 @@ function TaskCard({ task, goal, user, setUser, setCurrentGoal }) {
         }).then((resp) => {
             if(resp.ok){
                 const newTasks = goal.tasks.filter((thisTask) => {
-                    if(thisTask.id != task.id){
+                    if(thisTask.id !== task.id){
                         return thisTask
-                    }
+                    }else{return null}
                 })
                 const newGoal = {...goal, tasks:newTasks}
                 const newGoals = user.goals.map((thisGoal) => {
@@ -34,9 +34,9 @@ function TaskCard({ task, goal, user, setUser, setCurrentGoal }) {
 
     return (
         <div>
-            <h4>TaskCard Component: {task.name}</h4>
-            <button onClick={edit}>Edit Task</button>
-            <button onClick={handleDelete}>Delete Task</button>
+            <h4>Task: {task.name}</h4>
+            <button onClick={edit} className='border-solid border-black border-2'>Edit Task</button>
+            <button onClick={handleDelete} className='border-solid border-black border-2'>Delete Task</button>
         </div>
     )
 }

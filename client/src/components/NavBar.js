@@ -16,10 +16,9 @@ function NavBar({ setUser }) {
     }
 
     return (
-        <div>
-            <h2>NavBar Component</h2>
-            <button onClick={goCreateGoal}>Create New Goal</button>
-            <button onClick={handleLogOut}>Log Out</button>
+        <div className='border-solid border-black border-4'>
+            <button onClick={goCreateGoal} className='border-solid border-black border-2'> Create New Goal </button>
+            <button onClick={handleLogOut} className='border-solid border-black border-2'> Log Out </button>
         </div>
     )
 }

@@ -31,9 +31,9 @@ function GoalCard({ goal, user, setUser, setCurrentGoal }) {
         }).then((resp) => {
             if(resp.ok) {
                 const newGoals = user.goals.filter((thisGoal) => {
-                    if(thisGoal.id != goal.id){
+                    if(thisGoal.id !== goal.id){
                         return thisGoal
-                    }
+                    }else{return null}
                 })
                 setUser({...user, goals:newGoals})
             }
@@ -41,17 +41,16 @@ function GoalCard({ goal, user, setUser, setCurrentGoal }) {
     }
 
     return (
-        <div style={{borderStyle: "solid"}}>
-            <h2>GoalCard Component</h2>
-            <button onClick={edit}>Edit goal</button>
-            <button onClick={deleteGoal}>Delete Goal</button>
+        <div className="border-solid border-black border-2">
             <p>Goal: {goal.name}</p>
+            <button onClick={edit} className='border-solid border-black border-2'>Edit goal</button>
+            <button onClick={deleteGoal} className='border-solid border-black border-2'>Delete Goal</button>
             <p>Habits for this goal: </p>
             {habitsToDisplay}
-            <button onClick={addHabit}>Add Habit to this goal</button>
+            <button onClick={addHabit} className='border-solid border-black border-2'>Add Habit to this goal</button>
             <p>Tasks for this goal: </p>
             {tasksToDisplay}
-            <button onClick={addTask}>Add Task to this goal</button>
+            <button onClick={addTask} className='border-solid border-black border-2'>Add Task to this goal</button>
         </div>
     )
 }

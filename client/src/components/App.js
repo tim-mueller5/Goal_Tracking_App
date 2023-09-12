@@ -13,7 +13,7 @@ function App() {
     fetch("/check_session").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
-        navigate('/')
+        // navigate('/')
         console.log('Already logged in!')
       }
       else{

@@ -40,17 +40,27 @@ function GoalCard({ goal, user, setUser, setCurrentGoal }) {
         })
     }
 
+
     return (
-        <div className="border-solid border-black border-2">
-            <p>Goal: {goal.name}</p>
-            <button onClick={edit} className='border-solid border-black border-2'>Edit goal</button>
-            <button onClick={deleteGoal} className='border-solid border-black border-2'>Delete Goal</button>
-            <p>Habits for this goal: </p>
-            {habitsToDisplay}
-            <button onClick={addHabit} className='border-solid border-black border-2'>Add Habit to this goal</button>
-            <p>Tasks for this goal: </p>
-            {tasksToDisplay}
-            <button onClick={addTask} className='border-solid border-black border-2'>Add Task to this goal</button>
+        <div className="border-solid border-black border-2 m-1 relative">
+
+            <div className="border-solid border-black border-2 m-2 p-1 float-right absolute top-10 bottom-10 right-10 ">
+                <p className="text-lg font-bold">Goal: {goal.name}</p>
+                <button onClick={edit} className='border-solid border-black border-2 px-1'>Edit goal</button>
+                <button onClick={deleteGoal} className='border-solid border-black border-2 px-1'>Delete Goal</button>
+            </div>
+            
+            <div className="border-solid border-black border-2 m-2 p-1">
+                <p>Habits for this goal: </p>
+                {habitsToDisplay}
+                <button onClick={addHabit} className='border-solid border-black border-2 px-1 block'>Add Habit to this goal</button>
+            </div>
+            
+            <div className="border-solid border-black border-2 m-2 p-1">
+                <p>Tasks for this goal: </p>
+                {tasksToDisplay}
+                <button onClick={addTask} className='border-solid border-black border-2 px-1 block'>Add Task to this goal</button>
+            </div>
         </div>
     )
 }

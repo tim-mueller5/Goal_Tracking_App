@@ -33,10 +33,10 @@ function HabitCard({ habit, goal, user, setUser, setCurrentGoal }) {
     }
 
     return (
-        <div>
+        <div  className="border-solid border-black border-2 m-2 p-1">
             <h4>Habit: {habit.name}</h4>
-            <button onClick={edit} className='border-solid border-black border-2'>Edit Habit</button>
-            <button onClick={handleDelete} className='border-solid border-black border-2'>Delete Habit</button>
+            <button onClick={edit} className='border-solid border-black border-2 px-1'>Edit Habit</button>
+            <button onClick={handleDelete} className='border-solid border-black border-2 px-1'>Delete Habit</button>
         </div>
     )
 }

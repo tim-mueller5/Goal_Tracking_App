@@ -12,8 +12,16 @@ function GoalList({ user, setUser, setCurrentGoal }) {
     
 
     return (
-        <div className="border-solid border-black border-4">
-            {(user != null)? goalsToDisplay : "No user"}
+        <div className="relative">
+            <div className="w-3/4 float-left">
+                {(user != null)? goalsToDisplay : "No user"}
+            </div>
+            <div>
+                Calander
+            </div>
+            <div>
+                Timer
+            </div>
         </div>
     )
 }

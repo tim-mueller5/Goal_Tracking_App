@@ -33,10 +33,10 @@ function TaskCard({ task, goal, user, setUser, setCurrentGoal }) {
     }
 
     return (
-        <div>
+        <div  className="border-solid border-black border-2 m-2 p-1 inline-block">
             <h4>Task: {task.name}</h4>
-            <button onClick={edit} className='border-solid border-black border-2'>Edit Task</button>
-            <button onClick={handleDelete} className='border-solid border-black border-2'>Delete Task</button>
+            <button onClick={edit} className='border-solid border-black border-2 px-1'>Edit Task</button>
+            <button onClick={handleDelete} className='border-solid border-black border-2 px-1'>Delete Task</button>
         </div>
     )
 }

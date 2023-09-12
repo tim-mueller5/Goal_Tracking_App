@@ -16,9 +16,9 @@ function NavBar({ setUser }) {
     }
 
     return (
-        <div className='border-solid border-black border-4'>
-            <button onClick={goCreateGoal} className='border-solid border-black border-2'> Create New Goal </button>
-            <button onClick={handleLogOut} className='border-solid border-black border-2'> Log Out </button>
+        <div className='border-solid border-black border-8 mb-2 p-4'>
+            <button onClick={goCreateGoal} className='border-solid border-black border-2 px-1'> Create New Goal </button>
+            <button onClick={handleLogOut} className='border-solid border-black border-2 px-1'> Log Out </button>
         </div>
     )
 }

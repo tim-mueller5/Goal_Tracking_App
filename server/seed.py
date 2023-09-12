@@ -6,6 +6,7 @@ from random import randint, choice as rc
 from app import app
 from models import db
 from models import User, Goal, Habit, Task
+import datetime
 
 if __name__ == '__main__':
 
@@ -28,7 +29,7 @@ if __name__ == '__main__':
         db.session.commit()
 
         print('Creating Goals...')
-        goal1 = Goal(user_id=1, name='Run a Marathon', details='Next marathon date is in three months.', completed=False)
+        goal1 = Goal(user_id=1, name='Run a Marathon', details='Next marathon date is in three months.', completed=False, due_date=datetime.date(2023,10,5))
         db.session.add(goal1)
         db.session.commit()
         goal2 = Goal(user_id=1, name='Learn Spanish', details='Learn before trip.', completed=False)

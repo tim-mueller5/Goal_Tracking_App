@@ -49,7 +49,7 @@ function CreateGoal({ user, setUser }) {
     return (
         <div>
             <h2>CreateGoal Component</h2>
-            <button onClick={goHome}>Home</button>
+            <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <form onSubmit={formik.handleSubmit}>
                 <h3>Create New Goal Form:</h3>
                 <label htmlFor="name">Goal: </label>

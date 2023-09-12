@@ -54,7 +54,7 @@ function CreateHabit({ user, setUser, currentGoal }) {
     return (
         <div>
             <h2>CreateHabit Component</h2>
-            <button onClick={goHome}>Home</button>
+            <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <form onSubmit={formik.handleSubmit}>
                 <h3>Create New Habit Form:</h3>
                 <label htmlFor="name">Habit: </label>

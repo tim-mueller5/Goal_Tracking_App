@@ -44,6 +44,7 @@ class Goal(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     details = db.Column(db.String)
+    completed = db.Column(db.Boolean)
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
@@ -59,6 +60,7 @@ class Habit(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    completed = db.Column(db.Boolean)
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))
 
@@ -70,6 +72,7 @@ class Task(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    completed = db.Column(db.Boolean)
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))
 

@@ -3,12 +3,12 @@ import HabitCard from "./HabitCard";
 import TaskCard from "./TaskCard";
 
 
-function GoalCard({ goal, user, setUser, setCurrentGoal }) {
+function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
 
     const navigate = useNavigate();
 
-    const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} goal={goal} user={user} setUser={setUser} setCurrentGoal={setCurrentGoal} />)
-    const tasksToDisplay = goal.tasks.map((task) => <TaskCard key={task.id} task={task} goal={goal} user={user} setUser={setUser} setCurrentGoal={setCurrentGoal}/>)
+    const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />)
+    const tasksToDisplay = goal.tasks.map((task) => <TaskCard key={task.id} task={task} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}/>)
 
     const edit = () => {
         setCurrentGoal(goal)

@@ -7,7 +7,11 @@ function GoalList({ user, setUser, currentGoal, setCurrentGoal }) {
     let goalsToDisplay
 
     if (user){
-        goalsToDisplay = user.goals.map((goal) => <GoalCard key={goal.id} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />)
+        goalsToDisplay = user.goals.map((goal) => {
+            if(!goal.completed){
+                return <GoalCard key={goal.id} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />
+            }
+        })
     }
     
 

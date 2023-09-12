@@ -33,7 +33,7 @@ function TaskCard({ task, goal, user, setUser, currentGoal, setCurrentGoal }) {
     }
 
     const handleCompelete = () => {
-        // setCurrentGoal(goal)
+        setCurrentGoal(goal)
         fetch(`/tasks/${task.id}`, {
             method: "PATCH",
             headers: {

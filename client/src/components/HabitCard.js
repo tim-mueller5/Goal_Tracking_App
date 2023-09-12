@@ -33,7 +33,7 @@ function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal }) 
     }
 
     const handleCompelete = () => {
-        // setCurrentGoal(goal)
+        setCurrentGoal(goal)
         fetch(`/habits/${habit.id}`, {
             method: "PATCH",
             headers: {

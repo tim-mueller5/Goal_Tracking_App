@@ -37,10 +37,10 @@ if __name__ == '__main__':
         db.session.commit()
 
         print('Creating Habits...')
-        habit1 = Habit(name='Run daily', goal_id=1, completed=False)
+        habit1 = Habit(name='Run daily', goal_id=1, completed=False, frequency='daily')
         db.session.add(habit1)
         db.session.commit()
-        habit2 = Habit(name='Practice daily', goal_id=2, completed=False)
+        habit2 = Habit(name='Practice daily', goal_id=2, completed=False, frequency='daily')
         db.session.add(habit1)
         db.session.commit()
 

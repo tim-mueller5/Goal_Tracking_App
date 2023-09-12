@@ -62,9 +62,6 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
                     setUser({...user, goals:goals})
                 })
             }
-        })
-        .then(() => {
-            // navigate('/')
         }).catch(() => console.log("Caught Error in fetch!"))
     }
 
@@ -74,6 +71,8 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
 
             <div className="border-solid border-black border-2 m-2 p-1 float-right absolute top-10 bottom-10 right-10 ">
                 <p className="text-lg font-bold">Goal: {goal.name}</p>
+                <p>Details: {goal.details}</p>
+                <p>Due Date: {goal.due_date}</p>
                 <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 block'>Edit goal</button>
                 <button onClick={deleteGoal} className='border-solid border-black border-2 px-1 m-1 block'>Delete Goal</button>
                 <button onClick={handleComplete} className='border-solid border-black border-2 px-1 m-1 block'>Mark as Complete</button>

@@ -7,19 +7,14 @@ import { useEffect } from "react";
 function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
 
     const navigate = useNavigate();
+    
     let dueDate
     let differenceInDays
-
     if (goal.due_date){
-
         const todayDate = new Date()
         dueDate = new Date(goal.due_date)
-        console.log(todayDate)
-        console.log(dueDate);
         const differenceInTime = dueDate.getTime() - todayDate.getTime()
-        console.log(differenceInTime)
         differenceInDays = differenceInTime/ (1000 * 3600 * 24)
-        console.log(differenceInDays)
     }
 
     const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />)

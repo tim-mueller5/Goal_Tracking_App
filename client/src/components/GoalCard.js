@@ -7,7 +7,7 @@ import { useEffect } from "react";
 function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
 
     const navigate = useNavigate();
-    
+
     let dueDate
     let differenceInDays
     if (goal.due_date){
@@ -78,7 +78,7 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
     return (
         <div className="border-solid border-black border-2 m-1 relative ">
 
-            <div className="border-solid border-black border-2 m-2 p-1 float-right absolute top-10 bottom-10 right-10 ">
+            <div className="border-solid border-black border-2 m-2 p-1 float-right absolute top-2 bottom-2 right-2 overflow-y-scroll ">
                 <p className="text-lg font-bold">Goal: {goal.name}</p>
                 <p>Details: {goal.details}</p>
                 {goal.due_date ? <p>Due Date: {dueDate.toLocaleDateString()}</p> : null}
@@ -89,13 +89,13 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
                 <button onClick={handleComplete} className='border-solid border-black border-2 px-1 m-1 block'>Mark as Complete</button>
             </div>
             
-            <div className="border-solid border-black border-2 m-2 p-1">
+            <div className="border-solid border-white border-2 m-2 p-1">
                 <p>Habits for this goal: </p>
                 {habitsToDisplay}
                 <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
             </div>
             
-            <div className="border-solid border-black border-2 m-2 p-1">
+            <div className="border-solid border-white border-2 m-2 p-1">
                 <p>Tasks for this goal: </p>
                 {tasksToDisplay}
                 <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block'>Add Task to this goal</button>

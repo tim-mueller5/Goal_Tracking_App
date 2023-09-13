@@ -66,7 +66,7 @@ function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal }) 
     }
 
     return (
-        <div  className="border-solid border-black border-2 m-2 p-1">
+        <div  className="border-solid border-white border-2 m-2 p-1">
             <h4>Habit: {habit.name}</h4>
             { habit.completed ? 
                 <p>Completed!</p>

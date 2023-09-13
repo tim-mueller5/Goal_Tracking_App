@@ -4,6 +4,7 @@ from flask import request, make_response, session
 from flask_restful import Resource
 from config import app, db, api
 from models import User, Goal, Habit, Task
+import datetime
 app.secret_key = b'\xf6\xd03L\x0fq%\xbat\xe0\x15r\x054\xbe\xcc'
 
 @app.route('/')
@@ -45,11 +46,17 @@ class Goals(Resource):
     def post(self):
         try:
             data = request.get_json()
-            new_goal = Goal(
-                name = data['name'],
-                details = data['details'],
-                user_id = data['user_id']
-            )
+            new_goal = Goal()
+            for key in data:
+                if key == 'due_date':
+                    # print(data[key])
+                    year = int(data[key].split('/')[::-1][0])
+                    day = int(data[key].split('/')[::-1][1])+2
+                    month = int(data[key].split('/')[::-1][2])
+                    # print(year,month,day)
+                    setattr(new_goal, key, datetime.date(year,month,day))
+                else:
+                    setattr(new_goal, key, data[key])
             db.session.add(new_goal)
             db.session.commit()
             return make_response(new_goal.to_dict(), 201)

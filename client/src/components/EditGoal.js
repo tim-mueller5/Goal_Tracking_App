@@ -16,10 +16,12 @@ function EditGoal({ user, setUser, currentGoal }) {
     const formik = useFormik({
         initialValues: {
             name: currentGoal ? currentGoal.name : "",
-            details: currentGoal ? currentGoal.details : ""
+            details: currentGoal ? currentGoal.details : "",
+            due_date: currentGoal ? currentGoal.due_date : "",
         },
         validationSchema: formShema,
         onSubmit: (values) => {
+            values.due_date = new Date(values.due_date).toLocaleDateString();
             fetch(`/goals/${currentGoal.id}`, {
                 method: "PATCH",
                 headers: {
@@ -59,6 +61,8 @@ function EditGoal({ user, setUser, currentGoal }) {
                     <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
                     <label htmlFor='details'>Details: </label>
                     <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details}/>
+                    <label htmlFor='due_date'>Due Date: </label>
+                    <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date}/>
                     <button type='submit'>Submit</button>
                 </form>
             </div>

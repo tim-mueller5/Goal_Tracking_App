@@ -49,11 +49,9 @@ class Goals(Resource):
             new_goal = Goal()
             for key in data:
                 if key == 'due_date':
-                    # print(data[key])
                     year = int(data[key].split('/')[::-1][0])
-                    day = int(data[key].split('/')[::-1][1])+2
                     month = int(data[key].split('/')[::-1][2])
-                    # print(year,month,day)
+                    day = int(data[key].split('/')[::-1][1])+2
                     setattr(new_goal, key, datetime.date(year,month,day))
                 else:
                     setattr(new_goal, key, data[key])
@@ -76,6 +74,11 @@ class GoalById(Resource):
                     if key == "password":
                         key = "password_hash"
                         setattr(goal, key, data["password"])
+                    elif key == 'due_date':
+                        year = int(data[key].split('/')[::-1][0])
+                        month = int(data[key].split('/')[::-1][2])
+                        day = int(data[key].split('/')[::-1][1])+2
+                        setattr(goal, key, datetime.date(year,month,day))
                     else:
                         setattr(goal, key, data[key])
             db.session.add(goal)

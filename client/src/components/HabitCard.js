@@ -10,7 +10,7 @@ function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal, da
         navigate(`/edit-habit/${habit.id}/${habit.name}`)
     }
 
-    let CheckInCardsToDisplay = habit.checkins.map((checkin) => <HabitCheckIn key={checkin.id}/>)
+    let CheckInCardsToDisplay = habit.checkins.map((checkin) => <HabitCheckIn key={checkin.id} checkin={checkin}/>)
 
     const handleDelete = () => {
         fetch(`/habits/${habit.id}`, {

@@ -161,6 +161,22 @@ class HabitCheckIns(Resource):
         
 api.add_resource(HabitCheckIns, '/checkins')
 
+class HabitCheckInsById(Resource):
+    def patch(self, id):
+        try:
+            checkin = HabitCheckIn.query.filter_by(id=id).first()
+            data = request.get_json()
+            for key in data:
+                if data[key] != '':
+                    setattr(checkin, key, int(data[key]))
+            db.session.add(checkin)
+            db.session.commit()
+            return make_response(checkin.to_dict(), 200)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+api.add_resource(HabitCheckInsById, '/checkins/<int:id>')
+
 
 class Tasks(Resource):
     def post(self):

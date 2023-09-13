@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import HabitCheckIn from "./HabitCheckIn";
 
-function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal }) {
+function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal, daysLeft }) {
 
     const navigate = useNavigate();
 
@@ -8,6 +9,8 @@ function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal }) 
         setCurrentGoal(goal)
         navigate(`/edit-habit/${habit.id}/${habit.name}`)
     }
+
+    let CheckInCardsToDisplay = habit.checkins.map((checkin) => <HabitCheckIn key={checkin.id}/>)
 
     const handleDelete = () => {
         fetch(`/habits/${habit.id}`, {
@@ -68,6 +71,9 @@ function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal }) 
     return (
         <div  className="border-solid border-white border-2 m-2 p-1">
             <h4>Habit: {habit.name}</h4>
+            <div>
+                {CheckInCardsToDisplay}
+            </div>
             { habit.completed ? 
                 <p>Completed!</p>
                 : <div>

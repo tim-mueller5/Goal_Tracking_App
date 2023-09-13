@@ -44,7 +44,7 @@ class Goal(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     details = db.Column(db.String)
-    completed = db.Column(db.Boolean)
+    completed = db.Column(db.Boolean, default=False)
     due_date = db.Column(db.Date)
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -61,14 +61,26 @@ class Habit(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    completed = db.Column(db.Boolean)
+    completed = db.Column(db.Boolean, default=False)
     frequency = db.Column(db.String)
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))
 
+    checkins = db.relationship('HabitCheckIn', backref='habit', cascade='all, delete-orphan')
+
     serialize_rules = ('-goal.habits', '-goal.tasks')
+
+class HabitCheckIn(db.Model, SerializerMixin):
+    __tablename__ = 'habitcheckins'
+
+    id = db.Column(db.Integer, primary_key=True)
+    completed = db.Column(db.Boolean, default=False)
+
+    habit_id = db.Column(db.Integer, db.ForeignKey("habits.id"))
+
+    serialize_rules = ('-habit.checkins',)
 
 
 class Task(db.Model, SerializerMixin):
@@ -76,7 +88,7 @@ class Task(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    completed = db.Column(db.Boolean)
+    completed = db.Column(db.Boolean, default=False)
     due_date = db.Column(db.Date)
 
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))

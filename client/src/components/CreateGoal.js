@@ -28,7 +28,6 @@ function CreateGoal({ user, setUser }) {
         onSubmit: (values) => {
             // console.log(values.due_date)
             values.due_date = new Date(values.due_date).toLocaleDateString();
-            // console.log(values.due_date)
             values.user_id = user.id
             fetch("/goals", {
                 method: "POST",

@@ -5,7 +5,7 @@ from random import randint, choice as rc
 
 from app import app
 from models import db
-from models import User, Goal, Habit, Task
+from models import User, Goal, Habit, Task, HabitCheckIn
 import datetime
 
 if __name__ == '__main__':
@@ -19,6 +19,7 @@ if __name__ == '__main__':
         Goal.query.delete()
         Habit.query.delete()
         Task.query.delete()
+        HabitCheckIn.query.delete()
 
         print('Creating Users...')
         user1 = User(username='Tim', password_hash="123")
@@ -37,7 +38,7 @@ if __name__ == '__main__':
         db.session.commit()
 
         print('Creating Habits...')
-        habit1 = Habit(name='Run daily', goal_id=1, completed=False, frequency='daily')
+        habit1 = Habit(name='Run daily', goal_id=1, completed=False, frequency='daily', start_date=datetime.date.today(), end_date=datetime.date(2023,10,5))
         db.session.add(habit1)
         db.session.commit()
         habit2 = Habit(name='Practice daily', goal_id=2, completed=False, frequency='daily')

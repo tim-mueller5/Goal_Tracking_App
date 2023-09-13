@@ -9,7 +9,6 @@ function CreateHabit({ user, setUser, currentGoal }) {
         navigate('/')
     }
 
-
     const formShema = yup.object().shape({
         name: yup.string().required("Must have name"),
         goal_id: yup.string()
@@ -17,7 +16,9 @@ function CreateHabit({ user, setUser, currentGoal }) {
     const formik = useFormik({
         initialValues: {
             name: "",
-            goal_id: ""
+            goal_id: "",
+            start_date: new Date().toLocaleDateString(),
+            end_date: new Date(currentGoal.due_date).toLocaleDateString()
         },
         validationSchema: formShema,
         onSubmit: (values) => {
@@ -30,7 +31,29 @@ function CreateHabit({ user, setUser, currentGoal }) {
                 body: JSON.stringify(values),
             }).then((resp) => {
                 if(resp.ok) {
-                    resp = resp.json().then((habit) => {
+                    resp = resp.json()
+                    .then(async (habit) => {
+                        
+
+                        let checkins = []
+                        let differenceInDays
+                        const differenceInTime = new Date(habit.end_date).getTime() - new Date(habit.start_date).getTime()
+                        differenceInDays = differenceInTime/ (1000 * 3600 * 24)
+                        for (let i = 0; i < differenceInDays; i++) {
+                            fetch('/checkins', {
+                            method: 'POST',
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({habit_id: habit.id})   
+                            }).then((resp) => {
+                                resp.json().then((checkin) => {
+                                    checkins.push(checkin)
+                                    console.log(checkins)
+                                })
+                            })
+                        }
+
                         const habits = [...currentGoal.habits, habit]
                         const goals = user.goals.map((goal) => {
                             if (goal.id === currentGoal.id){
@@ -39,7 +62,6 @@ function CreateHabit({ user, setUser, currentGoal }) {
                             else{
                                 return goal
                             }
-                            
                         })
                         setUser({...user, goals:goals})
                     })

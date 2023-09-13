@@ -78,7 +78,7 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
     return (
         <div className="border-solid border-black border-2 m-1 relative ">
 
-            <div className="border-solid border-black border-2 m-2 p-1 float-right absolute top-2 bottom-2 right-2 overflow-y-scroll ">
+            <div className="border-solid border-black border-2 m-2 p-1 float-right absolute top-2 bottom-2 right-2 overflow-y-auto ">
                 <p className="text-lg font-bold">Goal: {goal.name}</p>
                 <p>Details: {goal.details}</p>
                 {goal.due_date ? <p>Due Date: {dueDate.toLocaleDateString()}</p> : null}

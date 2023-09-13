@@ -3,7 +3,7 @@
 from flask import request, make_response, session
 from flask_restful import Resource
 from config import app, db, api
-from models import User, Goal, Habit, Task
+from models import User, Goal, Habit, Task, HabitCheckIn
 import datetime
 app.secret_key = b'\xf6\xd03L\x0fq%\xbat\xe0\x15r\x054\xbe\xcc'
 
@@ -102,7 +102,13 @@ class Habits(Resource):
             data = request.get_json()
             new_habit = Habit()
             for key in data:
-                setattr(new_habit, key, data[key])
+                if key == 'start_date' or key == 'end_date':
+                    year = int(data[key].split('/')[::-1][0])
+                    month = int(data[key].split('/')[::-1][2])
+                    day = int(data[key].split('/')[::-1][1])
+                    setattr(new_habit, key, datetime.date(year,month,day))
+                else:
+                    setattr(new_habit, key, data[key])
             db.session.add(new_habit)
             db.session.commit()
             return make_response(new_habit.to_dict(), 201)
@@ -133,6 +139,22 @@ class HabitById(Resource):
 
 
 api.add_resource(HabitById, '/habits/<int:id>')
+
+class HabitCheckIns(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            new_checkin = HabitCheckIn()
+            for key in data:
+                setattr(new_checkin, key, data[key])
+            db.session.add(new_checkin)
+            db.session.commit()
+            return make_response(new_checkin.to_dict(), 201)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+        
+api.add_resource(HabitCheckIns, '/checkins')
+
 
 class Tasks(Resource):
     def post(self):

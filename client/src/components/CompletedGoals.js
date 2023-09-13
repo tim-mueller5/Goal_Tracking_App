@@ -23,7 +23,7 @@ function CompletedGoals({ user }) {
 
     return (
         <div>
-            <h1>Completed Habits</h1>
+            <h1>Completed Goals: </h1>
             {completedGoalsToDisplay}
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
         </div>

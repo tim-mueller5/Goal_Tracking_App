@@ -77,6 +77,7 @@ class HabitCheckIn(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     completed = db.Column(db.Boolean, default=False)
+    date = db.Column(db.Date)
 
     habit_id = db.Column(db.Integer, db.ForeignKey("habits.id"))
 

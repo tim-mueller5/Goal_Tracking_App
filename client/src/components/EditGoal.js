@@ -17,7 +17,7 @@ function EditGoal({ user, setUser, currentGoal }) {
         initialValues: {
             name: currentGoal ? currentGoal.name : "",
             details: currentGoal ? currentGoal.details : "",
-            due_date: currentGoal ? currentGoal.due_date : "",
+            due_date: currentGoal.due_date ? currentGoal.due_date : "",
         },
         validationSchema: formShema,
         onSubmit: (values) => {

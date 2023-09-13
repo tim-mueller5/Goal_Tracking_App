@@ -146,7 +146,13 @@ class HabitCheckIns(Resource):
             data = request.get_json()
             new_checkin = HabitCheckIn()
             for key in data:
-                setattr(new_checkin, key, data[key])
+                if key == 'date':
+                    year = int(data[key].split('/')[::-1][0])
+                    month = int(data[key].split('/')[::-1][2])
+                    day = int(data[key].split('/')[::-1][1])
+                    setattr(new_checkin, key, datetime.date(year,month,day))
+                else:
+                    setattr(new_checkin, key, data[key])
             db.session.add(new_checkin)
             db.session.commit()
             return make_response(new_checkin.to_dict(), 201)

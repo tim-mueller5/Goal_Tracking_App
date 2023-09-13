@@ -37,19 +37,22 @@ function CreateHabit({ user, setUser, currentGoal }) {
 
                         let checkins = []
                         let differenceInDays
+                        const startDate = new Date()
                         const differenceInTime = new Date(habit.end_date).getTime() - new Date(habit.start_date).getTime()
                         differenceInDays = differenceInTime/ (1000 * 3600 * 24)
+                        
                         for (let i = 0; i < differenceInDays; i++) {
+                            const date = new Date(Date.now() + (parseInt(i) * 3600 * 1000 * 24)).toLocaleDateString()
                             fetch('/checkins', {
                             method: 'POST',
                             headers: {
                                 "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({habit_id: habit.id})   
+                            body: JSON.stringify({habit_id: habit.id, date: date})   
                             }).then((resp) => {
                                 resp.json().then((checkin) => {
                                     checkins.push(checkin)
-                                    console.log(checkins)
+                                    // console.log(checkins)
                                 })
                             })
                         }

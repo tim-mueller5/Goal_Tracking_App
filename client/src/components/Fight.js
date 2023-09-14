@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Fight({ user, setUser }) {
 
+    
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')
@@ -15,7 +16,9 @@ function Fight({ user, setUser }) {
     const [currentMessage, setCurrentMessage] = useState()
     const [playerTurn, setPlayerTurn] = useState(true)
     const [messages, setMessages] = useState({})
-
+    
+    console.log(user.current_health)
+    console.log(playerHealth)
     
     useEffect(() => {
         fetch('/monsters')
@@ -52,6 +55,13 @@ function Fight({ user, setUser }) {
             setCurrentMessage("else")
         }
         setUser({...user, current_health: playerHealth})
+        fetch(`/users/${user.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({current_health: playerHealth})
+        })
     }
 
     return (

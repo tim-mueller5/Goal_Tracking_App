@@ -34,6 +34,20 @@ class UserById(Resource):
         else:
             return make_response({'message': 'User not found'}, 401)
         
+    def patch(self, id):
+        user = User.query.filter_by(id=id).first()
+        try:
+            data = request.get_json()
+            for key in data:
+                if data[key] != '':
+                    setattr(user, key, data[key])
+            db.session.add(user)
+            db.session.commit()
+            return make_response(user.to_dict(), 200)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
+        
     def delete(self, id):
         user = User.query.filter_by(id=id).first()
         db.session.delete(user)

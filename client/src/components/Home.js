@@ -10,6 +10,7 @@ import EditGoal from "./EditGoal";
 import EditHabit from "./EditHabit";
 import EditTask from "./EditTask";
 import CompletedGoals from "./CompletedGoals";
+import Fight from "./Fight";
 
 
 
@@ -19,7 +20,7 @@ function Home({ user, setUser }) {
 
     return (
         <div>
-            <NavBar setUser={setUser}/>
+            <NavBar user={user} setUser={setUser}/>
             
             <Routes>
                 <Route path="/" element={<GoalList user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />}/>
@@ -30,6 +31,7 @@ function Home({ user, setUser }) {
                 <Route path="/edit-habit/:habitId/:habitName" element={<EditHabit user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/edit-task/:taskId/:taskName" element={<EditTask user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/completed" element={<CompletedGoals user={user}/>}/>
+                <Route path="/fight" element={<Fight user={user}/>}/>
             </Routes>
         </div>
     )

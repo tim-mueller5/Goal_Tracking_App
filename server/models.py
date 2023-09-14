@@ -112,6 +112,7 @@ class Item(db.Model, SerializerMixin):
     atk_stat = db.Column(db.Integer)
     def_stat = db.Column(db.Integer)
     magic_stat = db.Column(db.Integer)
+    health_stat = db.Column(db.Integer)
 
     inventory_items = db.relationship('InventoryItem', backref='item', cascade='all, delete-orphan')
 

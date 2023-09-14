@@ -56,8 +56,11 @@ if __name__ == '__main__':
         db.session.commit()
 
         print("creating items...")
-        item1 = Item(name='Sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0)
-        db.session.add(item1)
+        sword = Item(name='Sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(sword)
+        db.session.commit()
+        health_potion = Item(name='Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=5)
+        db.session.add(health_potion)
         db.session.commit()
 
         print("creating inventoryItems...")

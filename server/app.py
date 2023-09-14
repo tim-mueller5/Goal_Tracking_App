@@ -49,10 +49,13 @@ class Goals(Resource):
             new_goal = Goal()
             for key in data:
                 if key == 'due_date':
-                    year = int(data[key].split('/')[::-1][0])
-                    month = int(data[key].split('/')[::-1][2])
-                    day = int(data[key].split('/')[::-1][1])+2
-                    setattr(new_goal, key, datetime.date(year,month,day))
+                    try:
+                        year = int(data[key].split('/')[::-1][0])
+                        month = int(data[key].split('/')[::-1][2])
+                        day = int(data[key].split('/')[::-1][1])+2
+                        setattr(new_goal, key, datetime.date(year,month,day))
+                    except:
+                        pass
                 else:
                     setattr(new_goal, key, data[key])
             db.session.add(new_goal)

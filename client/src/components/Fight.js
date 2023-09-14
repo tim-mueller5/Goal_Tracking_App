@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Fight({ user }) {
+function Fight({ user, setUser }) {
 
     const navigate = useNavigate();
     const goHome = ()=> {
@@ -28,7 +28,7 @@ function Fight({ user }) {
             setMessages({
                 monsterTurn: `${monsters[0].name} attacked for ${monsters[0].atk_stat}`,
                 playerTurn: `You dealt ${playerDamage} to the ${monsters[0].name}`,
-                death: "Your have been defeated",
+                death: "Your have been defeated!  Complete goals to earn health potions.",
                 victory: `You have defeated the ${monsters[0].name}`
             })
             setCurrentMessage(`You have found a ${monsters[0].name}!`)
@@ -41,12 +41,11 @@ function Fight({ user }) {
                 setMonsterHealth(monsterHealth - playerDamage)
                 setCurrentMessage(messages.playerTurn)
                 setPlayerTurn(!playerTurn)
-            } else {
+            } else if (playerTurn === false) {
                 setPlayerHealth(playerHealth - monster.atk_stat)
                 setCurrentMessage(messages.monsterTurn)
                 setPlayerTurn(!playerTurn)
             }
-            
         } else if (playerHealth <= 0) {
             setCurrentMessage(messages.defeat)
         } else if (monsterHealth <= 0) {
@@ -54,8 +53,9 @@ function Fight({ user }) {
         } else {
             setCurrentMessage("else")
         }
+        setUser({...user, current_health: playerHealth})
     }
-
+    console.log(user)
     return (
         <div>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>

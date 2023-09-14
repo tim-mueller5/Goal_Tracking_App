@@ -71,9 +71,32 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
                     setUser({...user, goals:goals})
                 })
             }
-        }).catch(() => console.log("Caught Error in fetch!"))
+        }).then(() => giveReward()) 
+        .catch(() => console.log("Caught Error in fetch!"))
     }
 
+    const giveReward = () => {
+            const num = Math.floor(Math.random() * 10)
+            console.log(num)
+            if (num > 0) {
+                fetch(`/items`)
+                .then(resp => resp.json())
+                .then((items) => {
+                    console.log(items)
+                    const num = Math.floor(Math.random() * items.length)
+                    fetch(`/inventoryitems`, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({user_id: user.id, item_id: items[num].id}),
+                    }).then((resp) => resp.json())
+                    .then((item)=> console.log(item))
+                }
+            )
+        }
+    }
+    
 
     return (
         <div className="border-solid border-black border-2 m-1 relative ">

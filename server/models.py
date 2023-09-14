@@ -12,9 +12,16 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String)
     _password_hash = db.Column(db.String, nullable=False)
 
+    max_health = db.Column(db.Integer)
+    current_health = db.Column(db.Integer)
+    base_atk_stat = db.Column(db.Integer)
+    base_def_stat = db.Column(db.Integer)
+    base_magic_stat = db.Column(db.Integer)
+
+    inventory_items = db.relationship('InventoryItem', backref='user', cascade='all, delete-orphan')
     goals = db.relationship('Goal', backref='user', cascade='all, delete-orphan')
 
-    serialize_rules = ('-goals.user', '-_password_hash')
+    serialize_rules = ('-goals.user', '-_password_hash','-inventory_items.user',)
 
     @hybrid_property
     def password_hash(self):
@@ -95,3 +102,36 @@ class Task(db.Model, SerializerMixin):
     goal_id = db.Column(db.Integer, db.ForeignKey("goals.id"))
 
     serialize_rules = ('-goal.tasks', '-goal.habits')
+
+class Item(db.Model, SerializerMixin):
+    __tablename__ = 'items'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    type = db.Column(db.String)
+    atk_stat = db.Column(db.Integer)
+    def_stat = db.Column(db.Integer)
+    magic_stat = db.Column(db.Integer)
+
+    inventory_items = db.relationship('InventoryItem', backref='item', cascade='all, delete-orphan')
+
+    serialize_rules = ('-inventory_items.item',)
+
+class InventoryItem(db.Model, SerializerMixin):
+    __tablename__ = "inventoryItems"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
+
+    serialize_rules = ('-user.inventory_items', '-item.inventory_items', '-user.goals')
+
+class Monster(db.Model, SerializerMixin):
+    __tablename__ = 'monsters'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    health = db.Column(db.Integer)
+    atk_stat = db.Column(db.Integer)
+    def_stat = db.Column(db.Integer)
+    magic_stat = db.Column(db.Integer)

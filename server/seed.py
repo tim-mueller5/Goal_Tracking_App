@@ -5,7 +5,7 @@ from random import randint, choice as rc
 
 from app import app
 from models import db
-from models import User, Goal, Habit, Task, HabitCheckIn
+from models import User, Goal, Habit, Task, HabitCheckIn, Item, InventoryItem, Monster
 import datetime
 
 if __name__ == '__main__':
@@ -20,12 +20,14 @@ if __name__ == '__main__':
         Habit.query.delete()
         Task.query.delete()
         HabitCheckIn.query.delete()
+        Item.query.delete()
+        InventoryItem.query.delete()
 
         print('Creating Users...')
-        user1 = User(username='Tim', password_hash="123")
+        user1 = User(username='Tim', password_hash="123", max_health=15, current_health=15, base_atk_stat=1, base_def_stat=1, base_magic_stat=0)
         db.session.add(user1)
         db.session.commit()
-        user2 = User(username='Peter', password_hash="123")
+        user2 = User(username='Peter', password_hash="123", max_health=15, current_health=15, base_atk_stat=1, base_def_stat=1, base_magic_stat=0)
         db.session.add(user2)
         db.session.commit()
 
@@ -51,6 +53,21 @@ if __name__ == '__main__':
         db.session.commit()
         task2 = Task(name='Buy spanish book', goal_id=2, completed=False)
         db.session.add(task2)
+        db.session.commit()
+
+        print("creating items...")
+        item1 = Item(name='Sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0)
+        db.session.add(item1)
+        db.session.commit()
+
+        print("creating inventoryItems...")
+        get_item = InventoryItem(user_id=1, item_id=1)
+        db.session.add(get_item)
+        db.session.commit()
+
+        print("creating monster...")
+        monster = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0)
+        db.session.add(monster)
         db.session.commit()
 
         print('Seeding done!')

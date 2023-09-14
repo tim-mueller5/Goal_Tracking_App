@@ -3,7 +3,7 @@
 from flask import request, make_response, session
 from flask_restful import Resource
 from config import app, db, api
-from models import User, Goal, Habit, Task, HabitCheckIn
+from models import User, Goal, Habit, Task, HabitCheckIn, Item, InventoryItem, Monster
 import datetime
 app.secret_key = b'\xf6\xd03L\x0fq%\xbat\xe0\x15r\x054\xbe\xcc'
 
@@ -215,6 +215,35 @@ class TaskById(Resource):
 
 
 api.add_resource(TaskById, '/tasks/<int:id>')
+
+class Monsters(Resource):
+    def get(self):
+        monsters = [monster.to_dict() for monster in Monster.query.all()]
+        return make_response(monsters, 200)
+    
+api.add_resource(Monsters, '/monsters')
+
+class Items(Resource):
+    def get(self):
+        items = [item.to_dict() for item in Item.query.all()]
+        return make_response(items, 200)
+    
+api.add_resource(Items, '/items')
+
+class InventoryItems(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            new_invetory_item = InventoryItem()
+            for key in data:
+                setattr(new_invetory_item, key, data[key])
+            db.session.add(new_invetory_item)
+            db.session.commit()
+            return make_response(new_invetory_item.to_dict(), 201)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+        
+api.add_resource(InventoryItems, '/inventoryitems')
 
 class CheckSession(Resource):
     def get(self):

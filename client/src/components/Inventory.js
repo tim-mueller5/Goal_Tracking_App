@@ -9,8 +9,6 @@ function Inventory ({ user }) {
         navigate('/')
     }
 
-    console.log(user)
-
     const inventory = user.inventory_items.map((inventory_item) => <InventoryItemCard key={inventory_item.id} item={inventory_item.item}/>)
 
     return (

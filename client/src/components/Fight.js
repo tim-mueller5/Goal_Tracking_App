@@ -12,8 +12,6 @@ function Fight({ user, setUser }) {
     const [monster, setMonster] = useState()
     const [monsterHealth, setMonsterHealth] = useState()
     const [playerHealth, setPlayerHealth] = useState(user.current_health)
-    // const [damageToPlayer, setDamageToPlayer] = useState()
-    // const [damageToMonster, setDamageToMonster] = useState()
     const [currentMessage, setCurrentMessage] = useState()
     const [playerTurn, setPlayerTurn] = useState(true)
     const [messages, setMessages] = useState({})
@@ -55,7 +53,7 @@ function Fight({ user, setUser }) {
         }
         setUser({...user, current_health: playerHealth})
     }
-    console.log(user)
+
     return (
         <div>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>

@@ -1,10 +1,12 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 
 function Login( { setUser } ) {
 
     const navigate = useNavigate();
+    const [error, setError] = useState(null)
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Must have username"),
@@ -27,6 +29,7 @@ function Login( { setUser } ) {
             }).then((response) => {
                 if (response.ok) {
                     response.json().then((user) => setUser(user));
+                    setError(null)
                     navigate(`/`)
                   }
             })
@@ -46,22 +49,34 @@ function Login( { setUser } ) {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-            }).then(() => {
-                fetch("/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(values),
-                }).then((response) => {
-                    if (response.ok) {
-                        response.json().then((user) => setUser(user));
-                        navigate(`/`)
-                      }
-                })
-            })
+            }).then((resp) => {
+                
+                if (resp.ok) {
+                    fetch("/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(values),
+                    }).then((response) => {
+                        if (response.ok) {
+                            response.json().then((user) => setUser(user));
+                          }
+                    })
+                }else{
+                    resp.json().then((e) => {
+                        setError(e.error)
+                    })
+                }
+            }).catch((e) => {
+                setError(e)
+            });
         }
     })
+
+    const showErrors = () => {
+
+    }
 
 
     return (
@@ -91,6 +106,7 @@ function Login( { setUser } ) {
                 <p style={{ color: "red" }}> {formikNew.errors.password}</p>
                 <button type="submit">Create New User</button>
             </form>
+            <p>{error}</p>
         </div>
 
 

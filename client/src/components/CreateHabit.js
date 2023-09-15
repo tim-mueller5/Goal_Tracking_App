@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function CreateHabit({ user, setUser, currentGoal }) {  
 
+function CreateHabit({ currentGoal }) {  
+
+
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')
@@ -37,7 +42,7 @@ function CreateHabit({ user, setUser, currentGoal }) {
 
                         let checkins = []
                         let differenceInDays
-                        const startDate = new Date()
+                        // const startDate = new Date()
                         const differenceInTime = new Date(habit.end_date).getTime() - new Date(habit.start_date).getTime()
                         differenceInDays = differenceInTime/ (1000 * 3600 * 24)
                         

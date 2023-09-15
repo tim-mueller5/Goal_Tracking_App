@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function Fight({ user, setUser }) {
 
-    
+function Fight() {
+
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')

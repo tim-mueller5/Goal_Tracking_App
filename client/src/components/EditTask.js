@@ -1,9 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function EditTask({ user, setUser, currentGoal }) {
 
+function EditTask({ currentGoal }) {
+
+    const {user, setUser} = useContext(UserContext);
     let  { taskId, taskName } = useParams();
     const navigate = useNavigate();
     const goHome = ()=> {

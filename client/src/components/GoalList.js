@@ -1,16 +1,20 @@
 
 import GoalCard from "./GoalCard";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
 
 
-function GoalList({ user, setUser, currentGoal, setCurrentGoal, inventory, setInventory }) {
+function GoalList({ currentGoal, setCurrentGoal, inventory, setInventory }) {
+
+    const {user} = useContext(UserContext);
     let goalsToDisplay
 
     if (user){
         goalsToDisplay = user.goals.map((goal) => {
             if(!goal.completed){
-                return <GoalCard key={goal.id} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} inventory={inventory} setInventory={setInventory}/>
-            }
+                return <GoalCard key={goal.id} goal={goal} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} inventory={inventory} setInventory={setInventory}/>
+            } else{return null}
         })
     }
     

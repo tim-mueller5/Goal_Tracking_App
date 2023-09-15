@@ -1,7 +1,9 @@
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
 
-function PlayerCard({ user }) {
-
+function PlayerCard() {
+    const {user} = useContext(UserContext);
 
     return (
         <div className="border-black border-solid border-2">

@@ -2,8 +2,12 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function Login( { setUser } ) {
+function Login( ) {
+
+    const { setUser} = useContext(UserContext);
 
     const navigate = useNavigate();
     const [error, setError] = useState(null)
@@ -73,10 +77,6 @@ function Login( { setUser } ) {
             });
         }
     })
-
-    const showErrors = () => {
-
-    }
 
 
     return (

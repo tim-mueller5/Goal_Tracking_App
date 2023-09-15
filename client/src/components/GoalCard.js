@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import HabitCard from "./HabitCard";
 import TaskCard from "./TaskCard";
-import { useEffect } from "react";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
 
-function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal, inventory, setInventory }) {
+
+function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }) {
 
     const navigate = useNavigate();
+    const {user, setUser} = useContext(UserContext);
 
     let dueDate
     let differenceInDays
@@ -17,8 +20,8 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal, inventory,
         differenceInDays = differenceInTime/ (1000 * 3600 * 24)
     }
 
-    const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />)
-    const tasksToDisplay = goal.tasks.map((task) => <TaskCard key={task.id} task={task} goal={goal} user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}/>)
+    const habitsToDisplay = goal.habits.map((habit) => <HabitCard key={habit.id} habit={habit} goal={goal} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />)
+    const tasksToDisplay = goal.tasks.map((task) => <TaskCard key={task.id} task={task} goal={goal} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal}/>)
 
     const edit = () => {
         setCurrentGoal(goal)

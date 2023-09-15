@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function TaskCard({ task, goal, user, setUser, currentGoal, setCurrentGoal }) {
 
+function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
+
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
     const edit = () => {

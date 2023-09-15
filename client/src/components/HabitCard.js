@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import HabitCheckIn from "./HabitCheckIn";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function HabitCard({ habit, goal, user, setUser, currentGoal, setCurrentGoal, daysLeft }) {
 
+function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
+
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
     const edit = () => {

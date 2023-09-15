@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import Login from "./Login";
 import Home from "./Home";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
 
 function App() {
 
-  const [user, setUser] = useState(null)
-  const navigate = useNavigate();
+  const {user, setUser} = useContext(UserContext);
 
   useEffect(() => {
     fetch("/check_session").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
-        console.log('Already logged in!')
       }
       else{
         console.log('Not logged in yet.')
@@ -23,10 +22,12 @@ function App() {
   
 
   if (user) {
-    return <Home user={user} setUser={setUser} />
+    return (
+      <Home/>
+    )
   }
   else{
-    return <Login setUser={setUser}/>
+    return <Login/>
   }
 }
 

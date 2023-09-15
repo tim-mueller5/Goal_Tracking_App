@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as yup from "yup";
- 
+import { UserContext } from "../context/user";
+import { useContext } from "react";
 
-function CreateGoal({ user, setUser }) {
 
+function CreateGoal() {
+
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')
@@ -26,7 +29,6 @@ function CreateGoal({ user, setUser }) {
         },
         validationSchema: formShema,
         onSubmit: (values) => {
-            // console.log(values.due_date)
             values.due_date = new Date(values.due_date).toLocaleDateString();
             values.user_id = user.id
             fetch("/goals", {

@@ -69,8 +69,11 @@ if __name__ == '__main__':
         db.session.commit()
 
         print("creating monster...")
-        monster = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0)
-        db.session.add(monster)
+        blue_slime = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0)
+        db.session.add(blue_slime)
+        db.session.commit()
+        red_slime = Monster(name="Red Slime", health=12, atk_stat=2, def_stat=1, magic_stat=0)
+        db.session.add(red_slime)
         db.session.commit()
 
         print('Seeding done!')

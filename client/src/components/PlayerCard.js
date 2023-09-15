@@ -6,7 +6,7 @@ function PlayerCard() {
     const {user} = useContext(UserContext);
 
     return (
-        <div className="border-black border-solid border-2">
+        <div className="border-black border-solid border-2 m-1">
             <p>User: {user.username}</p>
             <p>Health: {user.current_health}/{user.max_health}</p>
             <p></p>

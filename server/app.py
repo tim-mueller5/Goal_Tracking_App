@@ -263,6 +263,19 @@ class InventoryItems(Resource):
 api.add_resource(InventoryItems, '/inventoryitems')
 
 class InventoryItemsById(Resource):
+    def patch(self, id):
+        try:
+            item = InventoryItem.query.filter_by(id=id).first()
+            data = request.get_json()
+            for key in data:
+                if data[key] != '':
+                    setattr(item, key, data[key])
+            db.session.add(item)
+            db.session.commit()
+            return make_response(item.to_dict(), 200)
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
+
     def delete(self, id):
         item = InventoryItem.query.filter_by(id=id).first()
         db.session.delete(item)

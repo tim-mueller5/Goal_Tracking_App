@@ -115,13 +115,13 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
                 <button onClick={handleComplete} className='border-solid border-black border-2 px-1 m-1 block'>Mark as Complete</button>
             </div>
             
-            <div className="border-solid border-white border-2 m-2 p-1">
+            <div className=" m-2 p-1">
                 <p>Habits for this goal: </p>
                 {habitsToDisplay}
                 <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
             </div>
             
-            <div className="border-solid border-white border-2 m-2 p-1">
+            <div className=" m-2 p-1">
                 <p>Tasks for this goal: </p>
                 {tasksToDisplay}
                 <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block'>Add Task to this goal</button>

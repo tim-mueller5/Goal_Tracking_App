@@ -70,7 +70,7 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
     }
 
     return (
-        <div  className="border-solid border-white border-2 m-2 p-1">
+        <div  className=" m-2 p-1">
             <h4>Task: {task.name}</h4>
             { task.completed ?
                 <p>Completed!</p> 

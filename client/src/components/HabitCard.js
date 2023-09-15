@@ -73,7 +73,7 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
     }
 
     return (
-        <div  className="border-solid border-white border-2 m-2 p-1">
+        <div  className=" m-2 p-1">
             <h4>Habit: {habit.name}</h4>
             <div>
                 {CheckInCardsToDisplay}

@@ -20,15 +20,18 @@ function GoalList({ currentGoal, setCurrentGoal, inventory, setInventory }) {
     
 
     return (
-        <div className="relative">
+        <div className="relative overflow-auto min-h-screen">
             <div className="w-3/4 float-left">
                 {(user != null)? goalsToDisplay : "No user"}
+                <p>{goalsToDisplay.length > 1 ? null : "You have no goals!  Create a new goal!"}</p>
             </div>
-            <div>
-                Calander
-            </div>
-            <div>
-                Timer
+            <div className="float-right w-1/4">
+                <div className="border-solid border-black border-2 h-64 flex flex-col items-center">
+                    Calander
+                </div>
+                <div className="border-solid border-black border-2 h-64 flex flex-col items-center">
+                    Timer
+                </div>
             </div>
         </div>
     )

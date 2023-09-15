@@ -19,7 +19,6 @@ function Home({ user, setUser }) {
 
     const [currentGoal, setCurrentGoal] = useState(null)
     const [inventory, setInventory] = useState(user.inventory_items)
-    console.log(inventory)
 
     return (
         <div>

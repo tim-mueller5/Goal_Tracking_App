@@ -92,7 +92,6 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal, inventory,
                         body: JSON.stringify({user_id: user.id, item_id: items[num].id}),
                     }).then((resp) => resp.json())
                     .then((item)=> {
-                        console.log(item)
                         setInventory([...inventory, item])
                     })
                 }

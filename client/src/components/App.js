@@ -22,9 +22,7 @@ function App() {
   
 
   if (user) {
-    return (
-      <Home/>
-    )
+    return <Home/>
   }
   else{
     return <Login/>

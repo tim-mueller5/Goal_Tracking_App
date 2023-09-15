@@ -2,8 +2,17 @@
 
 function CompletedCard({ goal }) {
 
-    const habitsNames = goal.habits.map((habit) => `${habit.name}, `)
-    const taskNames = goal.tasks.map((task) => `${task.name}, `)
+    const habitsNames = goal.habits.map((habit) => {
+        if(habit.completed){
+            return `${habit.name}-completed, `
+        } else return `${habit.name}-Not completed, `
+    })
+    const taskNames = goal.tasks.map((task) => {
+        if(task.completed) {
+            return `${task.name}-completed, `
+        } else return `${task.name}-Not completed, `
+        
+    })
 
     return (
         <div className="m-4">

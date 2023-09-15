@@ -166,7 +166,7 @@ class HabitCheckIns(Resource):
                 if key == 'date':
                     year = int(data[key].split('/')[::-1][0])
                     month = int(data[key].split('/')[::-1][2])
-                    day = int(data[key].split('/')[::-1][1])
+                    day = int(data[key].split('/')[::-1][1])+2
                     setattr(new_checkin, key, datetime.date(year,month,day))
                 else:
                     setattr(new_checkin, key, data[key])

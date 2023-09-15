@@ -36,7 +36,7 @@ function Home() {
                 <Route path="/edit-habit/:habitId/:habitName" element={<EditHabit  currentGoal={currentGoal} />}/>
                 <Route path="/edit-task/:taskId/:taskName" element={<EditTask  currentGoal={currentGoal} />}/>
                 <Route path="/completed" element={<CompletedGoals  />}/>
-                <Route path="/fight" element={<Fight />}/>
+                <Route path="/fight" element={<Fight inventory={inventory}/>}/>
                 <Route path="/inventory" element={<Inventory inventory={inventory} setInventory={setInventory} />}/>
             </Routes>
         </div>

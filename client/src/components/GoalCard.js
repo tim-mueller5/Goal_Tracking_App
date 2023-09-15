@@ -80,12 +80,10 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
 
     const giveReward = () => {
             const num = Math.floor(Math.random() * 10)
-            console.log(num)
             if (num > 0) {
                 fetch(`/items`)
                 .then(resp => resp.json())
                 .then((items) => {
-                    console.log(items)
                     const num = Math.floor(Math.random() * items.length)
                     fetch(`/inventoryitems`, {
                         method: 'POST',

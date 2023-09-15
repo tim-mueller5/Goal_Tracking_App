@@ -10,9 +10,6 @@ function PlayerCard({ inventory }) {
         } else return null
     })
     const weapon = weaponArray[0]
-    if(weapon){
-        console.log(weapon.item.name)
-    }
     
     return (
         <div className="border-black border-solid border-2 m-1">

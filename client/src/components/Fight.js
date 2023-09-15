@@ -4,24 +4,35 @@ import { UserContext } from "../context/user";
 import { useContext } from "react";
 
 
-function Fight() {
+function Fight({ inventory }) {
 
     const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')
     }
+
+    const weaponArray = inventory.filter((inventory_item) => {
+        if(inventory_item.equipped && inventory_item.id === user.equipped_weapon){
+            return inventory_item
+        } else return null
+    })
+    const weapon = weaponArray[0]
+    let playerDamage
+    if(weapon){
+
+        console.log(user.base_atk_stat + weapon.item.atk_stat)
+        playerDamage = (user.base_atk_stat + weapon.item.atk_stat)
+    }else (
+        playerDamage = user.base_atk_stat
+    )
     
-    const playerDamage = 5
     const [monster, setMonster] = useState()
     const [monsterHealth, setMonsterHealth] = useState()
     const [playerHealth, setPlayerHealth] = useState(user.current_health)
     const [currentMessage, setCurrentMessage] = useState()
     const [playerTurn, setPlayerTurn] = useState(true)
     const [messages, setMessages] = useState({})
-    
-    console.log(user.current_health)
-    console.log(playerHealth)
     
     useEffect(() => {
         fetch('/monsters')
@@ -72,6 +83,7 @@ function Fight() {
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <p className='text-lg font-bold'>Fight Page</p>
             <p>Your Health: {playerHealth} hp</p>
+            <p>Equiped Weapon: {weapon ?  /*weapon.item.name*/null : "none"}</p> 
             <p>Monster Health: {monsterHealth}</p>
             <p>{currentMessage}</p>
             <button onClick={nextAction} className='border-solid border-black border-2 px-1 block'>{playerTurn === true ? "Attack" : "Next"}</button>

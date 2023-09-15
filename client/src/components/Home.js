@@ -25,7 +25,7 @@ function Home() {
 
     return (
         <div>
-            <NavBar/>
+            <NavBar inventory={inventory}/>
             
             <Routes>
                 <Route path="/" element={<GoalList currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} inventory={inventory} setInventory={setInventory}/>}/>

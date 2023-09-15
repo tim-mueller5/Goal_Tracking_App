@@ -17,7 +17,7 @@ class User(db.Model, SerializerMixin):
     base_atk_stat = db.Column(db.Integer)
     base_def_stat = db.Column(db.Integer)
     base_magic_stat = db.Column(db.Integer)
-    equipped_weapon = db.Column(db.Integer)
+    equipped_weapon = db.Column(db.Integer)  # inventory_item id
 
     inventory_items = db.relationship('InventoryItem', backref='user', cascade='all, delete-orphan')
     goals = db.relationship('Goal', backref='user', cascade='all, delete-orphan')

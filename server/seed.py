@@ -56,6 +56,9 @@ if __name__ == '__main__':
         db.session.commit()
 
         print("creating items...")
+        empty_hand = Item(name='None', type='weapon', atk_stat=0, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(empty_hand)
+        db.session.commit()
         sword = Item(name='Sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(sword)
         db.session.commit()
@@ -64,8 +67,11 @@ if __name__ == '__main__':
         db.session.commit()
 
         print("creating inventoryItems...")
-        get_item = InventoryItem(user_id=1, item_id=1)
-        db.session.add(get_item)
+        give_empty = InventoryItem(user_id=1, item_id=1) # give to all players
+        db.session.add(give_empty)
+        db.session.commit()
+        give_sword = InventoryItem(user_id=1, item_id=2)
+        db.session.add(give_sword)
         db.session.commit()
 
         print("creating monster...")

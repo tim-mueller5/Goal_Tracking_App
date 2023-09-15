@@ -3,7 +3,7 @@ import PlayerCard from './PlayerCard';
 import { UserContext } from "../context/user";
 import { useContext } from "react";
 
-function NavBar() {
+function NavBar({ inventory }) {
 
     const {setUser} = useContext(UserContext);
     const navigate = useNavigate();
@@ -38,7 +38,7 @@ function NavBar() {
                 <button onClick={goFight} className='border-solid border-black border-2 px-1 m-1'>Fight Monster</button>
             </div>
             <div>
-                <PlayerCard />
+                <PlayerCard inventory={inventory}/>
             </div>
             <div>
                 <button onClick={goCreateGoal} className='border-solid border-black border-2 px-1 m-1'> Create New Goal </button>

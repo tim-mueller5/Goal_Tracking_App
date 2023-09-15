@@ -37,19 +37,32 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory }) {
         setInventory([...inventory])
     }
 
-    const handleEquip = () => {
-        fetch(`inventoryitems/${inventory_item.id}`, {
-            method: 'PATCH',
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({equipped: true})
+    const handleEquipWeapon = () => {
+        const alreadyEquipped = inventory.filter((item) => {
+            if (item.equipped) return item
         })
-        inventory_item.equipped = true
-        setInventory([...inventory])
+        if(alreadyEquipped.length === 0){
+            fetch(`inventoryitems/${inventory_item.id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({equipped: true})
+            })
+            inventory_item.equipped = true
+            setInventory([...inventory])
+            fetch(`/users/${user.id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({equipped_weapon: inventory_item.id})
+            })
+            setUser({...user, equipped_weapon: inventory_item.id})
+        } else console.log("An item is already equipped!")
     }
 
-    const handleUnEquip = () => {
+    const handleUnEquipWeapon = () => {
         fetch(`inventoryitems/${inventory_item.id}`, {
             method: 'PATCH',
             headers: {
@@ -59,6 +72,14 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory }) {
         })
         inventory_item.equipped = false
         setInventory([...inventory])
+        fetch(`/users/${user.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({equipped_weapon: null})
+        })
+        setUser({...user, equipped_weapon: null})
     }
 
     return (
@@ -66,9 +87,9 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory }) {
             <p>Item Card: {item.name}</p>
             {item.type === 'health' ? <button onClick={useHealthPotion} className='border-solid border-black border-2 px-1'>Use {item.name}</button> 
             : <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1'>Delete {item.name}</button>}
-            {item.type === 'weapon' && !inventory_item.equipped ? <button onClick={handleEquip} className='border-solid border-black border-2 px-1 m-1'>Equip</button> 
+            {item.type === 'weapon' && !inventory_item.equipped ? <button onClick={handleEquipWeapon} className='border-solid border-black border-2 px-1 m-1'>Equip</button> 
             : null}
-            {item.type === 'weapon' && inventory_item.equipped ? <button onClick={handleUnEquip} className='border-solid border-black border-2 px-1 m-1'>Unequip</button> 
+            {item.type === 'weapon' && inventory_item.equipped ? <button onClick={handleUnEquipWeapon} className='border-solid border-black border-2 px-1 m-1'>Unequip</button> 
             : null}
         </div>
     )

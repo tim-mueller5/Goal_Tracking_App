@@ -15,10 +15,14 @@ class Users(Resource):
     def post(self):
         try:
             data = request.get_json()
-            new_user = User(
-                username = data['username'],
-                password_hash = data['password']
-            )
+            new_user = User()
+            for key in data:
+                if data[key] != '':
+                    if key == "password":
+                        key = "password_hash"
+                        setattr(new_user, key, data["password"])
+                    else:
+                        setattr(new_user, key, data[key])
             db.session.add(new_user)
             db.session.commit()
             return make_response(new_user.to_dict(), 201)
@@ -36,11 +40,17 @@ class UserById(Resource):
         
     def patch(self, id):
         user = User.query.filter_by(id=id).first()
+        if not user:
+            return make_response({"error": "User not found"}, 404)
         try:
             data = request.get_json()
             for key in data:
                 if data[key] != '':
-                    setattr(user, key, data[key])
+                    if key == "password":
+                        key = "password_hash"
+                        setattr(user, key, data["password"])
+                    else:
+                        setattr(user, key, data[key])
             db.session.add(user)
             db.session.commit()
             return make_response(user.to_dict(), 200)

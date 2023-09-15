@@ -14,13 +14,13 @@ function Login( ) {
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Must have username"),
-        password: yup.string().required("Must have password")
+        password: yup.string().required("Must have password"),
     })
 
     const formikLogin = useFormik({
         initialValues: {
             username: "",
-            password: ""
+            password: "",
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
@@ -40,12 +40,27 @@ function Login( ) {
         }
     })
 
+    const newformSchema = yup.object().shape({
+        username: yup.string().required("Must have username"),
+        password: yup.string().required("Must have password"),
+        max_health: yup.number(),
+        current_health: yup.number(),
+        base_atk_stat: yup.number(),
+        base_def_stat: yup.number(),
+        base_magic_stat: yup.number()
+    })
+
     const formikNew = useFormik({
         initialValues: {
             username: "",
-            password: ""
+            password: "",
+            max_health: 15,
+            current_health: 15,
+            base_atk_stat:1,
+            base_def_stat:1,
+            base_magic_stat:0
         },
-        validationSchema: formSchema,
+        validationSchema: newformSchema,
         onSubmit: (values) => {
             fetch("/users", {
                 method: "POST",

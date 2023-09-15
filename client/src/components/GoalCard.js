@@ -4,7 +4,7 @@ import TaskCard from "./TaskCard";
 import { useEffect } from "react";
 
 
-function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
+function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal, inventory, setInventory }) {
 
     const navigate = useNavigate();
 
@@ -91,7 +91,10 @@ function GoalCard({ goal, user, setUser, currentGoal, setCurrentGoal }) {
                         },
                         body: JSON.stringify({user_id: user.id, item_id: items[num].id}),
                     }).then((resp) => resp.json())
-                    .then((item)=> console.log(item))
+                    .then((item)=> {
+                        console.log(item)
+                        setInventory([...inventory, item])
+                    })
                 }
             )
         }

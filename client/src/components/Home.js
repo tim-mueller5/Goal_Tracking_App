@@ -18,22 +18,24 @@ import Inventory from "./Inventory";
 function Home({ user, setUser }) {
 
     const [currentGoal, setCurrentGoal] = useState(null)
+    const [inventory, setInventory] = useState(user.inventory_items)
+    console.log(inventory)
 
     return (
         <div>
             <NavBar user={user} setUser={setUser}/>
             
             <Routes>
-                <Route path="/" element={<GoalList user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} />}/>
+                <Route path="/" element={<GoalList user={user} setUser={setUser} currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} inventory={inventory} setInventory={setInventory}/>}/>
                 <Route path="/create-goal" element={<CreateGoal user={user} setUser={setUser} />}/>
                 <Route path="/create-goal/habit" element={<CreateHabit user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/create-goal/task" element={<CreateTask user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/edit-goal" element={<EditGoal user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/edit-habit/:habitId/:habitName" element={<EditHabit user={user} setUser={setUser} currentGoal={currentGoal} />}/>
                 <Route path="/edit-task/:taskId/:taskName" element={<EditTask user={user} setUser={setUser} currentGoal={currentGoal} />}/>
-                <Route path="/completed" element={<CompletedGoals user={user}/>}/>
+                <Route path="/completed" element={<CompletedGoals user={user} />}/>
                 <Route path="/fight" element={<Fight user={user} setUser={setUser}/>}/>
-                <Route path="/inventory" element={<Inventory user={user}/>}/>
+                <Route path="/inventory" element={<Inventory inventory={inventory}/>}/>
             </Routes>
         </div>
     )

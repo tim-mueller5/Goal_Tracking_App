@@ -2,14 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import InventoryItemCard from "./InventoryItemCard"
 
 
-function Inventory ({ inventory }) {
+function Inventory ({ inventory, setInventory }) {
 
     const navigate = useNavigate();
     const goHome = ()=> {
         navigate('/')
     }
 
-    const inventoryToDisplay = inventory.map((inventory_item) => <InventoryItemCard key={inventory_item.id} item={inventory_item.item}/>)
+    const inventoryToDisplay = inventory.map((inventory_item) => <InventoryItemCard key={inventory_item.id} inventory_item={inventory_item} item={inventory_item.item} inventory={inventory} setInventory={setInventory}/>)
 
     return (
         <div>

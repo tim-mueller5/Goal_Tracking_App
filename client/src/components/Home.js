@@ -37,7 +37,7 @@ function Home() {
                 <Route path="/edit-task/:taskId/:taskName" element={<EditTask  currentGoal={currentGoal} />}/>
                 <Route path="/completed" element={<CompletedGoals  />}/>
                 <Route path="/fight" element={<Fight />}/>
-                <Route path="/inventory" element={<Inventory inventory={inventory}/>}/>
+                <Route path="/inventory" element={<Inventory inventory={inventory} setInventory={setInventory} />}/>
             </Routes>
         </div>
     )

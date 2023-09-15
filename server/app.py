@@ -262,6 +262,15 @@ class InventoryItems(Resource):
         
 api.add_resource(InventoryItems, '/inventoryitems')
 
+class InventoryItemsById(Resource):
+    def delete(self, id):
+        item = InventoryItem.query.filter_by(id=id).first()
+        db.session.delete(item)
+        db.session.commit()
+        return make_response({"message": "Delete inventory item"}, 200)
+
+api.add_resource(InventoryItemsById, '/inventoryitems/<int:id>')
+
 class CheckSession(Resource):
     def get(self):
         user = User.query.filter(User.id == session.get('user_id')).first()

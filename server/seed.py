@@ -56,21 +56,24 @@ if __name__ == '__main__':
         db.session.commit()
 
         print("creating items...")
-        empty_hand = Item(name='None', type='weapon', atk_stat=0, def_stat=0, magic_stat=0, health_stat=0)
-        db.session.add(empty_hand)
-        db.session.commit()
+        # empty_hand = Item(name='None', type='weapon', atk_stat=0, def_stat=0, magic_stat=0, health_stat=0)
+        # db.session.add(empty_hand)
+        # db.session.commit()
         sword = Item(name='Sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(sword)
+        db.session.commit()
+        axe = Item(name='Axe', type='weapon', atk_stat=5, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(axe)
         db.session.commit()
         health_potion = Item(name='Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=5)
         db.session.add(health_potion)
         db.session.commit()
 
         print("creating inventoryItems...")
-        give_empty = InventoryItem(user_id=1, item_id=1) # give to all players
-        db.session.add(give_empty)
-        db.session.commit()
-        give_sword = InventoryItem(user_id=1, item_id=2)
+        # give_empty = InventoryItem(user_id=1, item_id=1) # give to all players
+        # db.session.add(give_empty)
+        # db.session.commit()
+        give_sword = InventoryItem(user_id=1, item_id=1)
         db.session.add(give_sword)
         db.session.commit()
 

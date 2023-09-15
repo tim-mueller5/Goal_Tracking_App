@@ -97,29 +97,25 @@ function Login( ) {
     return (
 
         <div className='flex-c text-center'>
-            <h2>Login:</h2>
+            <h2 className="text-lg font-bold">Login:</h2>
             <form onSubmit={formikLogin.handleSubmit}>
                 <label htmlFor="username">username: </label>
-                <input id="username" name="username" onChange={formikLogin.handleChange} value={formikLogin.values.username} 
-                    style={{background: '#70a7ff'}}/>
+                <input id="username" name="username" onChange={formikLogin.handleChange} value={formikLogin.values.username} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikLogin.errors.username}</p>
                 <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
-                <input id="password" name="password" onChange={formikLogin.handleChange} value={formikLogin.values.password}
-                    style={{background: '#70a7ff'}}/>
+                <input id="password" name="password" onChange={formikLogin.handleChange} value={formikLogin.values.password} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikLogin.errors.password}</p>
-                <button type="submit">Login</button>
+                <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Login</button>
             </form>
-            <h2>Or Create New User</h2>
+            <h2 className="text-lg font-bold">Or Create New User</h2>
             <form onSubmit={formikNew.handleSubmit}>
                 <label htmlFor="username">username: </label>
-                <input id="username" name="username" onChange={formikNew.handleChange} value={formikNew.values.username} 
-                    style={{background: '#70a7ff'}}/>
+                <input id="username" name="username" onChange={formikNew.handleChange} value={formikNew.values.username} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikNew.errors.username}</p>
                 <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
-                <input id="password" name="password" onChange={formikNew.handleChange} value={formikNew.values.password}
-                    style={{background: '#70a7ff'}}/>
+                <input id="password" name="password" onChange={formikNew.handleChange} value={formikNew.values.password} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikNew.errors.password}</p>
-                <button type="submit">Create New User</button>
+                <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Create New User</button>
             </form>
             <p>{error}</p>
         </div>

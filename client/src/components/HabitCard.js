@@ -75,7 +75,7 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
     return (
         <div  className=" m-2 p-1">
             <h4>Habit: {habit.name}</h4>
-            <div>
+            <div className="overflow-auto max-h-56">
                 {CheckInCardsToDisplay}
             </div>
             { habit.completed ? 

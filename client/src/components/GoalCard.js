@@ -102,9 +102,24 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
     
 
     return (
-        <div className="border-solid border-black border-2 m-1 relative ">
+        <div className="border-solid border-black border-2 mx-1 relative grid grid-cols-2 grid-rows-1">
 
-            <div className="border-solid border-black border-2 m-2 p-1 float-right relative right-2 top-2 bottom-2 overflow-y-auto h-full">
+            
+            <div>
+                <div className=" m-2 p-1">
+                    <p>Habits for this goal: </p>
+                    {habitsToDisplay}
+                    <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
+                </div>
+                
+                <div className=" m-2 p-1">
+                    <p>Tasks for this goal: </p>
+                    {tasksToDisplay}
+                    <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block'>Add Task to this goal</button>
+                </div>
+            </div>
+            
+            <div className="border-solid border-black border-2 m-2 p-1">
                 <p className="text-lg font-bold">Goal: {goal.name}</p>
                 <p>Details: {goal.details}</p>
                 {goal.due_date ? <p>Due Date: {dueDate.toLocaleDateString()}</p> : null}
@@ -113,18 +128,6 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
                 <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 block'>Edit goal</button>
                 <button onClick={deleteGoal} className='border-solid border-black border-2 px-1 m-1 block'>Delete Goal</button>
                 <button onClick={handleComplete} className='border-solid border-black border-2 px-1 m-1 block'>Mark as Complete</button>
-            </div>
-            
-            <div className=" m-2 p-1">
-                <p>Habits for this goal: </p>
-                {habitsToDisplay}
-                <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
-            </div>
-            
-            <div className=" m-2 p-1">
-                <p>Tasks for this goal: </p>
-                {tasksToDisplay}
-                <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block'>Add Task to this goal</button>
             </div>
 
         </div>

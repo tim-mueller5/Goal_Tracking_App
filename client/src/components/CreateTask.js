@@ -55,13 +55,12 @@ function CreateTask({ currentGoal }) {
 
 
     return (
-        <div>
-            <h3>CreateTask Component</h3>
+        <div className='overflow-auto min-h-screen'>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <form onSubmit={formik.handleSubmit}>
-                <h3>Create New Task Form:</h3>
+                <h3>Create New Task:</h3>
                 <label htmlFor="name">Task: </label>
-                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
+                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <button type='submit'>Submit</button>
             </form>
         </div>

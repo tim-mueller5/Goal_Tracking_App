@@ -18,12 +18,11 @@ function HabitCheckIn ({ checkin }) {
     }
 
     return (
-        <div className="border-solid border-black border-2 inline-block m-1 p-1 font-thin h-20 w-32">
-            <p > Check-in for  </p>
+        <div className="border-solid border-black border-2 inline-block mx-1 p-1 font-thin h-16 w-22 ">
             {date}
             {isComleted ? 
             <p>Completed</p>
-            : <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 flex'>Mark Complete</button>}
+            : <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 flex'>Complete</button>}
         </div>
     )
 }

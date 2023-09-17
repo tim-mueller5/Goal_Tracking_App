@@ -102,12 +102,12 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
     
 
     return (
-        <div className="border-solid border-black border-2 mx-1 relative grid grid-cols-2 grid-rows-1">
+        <div className="border-solid border-black border-2 mx-1 grid grid-cols-3 mb-2">
 
             
-            <div>
+            <div className="col-span-2">
                 <div className=" m-2 p-1">
-                    <p className="text-lg font-bold">Habits for this goal: </p>
+                    <p className="text-lg font-bold font-display text-gray-700">Habits for this goal: </p>
                     {habitsToDisplay}
                     <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
                 </div>
@@ -119,7 +119,7 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
                 </div>
             </div>
             
-            <div className="border-solid border-black border-2 m-2 p-[25%] text-center">
+            <div className="border-solid border-black border-2 m-2 p-[25%] text-center col-start-3">
                 <p className="text-lg font-bold">Goal: {goal.name}</p>
                 <p>Details: {goal.details}</p>
                 {goal.due_date ? <p>Due Date: {dueDate.toLocaleDateString()}</p> : null}

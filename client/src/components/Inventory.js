@@ -12,7 +12,7 @@ function Inventory ({ inventory, setInventory }) {
     const inventoryToDisplay = inventory.map((inventory_item) => <InventoryItemCard key={inventory_item.id} inventory_item={inventory_item} item={inventory_item.item} inventory={inventory} setInventory={setInventory}/>)
 
     return (
-        <div>
+        <div className='overflow-auto min-h-screen'>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             Inventory Screen
             {inventoryToDisplay}

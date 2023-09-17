@@ -25,7 +25,7 @@ function CompletedGoals() {
 
 
     return (
-        <div>
+        <div className='overflow-auto min-h-screen'>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <h1>Completed Goals: </h1>
             {completedGoalsToDisplay}

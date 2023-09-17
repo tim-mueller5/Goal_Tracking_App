@@ -79,7 +79,7 @@ function Fight({ inventory }) {
     }
 
     return (
-        <div>
+        <div className='overflow-auto min-h-screen'>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <p className='text-lg font-bold'>Fight Page</p>
             <p>Your Health: {playerHealth} hp</p>

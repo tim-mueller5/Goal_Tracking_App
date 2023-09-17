@@ -75,15 +75,15 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
     return (
         <div  className=" m-2 p-1">
             <h4>Habit: {habit.name}</h4>
-            <div className="overflow-auto max-h-56">
+            <div className="overflow-auto max-h-56 m-2">
                 {CheckInCardsToDisplay}
             </div>
             { habit.completed ? 
                 <p>Completed!</p>
                 : <div>
-                    <button onClick={edit} className='border-solid border-black border-2 px-1'>Edit Habit</button>
-                    <button onClick={handleDelete} className='border-solid border-black border-2 px-1'>Delete Habit</button>
-                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1'>Mark as Complete</button>
+                    <button onClick={edit} className='border-solid border-black border-2 px-1 m-1'>Edit Habit</button>
+                    <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1'>Delete Habit</button>
+                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1'>Mark as Complete</button>
                 </div>}
         </div>
     )

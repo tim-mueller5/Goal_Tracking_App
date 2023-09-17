@@ -96,7 +96,7 @@ function Login( ) {
 
     return (
 
-        <div className='flex-c text-center'>
+        <div className='flex-c text-center overflow-auto min-h-screen'>
             <h2 className="text-lg font-bold">Login:</h2>
             <form onSubmit={formikLogin.handleSubmit}>
                 <label htmlFor="username">username: </label>

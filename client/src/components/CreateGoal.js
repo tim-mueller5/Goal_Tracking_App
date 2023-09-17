@@ -57,7 +57,7 @@ function CreateGoal() {
 
 
     return (
-        <div>
+        <div className='overflow-auto min-h-screen'>
             <h2>CreateGoal Component</h2>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <form onSubmit={formik.handleSubmit}>

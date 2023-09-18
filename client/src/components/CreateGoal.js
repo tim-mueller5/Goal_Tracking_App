@@ -58,16 +58,15 @@ function CreateGoal() {
 
     return (
         <div className='overflow-auto min-h-screen'>
-            <h2>CreateGoal Component</h2>
             {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
             <form onSubmit={formik.handleSubmit}>
-                <h3>Create New Goal Form:</h3>
+                <h3>Create New Goal:</h3>
                 <label htmlFor="name">Goal: </label>
-                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
+                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <label htmlFor='details'>Details: </label>
-                <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details}/>
+                <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <label htmlFor='due_date'>Due Date: </label>
-                <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date}/>
+                <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <button type='submit'>Submit</button>
             </form>
         </div>

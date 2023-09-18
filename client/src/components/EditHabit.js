@@ -57,14 +57,13 @@ function EditHabit({ currentGoal }) {
     })
 
     return (
-        <div>
-            <h3>Edit Habit: </h3>
-            <p>{habitName}</p>
+        <div className='overflow-auto min-h-screen font-display'>
+            <h3 className='text-lg font-bold'>Edit Habit: {habitName}</h3>
             {/* <button onClick={goHome}>Home</button> */}
                 <form onSubmit={formik.handleSubmit}>
-                    <h3>Edit Habit Form:</h3>
-                    <label htmlFor="name">Habit: </label>
-                    <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
+                    <h3 className='font-bold'>Edit Habit Form:</h3>
+                    <label htmlFor="name" className='text-lg'>Habit: </label>
+                    <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                     <button type='submit'>Submit</button>
                 </form>
         </div>

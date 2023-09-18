@@ -57,14 +57,13 @@ function EditTask({ currentGoal }) {
     })
 
     return (
-        <div>
-            <h3>Edit Task: </h3>
-            <p>{taskName}</p>
+        <div className='overflow-auto min-h-screen font-display'>
+            <h3 className='text-lg font-bold'>Edit Task: {taskName}</h3>
             {/* <button onClick={goHome}>Home</button> */}
                 <form onSubmit={formik.handleSubmit}>
-                    <h3>Edit Task Form:</h3>
-                    <label htmlFor="name">Task: </label>
-                    <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
+                    <h3 className='font-bold'>Edit Task Form:</h3>
+                    <label htmlFor="name" className='text-lg'>Task: </label>
+                    <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                     <button type='submit'>Submit</button>
                 </form>
         </div>

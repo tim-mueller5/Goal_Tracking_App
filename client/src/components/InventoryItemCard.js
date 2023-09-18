@@ -1,7 +1,7 @@
 import { UserContext } from "../context/user";
 import { useContext } from "react";
 
-function InventoryItemCard({ inventory_item, item, inventory, setInventory, index }) {
+function InventoryItemCard({ inventory_item, item, inventory, setInventory, index, popup, setPopup }) {
 
     const {user, setUser} = useContext(UserContext);
 
@@ -61,7 +61,10 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
                 body: JSON.stringify({equipped_weapon: inventory_item.id})
             })
             setUser({...user, equipped_weapon: inventory_item.id})
-        } else console.log("An item is already equipped!")
+        } else {
+            console.log("An item is already equipped!")
+            setPopup(true)
+        }
     }
 
     const handleUnEquipWeapon = () => {
@@ -82,6 +85,7 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
             body: JSON.stringify({equipped_weapon: null})
         })
         setUser({...user, equipped_weapon: null})
+        setPopup(false)
     }
 
     return (

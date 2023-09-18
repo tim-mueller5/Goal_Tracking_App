@@ -20,8 +20,6 @@ function Fight({ inventory }) {
     const weapon = weaponArray[0]
     let playerDamage
     if(weapon){
-
-        console.log(user.base_atk_stat + weapon.item.atk_stat)
         playerDamage = (user.base_atk_stat + weapon.item.atk_stat)
     }else (
         playerDamage = user.base_atk_stat
@@ -38,15 +36,17 @@ function Fight({ inventory }) {
         fetch('/monsters')
         .then((resp) => resp.json())
         .then((monsters) => {
-            setMonster(monsters[0])
-            setMonsterHealth(monsters[0].health)
+            const monster = monsters[Math.floor(Math.random() * monsters.length)]
+            console.log(Math.floor(Math.random() * monsters.length))
+            setMonster(monster)
+            setMonsterHealth(monster.health)
             setMessages({
-                monsterTurn: `${monsters[0].name} attacked for ${monsters[0].atk_stat}`,
-                playerTurn: `You dealt ${playerDamage} to the ${monsters[0].name}`,
+                monsterTurn: `${monster.name} attacked for ${monster.atk_stat}`,
+                playerTurn: `You dealt ${playerDamage} to the ${monster.name}`,
                 death: "Your have been defeated!  Complete goals to earn health potions.",
-                victory: `You have defeated the ${monsters[0].name}`
+                victory: `You have defeated the ${monster.name}`
             })
-            setCurrentMessage(`You have found a ${monsters[0].name}!`)
+            setCurrentMessage(`You have found a ${monster.name}!`)
         })
     }, [])
 
@@ -79,14 +79,14 @@ function Fight({ inventory }) {
     }
 
     return (
-        <div className='overflow-auto min-h-screen'>
-            <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
-            <p className='text-lg font-bold'>Fight Page</p>
+        <div className='overflow-auto min-h-screen font-display text-center'>
+            <button onClick={goHome} className='border-solid border-black border-2 px-1 m-1'>Home</button>
+            <p className='text-lg font-bold'>Fight!</p>
             <p>Your Health: {playerHealth} hp</p>
-            <p>Equiped Weapon: {weapon ?  /*weapon.item.name*/null : "none"}</p> 
-            <p>Monster Health: {monsterHealth}</p>
+            <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p> 
+            <p>Monster Health: {monsterHealth < 0 ? 0 : monsterHealth}</p>
             <p>{currentMessage}</p>
-            <button onClick={nextAction} className='border-solid border-black border-2 px-1 block'>{playerTurn === true ? "Attack" : "Next"}</button>
+            <button onClick={nextAction} className='border-solid border-black border-2 px-1 m-1'>{playerTurn === true ? "Attack" : "Next"}</button>
         </div>
     )
 }

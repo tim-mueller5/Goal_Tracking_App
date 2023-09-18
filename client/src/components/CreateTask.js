@@ -55,7 +55,7 @@ function CreateTask({ currentGoal }) {
 
 
     return (
-        <div className='overflow-auto min-h-screen'>
+        <div className='overflow-auto min-h-screen font-display'>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <form onSubmit={formik.handleSubmit}>
                 <h3>Create New Task:</h3>

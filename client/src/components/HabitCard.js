@@ -67,23 +67,21 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
                     setUser({...user, goals:goals})
                 })
             }
-        }).then(() => {
-            // navigate('/')
         }).catch(() => console.log("Caught Error in fetch!"))
     }
 
     return (
         <div  className=" m-2 p-1">
-            <h4 className="">Habit: {habit.name}</h4>
+            <h4 className="font-display">Habit: {habit.name}</h4>
             <div className="max-h-24 m-2 flex overflow-x-auto overflow-y-hidden">
                 {CheckInCardsToDisplay}
             </div>
             { habit.completed ? 
                 <p>Completed!</p>
                 : <div>
-                    <button onClick={edit} className='border-solid border-black border-2 px-1 m-1'>Edit Habit</button>
-                    <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1'>Delete Habit</button>
-                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1'>Mark as Complete</button>
+                    <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 font-display'>Edit Habit</button>
+                    <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1 font-display'>Delete Habit</button>
+                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1 font-display'>Mark as Complete</button>
                 </div>}
         </div>
     )

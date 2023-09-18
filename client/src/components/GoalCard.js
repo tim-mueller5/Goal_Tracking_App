@@ -102,32 +102,32 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
     
 
     return (
-        <div className="border-solid border-black border-2 mx-1 grid grid-cols-3 mb-2">
+        <div className="border-solid border-black border-2 mx-1 grid grid-cols-3 mb-2 font-display">
 
             
             <div className="col-span-2">
                 <div className=" m-2 p-1">
-                    <p className="text-lg font-bold font-display text-gray-700">Habits for this goal: </p>
+                    <p className="text-lg font-bold">Habits for this goal: </p>
                     {habitsToDisplay}
                     <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
                 </div>
                 
                 <div className=" m-2 p-1">
-                    <p className="text-lg font-bold">Tasks for this goal: </p>
+                    <p className="text-lg font-bold font-display">Tasks for this goal: </p>
                     {tasksToDisplay}
-                    <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block'>Add Task to this goal</button>
+                    <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block font-display'>Add Task to this goal</button>
                 </div>
             </div>
             
             <div className="border-solid border-black border-2 m-2 p-[25%] text-center col-start-3">
-                <p className="text-lg font-bold">Goal: {goal.name}</p>
-                <p>Details: {goal.details}</p>
-                {goal.due_date ? <p>Due Date: {dueDate.toLocaleDateString()}</p> : null}
-                {goal.due_date ? <p>Days left: {Math.trunc(differenceInDays)}</p> : null}
+                <p className="text-lg font-bold font-display">Goal: {goal.name}</p>
+                <p className="font-display">Details: {goal.details}</p>
+                {goal.due_date ? <p className="font-display">Due Date: {dueDate.toLocaleDateString()}</p> : null}
+                {goal.due_date ? <p className="font-display">Days left: {Math.trunc(differenceInDays)}</p> : null}
                 
-                <button onClick={edit} className='border-solid border-black border-2 px-1 m-1'>Edit goal</button>
-                <button onClick={deleteGoal} className='border-solid border-black border-2 px-1 m-1'>Delete Goal</button>
-                <button onClick={handleComplete} className='border-solid border-black border-2 px-1 m-1'>Mark as Complete</button>
+                <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 font-display'>Edit goal</button>
+                <button onClick={deleteGoal} className='border-solid border-black border-2 px-1 m-1 font-display'>Delete Goal</button>
+                <button onClick={handleComplete} className='border-solid border-black border-2 px-1 m-1 font-display'>Mark as Complete</button>
             </div>
 
         </div>

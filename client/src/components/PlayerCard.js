@@ -12,10 +12,10 @@ function PlayerCard({ inventory }) {
     const weapon = weaponArray[0]
     
     return (
-        <div className="border-black border-solid border-2 p-5 px-28">
-            <p>User: {user.username}</p>
-            <p>Health: {user.current_health}/{user.max_health}</p>
-            <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p>
+        <div className="border-black border-solid border-2 ">
+            <p className="font-display">User: {user.username}</p>
+            <p className="font-display">Health: {user.current_health}/{user.max_health}</p>
+            <p className="font-display">Equiped Weapon: {weapon ? weapon.item.name : "none"}</p>
         </div>
     )
 }

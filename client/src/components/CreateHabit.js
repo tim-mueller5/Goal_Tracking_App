@@ -80,7 +80,7 @@ function CreateHabit({ currentGoal }) {
     const loaderDesign = `inline-block border-solid border-gray-500 border-t-blue-300 border-4 rounded-full h-6 w-6 animate-spin mx-4 ${hidden}`
 
     return (
-        <div className='p-2 overflow-auto min-h-screen'>
+        <div className='p-2 overflow-auto min-h-screen font-display'>
             <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
             <form onSubmit={formik.handleSubmit} className='py-2'>
                 <h3 className='py-4'>Create New Habit Form:</h3>

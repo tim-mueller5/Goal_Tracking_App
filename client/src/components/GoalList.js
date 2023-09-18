@@ -20,7 +20,7 @@ function GoalList({ currentGoal, setCurrentGoal, inventory, setInventory }) {
     
 
     return (
-        <div className="relative overflow-auto min-h-screen">
+        <div className="relative overflow-auto min-h-screen font-display ">
             <div className="w-3/4 float-left">
                 {(user != null)? goalsToDisplay : "No user"}
                 <p>{goalsToDisplay.length > 1 ? null : "You have no goals!  Create a new goal!"}</p>

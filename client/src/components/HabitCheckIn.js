@@ -18,7 +18,7 @@ function HabitCheckIn ({ checkin }) {
     }
 
     return (
-        <div className="border-solid border-black border-2 inline-block mx-1 p-1 font-thin h-16 w-22 ">
+        <div className="border-solid border-black border-2 inline-block mx-1 p-1 font-thin h-16 w-22 font-display">
             {date}
             {isComleted ? 
             <p>Completed</p>

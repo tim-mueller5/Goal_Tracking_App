@@ -25,6 +25,7 @@ function Fight({ inventory }) {
         playerDamage = user.base_atk_stat
     )
     
+    const [monsterPresent, setMonsterPresent] = useState(false)
     const [monster, setMonster] = useState()
     const [monsterHealth, setMonsterHealth] = useState()
     const [playerHealth, setPlayerHealth] = useState(user.current_health)
@@ -33,12 +34,16 @@ function Fight({ inventory }) {
     const [messages, setMessages] = useState({})
     
     useEffect(() => {
+        findAMonster()
+    }, [])
+
+    const findAMonster = () => {
         fetch('/monsters')
         .then((resp) => resp.json())
         .then((monsters) => {
             const monster = monsters[Math.floor(Math.random() * monsters.length)]
-            console.log(Math.floor(Math.random() * monsters.length))
             setMonster(monster)
+            setMonsterPresent(true)
             setMonsterHealth(monster.health)
             setMessages({
                 monsterTurn: `${monster.name} attacked for ${monster.atk_stat}`,
@@ -48,7 +53,7 @@ function Fight({ inventory }) {
             })
             setCurrentMessage(`You have found a ${monster.name}!`)
         })
-    }, [])
+    }
 
     const nextAction = () => {
         if (playerHealth > 0 && monsterHealth > 0) {
@@ -63,8 +68,11 @@ function Fight({ inventory }) {
             }
         } else if (playerHealth <= 0) {
             setCurrentMessage(messages.defeat)
+            setPlayerTurn(true)
         } else if (monsterHealth <= 0) {
             setCurrentMessage(messages.victory)
+            setMonsterPresent(false)
+            setPlayerTurn(true)
         } else {
             setCurrentMessage("else")
         }
@@ -86,7 +94,10 @@ function Fight({ inventory }) {
             <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p> 
             <p>Monster Health: {monsterHealth < 0 ? 0 : monsterHealth}</p>
             <p>{currentMessage}</p>
-            <button onClick={nextAction} className='border-solid border-black border-2 px-1 m-1'>{playerTurn === true ? "Attack" : "Next"}</button>
+            {monsterPresent 
+            ? <button onClick={nextAction} className='border-solid border-black border-2 px-1 m-1'>{playerTurn === true ? "Attack" : "Next"}</button>
+            : <button onClick={findAMonster} className='border-solid border-black border-2 px-1 m-1'>Find another Monster to fight!</button>}
+            
         </div>
     )
 }

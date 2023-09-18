@@ -12,10 +12,11 @@ function Inventory ({ inventory, setInventory }) {
     const inventoryToDisplay = inventory.map((inventory_item) => <InventoryItemCard key={inventory_item.id} inventory_item={inventory_item} item={inventory_item.item} inventory={inventory} setInventory={setInventory}/>)
 
     return (
-        <div className='overflow-auto min-h-screen font-display'>
+        <div className='overflow-auto min-h-screen font-display text-center'>
             {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
-            <p>Your Inventory:</p>
+            <p className='text-lg'>Your Inventory:</p>
             {inventoryToDisplay}
+            <p className='m-6'>Complete goals to get more items.</p>
         </div>
     )
 }

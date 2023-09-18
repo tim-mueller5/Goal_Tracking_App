@@ -83,8 +83,8 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory }) {
     }
 
     return (
-        <div className="font-display">
-            <p className="">Item: {item.name}</p>
+        <div className="font-display m-2">
+            <p className="text-lg">{item.name}</p>
             {item.type === 'health' ? <button onClick={useHealthPotion} className='border-solid border-black border-2 px-1 m-1'>Use {item.name}</button> 
             : <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1'>Delete {item.name}</button>}
             {item.type === 'weapon' && !inventory_item.equipped ? <button onClick={handleEquipWeapon} className='border-solid border-black border-2 px-1 m-1'>Equip</button> 

@@ -102,7 +102,7 @@ function Login( ) {
                 <label htmlFor="username">username: </label>
                 <input id="username" name="username" onChange={formikLogin.handleChange} value={formikLogin.values.username} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikLogin.errors.username}</p>
-                <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
+                <label className='' htmlFor="password">password: </label>
                 <input id="password" name="password" type="password" onChange={formikLogin.handleChange} value={formikLogin.values.password} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikLogin.errors.password}</p>
                 <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Login</button>
@@ -112,7 +112,7 @@ function Login( ) {
                 <label htmlFor="username">username: </label>
                 <input id="username" name="username" onChange={formikNew.handleChange} value={formikNew.values.username} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikNew.errors.username}</p>
-                <label className='flex-sb' htmlFor="password">password:&nbsp;&nbsp;</label>
+                <label className='' htmlFor="password">password: </label>
                 <input id="password" name="password" type="password" onChange={formikNew.handleChange} value={formikNew.values.password} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikNew.errors.password}</p>
                 <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Create New User</button>

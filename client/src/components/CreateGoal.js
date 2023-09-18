@@ -62,7 +62,7 @@ function CreateGoal() {
             <h3>Create New Goal:</h3>
             <form onSubmit={formik.handleSubmit}>
                 <label htmlFor="name">Goal: </label>
-                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 ml-9 border-black border-2"/>
+                <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 ml-9 border-black border-2"/>
                 <br/>
                 <label htmlFor='details' className=''>Details: </label>
                 <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-sky-300 p-1 m-1 ml-5 border-black border-2"/>

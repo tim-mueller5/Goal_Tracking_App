@@ -85,7 +85,7 @@ function CreateHabit({ currentGoal }) {
             <form onSubmit={formik.handleSubmit} className='py-2'>
                 <h3 className='py-4'>Create New Habit Form:</h3>
                 <label htmlFor="name">Habit: </label>
-                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
+                <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <button type='submit'>Submit</button>
                 <div className={loaderDesign}></div>
             </form>

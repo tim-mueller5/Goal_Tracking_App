@@ -118,6 +118,7 @@ function Login( ) {
                 <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Create New User</button>
             </form>
             <p>{error}</p>
+            <p className="text-lg m-8">Welcome to site-name-here!<br/> A website for tracking and accomplishing goals all while having fun! <br/> Set goals and break them down into daily habits and single tasks that will get you to your goal!</p>
         </div>
 
 

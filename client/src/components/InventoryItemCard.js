@@ -1,7 +1,7 @@
 import { UserContext } from "../context/user";
 import { useContext } from "react";
 
-function InventoryItemCard({ inventory_item, item, inventory, setInventory }) {
+function InventoryItemCard({ inventory_item, item, inventory, setInventory, index }) {
 
     const {user, setUser} = useContext(UserContext);
 
@@ -19,22 +19,24 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory }) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({current_health: newHealth})
+        }).then(() => {
+            handleDelete()
+        }).then(() => {
+            setUser({...user, current_health: newHealth})
         })
-        setUser({...user, current_health: newHealth})
+        
+        
 
-        fetch(`/inventoryitems/${inventory_item.id}`, {
-            method: 'DELETE',
-        })
-        inventory.splice(inventory_item.id-1, 1)
-        setInventory([...inventory])
     }
 
     function handleDelete() {
         fetch(`/inventoryitems/${inventory_item.id}`, {
             method: 'DELETE',
         })
-        inventory.splice(inventory_item.id-1, 1)
+        inventory.splice(index, 1)
         setInventory([...inventory])
+        setUser({...user, inventory_items: inventory})
+
     }
 
     const handleEquipWeapon = () => {

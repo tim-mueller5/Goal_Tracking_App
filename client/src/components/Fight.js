@@ -80,7 +80,7 @@ function Fight({ inventory }) {
 
     return (
         <div className='overflow-auto min-h-screen font-display text-center'>
-            <button onClick={goHome} className='border-solid border-black border-2 px-1 m-1'>Home</button>
+            {/* <button onClick={goHome} className='border-solid border-black border-2 px-1 m-1'>Home</button> */}
             <p className='text-lg font-bold'>Fight!</p>
             <p>Your Health: {playerHealth} hp</p>
             <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p> 

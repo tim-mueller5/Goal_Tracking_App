@@ -56,9 +56,9 @@ function EditGoal({ currentGoal }) {
 
         return(
             <div>
-                <h3>Edit Goal Component</h3>
+                <h3>Edit Goal:</h3>
                 <p>{currentGoal.name}</p>
-                <button onClick={goHome}>Home</button>
+                {/* <button onClick={goHome}>Home</button> */}
                 <form onSubmit={formik.handleSubmit}>
                     <h3>Edit Goal Form:</h3>
                     <label htmlFor="name">Goal: </label>

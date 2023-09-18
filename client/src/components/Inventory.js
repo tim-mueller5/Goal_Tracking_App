@@ -13,7 +13,7 @@ function Inventory ({ inventory, setInventory }) {
 
     return (
         <div className='overflow-auto min-h-screen font-display'>
-            <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button>
+            {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
             <p>Your Inventory:</p>
             {inventoryToDisplay}
         </div>

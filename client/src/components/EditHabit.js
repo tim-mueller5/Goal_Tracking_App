@@ -58,9 +58,9 @@ function EditHabit({ currentGoal }) {
 
     return (
         <div>
-            <h3>EditHabit Component</h3>
+            <h3>Edit Habit: </h3>
             <p>{habitName}</p>
-            <button onClick={goHome}>Home</button>
+            {/* <button onClick={goHome}>Home</button> */}
                 <form onSubmit={formik.handleSubmit}>
                     <h3>Edit Habit Form:</h3>
                     <label htmlFor="name">Habit: </label>

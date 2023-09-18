@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 
 
-function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }) {
+function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, setNewItemMessage }) {
 
     const navigate = useNavigate();
     const {user, setUser} = useContext(UserContext);
@@ -94,6 +94,7 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
                     }).then((resp) => resp.json())
                     .then((item)=> {
                         setInventory([...inventory, item])
+                        setNewItemMessage(`A ${item.item.name} has been found!`)
                     })
                 }
             )

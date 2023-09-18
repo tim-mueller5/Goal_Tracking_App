@@ -68,10 +68,10 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
     }
 
     return (
-        <div  className=" m-2 p-1">
-            <h4>Task: {task.name}</h4>
+        <div  className=" mx-2 p-1 font-display">
+            <h4 className="text-lg">Task: {task.name}</h4>
             { task.completed ?
-                <div>
+                <div className="flex ">
                     <p>Completed!</p> 
                     <button onClick={handleCompelete}className='border-solid border-black border-2 px-1 m-1'>Undo complete</button>
                 </div>

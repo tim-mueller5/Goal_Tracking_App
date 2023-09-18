@@ -71,13 +71,13 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
     }
 
     return (
-        <div  className=" m-2 p-1">
-            <h4 className="font-display">Habit: {habit.name}</h4>
-            <div className="max-h-24 m-2 flex overflow-x-auto overflow-y-hidden">
+        <div  className=" mx-2 p-1 font-display">
+            <h4 className="text-lg">Habit: {habit.name}</h4>
+            <div className="max-h-24 flex overflow-x-auto overflow-y-hidden">
                 {habit.completed ? null : CheckInCardsToDisplay}
             </div>
             { habit.completed ? 
-                <div>
+                <div className="flex">
                     <p>Completed!</p>
                     <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1 font-display'>Undo complete</button>
                 </div>

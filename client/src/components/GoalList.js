@@ -26,11 +26,11 @@ function GoalList({ currentGoal, setCurrentGoal, inventory, setInventory }) {
                 <p className="m-4">{goalsToDisplay.length >= 1 ? null : "You have no goals!  Create a new goal!"}</p>
             </div>
             <div className="float-right w-1/4">
-                <div className="border-solid border-black border-2 h-64 flex flex-col items-center">
-                    Calander
+                <div className="border-black border-2 h-64 flex flex-col items-center">
+                    Calander TBD
                 </div>
-                <div className="border-solid border-black border-2 h-64 flex flex-col items-center">
-                    Timer
+                <div className="border-black border-2 h-64 flex flex-col items-center">
+                    Timer TBD
                 </div>
             </div>
         </div>

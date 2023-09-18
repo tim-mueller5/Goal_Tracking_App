@@ -57,11 +57,11 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
                             return habit
                         }
                     })
-                    const goals = user.goals.map((goal) => {
-                        if(goal.id === currentGoal.id){
-                            return {...currentGoal, habits:habits}
+                    const goals = user.goals.map((thisGoal) => {
+                        if(thisGoal.id === goal.id){
+                            return {...goal, habits:habits}
                         }else{
-                            return goal
+                            return thisGoal
                         }
                     })
                     setUser({...user, goals:goals})

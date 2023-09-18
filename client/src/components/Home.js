@@ -12,6 +12,7 @@ import EditTask from "./EditTask";
 import CompletedGoals from "./CompletedGoals";
 import Fight from "./Fight";
 import Inventory from "./Inventory";
+import MissingRoute from "./MissingRoute";
 import { UserContext } from "../context/user";
 import { useContext } from "react";
 
@@ -38,6 +39,7 @@ function Home() {
                 <Route path="/completed" element={<CompletedGoals  />}/>
                 <Route path="/fight" element={<Fight inventory={inventory}/>}/>
                 <Route path="/inventory" element={<Inventory inventory={inventory} setInventory={setInventory} />}/>
+                <Route path="*" element={<MissingRoute/>}/>
             </Routes>
         </div>
     )

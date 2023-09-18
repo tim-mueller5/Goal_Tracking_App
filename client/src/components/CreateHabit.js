@@ -59,7 +59,7 @@ function CreateHabit({ currentGoal }) {
                         })
                     }
                     setHidden('')
-                    await new Promise((resolve, reject) => setTimeout(resolve, 10000));
+                    await new Promise((resolve, reject) => setTimeout(resolve, 5000));
                     habit.checkins = checkins
                     const habits = [...currentGoal.habits, habit]
                     const goals = user.goals.map((goal) => {

@@ -31,6 +31,10 @@ function NavBar({ inventory }) {
         navigate('/inventory')
     }
 
+    const goHome = () => {
+        navigate('/')
+    }
+
     return (
         <div className='border-solid border-stone-300 border-8 mb-2 p-4 grid grid-cols-3 grid-rows-1 rounded-b-3xl font-display'>
             <div className='grid grid-cols-2 grid-rows-2'>
@@ -43,6 +47,7 @@ function NavBar({ inventory }) {
             <div className='grid grid-cols-2 grid-rows-2'>
                 <button onClick={goCreateGoal} className='border-solid border-black border-2 px-1 m-1 bg-red-500'> Create New Goal </button>
                 <button onClick={viewCompleted} className='border-solid border-black border-2 px-1 m-1'>View Completed Goals</button>
+                <button onClick={goHome} className='border-solid border-black border-2 px-1 m-1'> Home </button>
                 <button onClick={handleLogOut} className='border-solid border-black border-2 px-1 m-1'> Log Out </button>
             </div>
         </div>

@@ -54,11 +54,11 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
                             return task
                         }
                     })
-                    const goals = user.goals.map((goal) => {
-                        if(goal.id === currentGoal.id){
-                            return {...currentGoal, tasks:tasks}
+                    const goals = user.goals.map((thisGoal) => {
+                        if(thisGoal.id === goal.id){
+                            return {...goal, tasks:tasks}
                         }else{
-                            return goal
+                            return thisGoal
                         }
                     })
                     setUser({...user, goals:goals})

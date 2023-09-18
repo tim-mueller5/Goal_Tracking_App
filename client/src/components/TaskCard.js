@@ -43,7 +43,7 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({completed: true}),
+            body: JSON.stringify({completed: !task.completed}),
         }).then((resp) => {
             if (resp.ok) {
                 resp = resp.json().then((newTask) => {
@@ -64,8 +64,6 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
                     setUser({...user, goals:goals})
                 })
             }
-        }).then(() => {
-            // navigate('/')
         }).catch(() => console.log("Caught Error in fetch!"))
     }
 
@@ -73,7 +71,10 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
         <div  className=" m-2 p-1">
             <h4>Task: {task.name}</h4>
             { task.completed ?
-                <p>Completed!</p> 
+                <div>
+                    <p>Completed!</p> 
+                    <button onClick={handleCompelete}className='border-solid border-black border-2 px-1 m-1'>Undo complete</button>
+                </div>
                 :   <div>
                         <button onClick={edit} className='border-solid border-black border-2 px-1 m-1'>Edit Task</button>
                         <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1'>Delete Task</button>

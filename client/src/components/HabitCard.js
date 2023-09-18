@@ -46,7 +46,7 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({completed: true}),
+            body: JSON.stringify({completed: !habit.completed}),
         }).then((resp) => {
             if (resp.ok) {
                 resp = resp.json().then((newHabit) => {
@@ -74,10 +74,13 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
         <div  className=" m-2 p-1">
             <h4 className="font-display">Habit: {habit.name}</h4>
             <div className="max-h-24 m-2 flex overflow-x-auto overflow-y-hidden">
-                {CheckInCardsToDisplay}
+                {habit.completed ? null : CheckInCardsToDisplay}
             </div>
             { habit.completed ? 
-                <p>Completed!</p>
+                <div>
+                    <p>Completed!</p>
+                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1 font-display'>Undo complete</button>
+                </div>
                 : <div>
                     <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 font-display'>Edit Habit</button>
                     <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1 font-display'>Delete Habit</button>

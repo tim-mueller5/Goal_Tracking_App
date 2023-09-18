@@ -107,20 +107,20 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory }
             
             <div className="col-span-2">
                 <div className=" m-2 p-1">
-                    <p className="text-lg font-bold">Habits for this goal: </p>
+                    <p className="text-xl font-bold">Habits for this goal: </p>
                     {habitsToDisplay}
                     <button onClick={addHabit} className='border-solid border-black border-2 px-1 m-1 block'>Add Habit to this goal</button>
                 </div>
                 
                 <div className=" m-2 p-1">
-                    <p className="text-lg font-bold font-display">Tasks for this goal: </p>
+                    <p className="text-xl font-bold font-display">Tasks for this goal: </p>
                     {tasksToDisplay}
                     <button onClick={addTask} className='border-solid border-black border-2 px-1 m-1 block font-display'>Add Task to this goal</button>
                 </div>
             </div>
             
             <div className="border-solid border-black border-2 m-2 p-[25%] text-center col-start-3">
-                <p className="text-lg font-bold font-display">Goal: {goal.name}</p>
+                <p className="text-xl font-bold font-display">Goal: {goal.name}</p>
                 <p className="font-display">Details: {goal.details}</p>
                 {goal.due_date ? <p className="font-display">Due Date: {dueDate.toLocaleDateString()}</p> : null}
                 {goal.due_date ? <p className="font-display">Days left: {Math.trunc(differenceInDays)}</p> : null}

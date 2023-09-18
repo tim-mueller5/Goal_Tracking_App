@@ -61,10 +61,15 @@ function EditGoal({ currentGoal }) {
                     <h3 className='text-lg font-bold'>Edit Goal: {currentGoal.name}</h3>
                     <label htmlFor="name">Goal: </label>
                     <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
+                    <br/>
                     <label htmlFor='details'>Details: </label>
                     <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
+                    <p className='inline-block'>&#40;optional&#41;</p>
+                    <br/>
                     <label htmlFor='due_date'>Due Date: </label>
                     <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
+                    <p className='inline-block'>&#40;optional&#41;</p>
+                    <br/>
                     <button type='submit'>Submit</button>
                 </form>
             </div>

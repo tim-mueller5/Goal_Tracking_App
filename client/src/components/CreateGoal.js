@@ -59,15 +59,19 @@ function CreateGoal() {
     return (
         <div className='overflow-auto min-h-screen'>
             {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
+            <h3>Create New Goal:</h3>
             <form onSubmit={formik.handleSubmit}>
-                <h3>Create New Goal:</h3>
                 <label htmlFor="name">Goal: </label>
-                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
-                <label htmlFor='details'>Details: </label>
-                <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
+                <input id='name' name='name' onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 ml-9 border-black border-2"/>
+                <br/>
+                <label htmlFor='details' className=''>Details: </label>
+                <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-sky-300 p-1 m-1 ml-5 border-black border-2"/>
+                <p className='inline-block'>&#40;optional&#41;</p>
+                <br/>
                 <label htmlFor='due_date'>Due Date: </label>
-                <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
-                <button type='submit'>Submit</button>
+                <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-black border-2"/>
+                <p className='inline-block'>&#40;optional&#41;</p>
+                <button type='submit' className='block border-black border-2 p-1'>Submit</button>
             </form>
         </div>
     )

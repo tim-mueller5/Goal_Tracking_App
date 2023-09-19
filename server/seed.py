@@ -12,7 +12,6 @@ if __name__ == '__main__':
 
     with app.app_context():
         print("Starting seed...")
-        # Seed code goes here!
 
         print("Deleting data...")
         User.query.delete()
@@ -57,23 +56,74 @@ if __name__ == '__main__':
         db.session.commit()
 
         print("creating items...")
-        # empty_hand = Item(name='None', type='weapon', atk_stat=0, def_stat=0, magic_stat=0, health_stat=0)
-        # db.session.add(empty_hand)
-        # db.session.commit()
-        sword = Item(name='Sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
+        # level 1 weapons
+        stick = Item(name='Stick', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(stick)
+        db.session.commit()
+        rock = Item(name='Rock', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(rock)
+        db.session.commit()
+        # Delute with more level 1 items
+        stick = Item(name='Stick', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(stick)
+        db.session.commit()
+        rock = Item(name='Rock', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(rock)
+        db.session.commit()
+
+        # Level 2 weapons
+        knife = Item(name='Knife', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(knife)
+        db.session.commit()
+        brass_knuckles = Item(name='Brass knuckles', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(brass_knuckles)
+        db.session.commit()
+
+        # Level 3 weapons
+        short_sword = Item(name='Short sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
+        db.session.add(short_sword)
+        db.session.commit()
+
+        # Level 4 weapons
+        sword = Item(name='Sword', type='weapon', atk_stat=4, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(sword)
         db.session.commit()
+
+        # Level 5 weapons
         axe = Item(name='Axe', type='weapon', atk_stat=5, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(axe)
         db.session.commit()
-        health_potion = Item(name='Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=5)
+
+        # Health potions
+        weak_health_potion = Item(name='Weak Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=1)
+        db.session.add(weak_health_potion)
+        db.session.commit()
+        health_potion = Item(name='Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=3)
         db.session.add(health_potion)
         db.session.commit()
+        strong_health_potion = Item(name='Strong Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=5)
+        db.session.add(strong_health_potion)
+        db.session.commit()
+        pizza = Item(name='Pizza', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=3)
+        db.session.add(pizza)
+        db.session.commit()
+        # Delute with more potions
+        weak_health_potion = Item(name='Weak Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=1)
+        db.session.add(weak_health_potion)
+        db.session.commit()
+        health_potion = Item(name='Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=3)
+        db.session.add(health_potion)
+        db.session.commit()
+        strong_health_potion = Item(name='Strong Health Potion', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=5)
+        db.session.add(strong_health_potion)
+        db.session.commit()
+        pizza = Item(name='Pizza', type='health', atk_stat=0, def_stat=0, magic_stat=0, health_stat=3)
+        db.session.add(pizza)
+        db.session.commit()
+
 
         print("creating inventoryItems...")
-        # give_empty = InventoryItem(user_id=1, item_id=1) # give to all players
-        # db.session.add(give_empty)
-        # db.session.commit()
+        # Giving user 1 a item 1 (Stick)
         give_sword = InventoryItem(user_id=1, item_id=1)
         db.session.add(give_sword)
         db.session.commit()
@@ -84,6 +134,9 @@ if __name__ == '__main__':
         db.session.commit()
         red_slime = Monster(name="Red Slime", health=12, atk_stat=2, def_stat=1, magic_stat=0)
         db.session.add(red_slime)
+        db.session.commit()
+        wolf = Monster(name="Wolf", health=16, atk_stat=2, def_stat=1, magic_stat=0)
+        db.session.add(wolf)
         db.session.commit()
 
         print('Seeding done!')

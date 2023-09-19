@@ -1,7 +1,7 @@
 import { UserContext } from "../context/user";
 import { useContext } from "react";
 
-function InventoryItemCard({ inventory_item, item, inventory, setInventory, index, popup, setPopup }) {
+function InventoryItemCard({ inventory_item, item, inventory, setInventory, index, setPopup }) {
 
     const {user, setUser} = useContext(UserContext);
 
@@ -12,7 +12,6 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
         } else if(user.current_health + item.health_stat > user.max_health){
             newHealth = user.max_health
         }
-
         fetch(`/users/${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -24,9 +23,6 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
         }).then(() => {
             setUser({...user, current_health: newHealth})
         })
-        
-        
-
     }
 
     function handleDelete() {
@@ -36,12 +32,11 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
         inventory.splice(index, 1)
         setInventory([...inventory])
         setUser({...user, inventory_items: inventory})
-
     }
 
-    const handleEquipWeapon = () => {
+    const handleEquipItem = (itemType) => {
         const alreadyEquipped = inventory.filter((item) => {
-            if (item.equipped) return item
+            if (item.equipped && item.type === itemType) return item
         })
         if(alreadyEquipped.length === 0){
             fetch(`inventoryitems/${inventory_item.id}`, {
@@ -67,7 +62,7 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
         }
     }
 
-    const handleUnEquipWeapon = () => {
+    const handleUnEquipItem = () => {
         fetch(`inventoryitems/${inventory_item.id}`, {
             method: 'PATCH',
             headers: {
@@ -96,12 +91,12 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
             ? <button onClick={useHealthPotion} className='border-black border-2 px-1 m-1'>Use {item.name}</button> 
             : <button onClick={handleDelete} className='border-black border-2 px-1 m-1'>Delete {item.name}</button>}
 
-            {item.type === 'weapon' && !inventory_item.equipped 
-            ? <button onClick={handleEquipWeapon} className='border-black border-2 px-1 m-1'>Equip</button> 
+            {item.type !== 'health' && !inventory_item.equipped 
+            ? <button onClick={() => handleEquipItem(item.type)} className='border-black border-2 px-1 m-1'>Equip</button> 
             : null}
 
-            {item.type === 'weapon' && inventory_item.equipped 
-            ? <button onClick={handleUnEquipWeapon} className='border-black border-2 px-1 m-1'>Unequip</button> 
+            {item.type !== 'health' && inventory_item.equipped 
+            ? <button onClick={handleUnEquipItem} className='border-black border-2 px-1 m-1'>Unequip</button> 
             : null}
             
         </div>

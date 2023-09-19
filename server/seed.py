@@ -71,6 +71,11 @@ if __name__ == '__main__':
         db.session.add(rock)
         db.session.commit()
 
+        # Level 1 magic
+        # sparks = Item(name='Sparks', type='magic', atk_stat=0, def_stat=0, magic_stat=1, health_stat=0)
+        # db.session.add(sparks)
+        # db.session.commit()
+
         # Level 2 weapons
         knife = Item(name='Knife', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(knife)
@@ -127,6 +132,9 @@ if __name__ == '__main__':
         give_sword = InventoryItem(user_id=1, item_id=1)
         db.session.add(give_sword)
         db.session.commit()
+        # give_sparks = InventoryItem(user_id=1, item_id=5)
+        # db.session.add(give_sparks)
+        # db.session.commit()
 
         print("creating monster...")
         blue_slime = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0)

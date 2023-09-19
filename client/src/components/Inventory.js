@@ -18,7 +18,7 @@ function Inventory ({ inventory, setInventory }) {
         navigate('/')
     }
 
-    const inventoryToDisplay = inventory.map((inventory_item, index) => <InventoryItemCard key={inventory_item.id} inventory_item={inventory_item} item={inventory_item.item} inventory={inventory} setInventory={setInventory} index={index} popup={popup} setPopup={setPopup}/>)
+    const inventoryToDisplay = inventory.map((inventory_item, index) => <InventoryItemCard key={inventory_item.id} inventory_item={inventory_item} item={inventory_item.item} inventory={inventory} setInventory={setInventory} index={index} setPopup={setPopup}/>)
 
     return (
         <div className='overflow-auto min-h-screen font-display text-center'>

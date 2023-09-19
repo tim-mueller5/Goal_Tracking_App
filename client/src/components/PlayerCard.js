@@ -5,17 +5,25 @@ import { useContext } from "react";
 function PlayerCard({ inventory }) {
     const {user} = useContext(UserContext);
     const weaponArray = inventory.filter((inventory_item) => {
-        if(inventory_item.equipped && inventory_item.id === user.equipped_weapon){
+        if(inventory_item.item.type === 'weapon' && inventory_item.equipped && inventory_item.id === user.equipped_weapon){
             return inventory_item
         } else return null
     })
     const weapon = weaponArray[0]
+
+    // const magicArray = inventory.filter((inventory_item) => {
+    //     if(inventory_item.item.type === 'magic' && inventory_item.equipped && inventory_item.id === user.equipped_weapon){
+    //         return inventory_item
+    //     } else return null
+    // })
+    // const magic = magicArray[0]
     
     return (
-        <div className="border-black border-solid border-2 ">
-            <p className="font-display">User: {user.username}</p>
-            <p className="font-display">Health: {user.current_health}/{user.max_health}</p>
-            <p className="font-display">Equiped Weapon: {weapon ? weapon.item.name : "none"}</p>
+        <div className="border-black border-solid border-2 font-display">
+            <p>User: {user.username}</p>
+            <p>Health: {user.current_health}/{user.max_health}</p>
+            <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p>
+            {/* <p>Equipped Magic: {magic ? magic.item.name : "none"}</p> */}
         </div>
     )
 }

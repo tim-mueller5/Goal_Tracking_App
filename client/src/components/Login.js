@@ -116,7 +116,7 @@ function Login( ) {
                 <label className='' htmlFor="password">password: </label>
                 <input id="password" name="password" type="password" onChange={formikNew.handleChange} value={formikNew.values.password} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikNew.errors.password}</p>
-                <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Create New User</button>
+                <button type="submit" className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Create New User</button>
             </form>
             <p>{error}</p>
             <p className="text-lg m-8">Welcome to site-name-here!<br/> A website for tracking and accomplishing goals all while having fun! <br/> Set goals and break them down into daily habits and single tasks that will get you to your goal!</p>

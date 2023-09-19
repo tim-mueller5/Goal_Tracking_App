@@ -70,7 +70,7 @@ function EditGoal({ currentGoal }) {
                     <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                     <p className='inline-block'>&#40;optional&#41;</p>
                     <br/>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Submit</button>
                 </form>
             </div>
         )

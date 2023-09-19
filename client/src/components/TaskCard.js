@@ -73,12 +73,12 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
             { task.completed ?
                 <div className="flex ">
                     <p>Completed!</p> 
-                    <button onClick={handleCompelete}className='border-solid border-black border-2 px-1 m-1'>Undo complete</button>
+                    <button onClick={handleCompelete}className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Undo complete</button>
                 </div>
                 :   <div>
-                        <button onClick={edit} className='border-solid border-black border-2 px-1 m-1'>Edit Task</button>
-                        <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1'>Delete Task</button>
-                        <button onClick={handleCompelete}className='border-solid border-black border-2 px-1 m-1'>Mark as Complete</button>
+                        <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Edit Task</button>
+                        <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Delete Task</button>
+                        <button onClick={handleCompelete}className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Mark as Complete</button>
                     </div>}
         </div>
     )

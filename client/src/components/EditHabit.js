@@ -63,7 +63,7 @@ function EditHabit({ currentGoal }) {
                 <form onSubmit={formik.handleSubmit}>
                     <label htmlFor="name" className='text-lg'>Habit: </label>
                     <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Submit</button>
                 </form>
         </div>
     )

@@ -57,7 +57,7 @@ function CreateGoal() {
 
 
     return (
-        <div className='overflow-auto min-h-screen'>
+        <div className='overflow-auto min-h-screen font-display'>
             {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
             <h3>Create New Goal:</h3>
             <form onSubmit={formik.handleSubmit}>
@@ -71,7 +71,7 @@ function CreateGoal() {
                 <label htmlFor='due_date'>Due Date: </label>
                 <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-black border-2"/>
                 <p className='inline-block'>&#40;optional&#41;</p>
-                <button type='submit' className='block border-black border-2 p-1'>Submit</button>
+                <button type='submit' className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Submit</button>
             </form>
         </div>
     )

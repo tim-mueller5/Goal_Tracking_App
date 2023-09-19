@@ -119,9 +119,9 @@ function Fight({ inventory, setNavDisplay }) {
             {/* <p>Monster Health: {monsterHealth < 0 ? 0 : monsterHealth}</p> */}
             <p>{currentMessage}</p>
             {monsterPresent 
-            ? <button onClick={nextAction} className='border-solid border-black border-2 px-1 m-1'>{playerTurn === true ? "Attack" : "Next"}</button>
-            : <button onClick={findAMonster} className='border-solid border-black border-2 px-1 m-1'>Find a Monster to fight!</button>}
-            <button onClick={flee} className='border-solid border-black border-2 px-1 m-1'>{monsterPresent ? "Flee" : "Leave"}</button>
+            ? <button onClick={nextAction} className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>{playerTurn === true ? "Attack" : "Next"}</button>
+            : <button onClick={findAMonster} className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Find a Monster to fight!</button>}
+            <button onClick={flee} className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>{monsterPresent ? "Flee" : "Leave"}</button>
             
         </div>
     )

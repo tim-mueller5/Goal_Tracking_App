@@ -88,15 +88,15 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
             <p className="text-lg">{item.name}</p>
 
             {item.type === 'health' 
-            ? <button onClick={useHealthPotion} className='border-black border-2 px-1 m-1'>Use {item.name}</button> 
-            : <button onClick={handleDelete} className='border-black border-2 px-1 m-1'>Delete {item.name}</button>}
+            ? <button onClick={useHealthPotion} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Use {item.name}</button> 
+            : <button onClick={handleDelete} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Delete {item.name}</button>}
 
             {item.type !== 'health' && !inventory_item.equipped 
-            ? <button onClick={() => handleEquipItem(item.type)} className='border-black border-2 px-1 m-1'>Equip</button> 
+            ? <button onClick={() => handleEquipItem(item.type)} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Equip</button> 
             : null}
 
             {item.type !== 'health' && inventory_item.equipped 
-            ? <button onClick={handleUnEquipItem} className='border-black border-2 px-1 m-1'>Unequip</button> 
+            ? <button onClick={handleUnEquipItem} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Unequip</button> 
             : null}
             
         </div>

@@ -97,6 +97,7 @@ function Login( ) {
     return (
 
         <div className='text-center overflow-auto min-h-screen mt-24'>
+            <div className="">Animation</div>
             <h2 className="text-lg font-bold">Login:</h2>
             <form onSubmit={formikLogin.handleSubmit}>
                 <label htmlFor="username">username: </label>
@@ -105,7 +106,7 @@ function Login( ) {
                 <label className='' htmlFor="password">password: </label>
                 <input id="password" name="password" type="password" onChange={formikLogin.handleChange} value={formikLogin.values.password} className="bg-sky-300 p-1 m-1 border-solid border-black border-2"/>
                 <p style={{ color: "red" }}> {formikLogin.errors.password}</p>
-                <button type="submit" className='border-solid border-black border-2 px-1 m-1'>Login</button>
+                <button type="submit" className='border-solid border-black border-2 px-1 m-1 bg-blue-500 shadow shadow-gray-600  hover:rounded hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Login</button>
             </form>
             <h2 className="text-lg font-bold">Or Create New User</h2>
             <form onSubmit={formikNew.handleSubmit}>

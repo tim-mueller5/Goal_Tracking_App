@@ -88,15 +88,15 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
             <p className="text-lg">{item.name}</p>
 
             {item.type === 'health' 
-            ? <button onClick={useHealthPotion} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Use {item.name}</button> 
-            : <button onClick={handleDelete} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Delete {item.name}</button>}
+            ? <button onClick={useHealthPotion} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Use {item.name}</button> 
+            : <button onClick={handleDelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete {item.name}</button>}
 
             {item.type !== 'health' && !inventory_item.equipped 
-            ? <button onClick={() => handleEquipItem(item.type)} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Equip</button> 
+            ? <button onClick={() => handleEquipItem(item.type)} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Equip</button> 
             : null}
 
             {item.type !== 'health' && inventory_item.equipped 
-            ? <button onClick={handleUnEquipItem} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Unequip</button> 
+            ? <button onClick={handleUnEquipItem} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Unequip</button> 
             : null}
             
         </div>

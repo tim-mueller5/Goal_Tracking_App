@@ -62,16 +62,16 @@ function CreateGoal() {
             <h3>Create New Goal:</h3>
             <form onSubmit={formik.handleSubmit}>
                 <label htmlFor="name">Goal: </label>
-                <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-sky-300 p-1 m-1 ml-9 border-black border-2"/>
+                <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <br/>
                 <label htmlFor='details' className=''>Details: </label>
-                <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-sky-300 p-1 m-1 ml-5 border-black border-2"/>
+                <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <p className='inline-block'>&#40;optional&#41;</p>
                 <br/>
                 <label htmlFor='due_date'>Due Date: </label>
-                <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-sky-300 p-1 m-1 border-black border-2"/>
+                <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <p className='inline-block'>&#40;optional&#41;</p>
-                <button type='submit' className='border-solid border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Submit</button>
+                <button type='submit' className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Submit</button>
             </form>
         </div>
     )

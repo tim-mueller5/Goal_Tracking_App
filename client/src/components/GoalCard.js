@@ -110,13 +110,13 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
                 <div className=" m-2 p-1">
                     <p className="text-xl font-bold">Habits for this goal: </p>
                     {habitsToDisplay}
-                    <button onClick={addHabit} className='border-black border-2 px-1 m-1 block hover:shadow-black hover:shadow'>Add Habit to this goal</button>
+                    <button onClick={addHabit} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Add Habit to this goal</button>
                 </div>
                 
                 <div className=" m-2 p-1">
                     <p className="text-xl font-bold font-display">Tasks for this goal: </p>
                     {tasksToDisplay}
-                    <button onClick={addTask} className='border-black border-2 px-1 m-1 block hover:shadow-black hover:shadow'>Add Task to this goal</button>
+                    <button onClick={addTask} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Add Task to this goal</button>
                 </div>
             </div>
             
@@ -126,9 +126,9 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
                 {goal.due_date ? <p className="font-display">Due Date: {dueDate.toLocaleDateString()}</p> : null}
                 {goal.due_date ? <p className="font-display">Days left: {Math.trunc(differenceInDays)}</p> : null}
                 
-                <button onClick={edit} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Edit goal</button>
-                <button onClick={deleteGoal} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Delete Goal</button>
-                <button onClick={handleComplete} className='border-black border-2 px-1 m-1 hover:shadow-black hover:shadow'>Mark as Complete</button>
+                <button onClick={edit} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit goal</button>
+                <button onClick={deleteGoal} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Goal</button>
+                <button onClick={handleComplete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
             </div>
 
         </div>

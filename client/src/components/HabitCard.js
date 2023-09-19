@@ -79,12 +79,12 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
             { habit.completed ? 
                 <div className="flex">
                     <p>Completed!</p>
-                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1 font-display hover:shadow-black hover:shadow'>Undo complete</button>
+                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Undo complete</button>
                 </div>
                 : <div>
-                    <button onClick={edit} className='border-solid border-black border-2 px-1 m-1 font-display hover:shadow-black hover:shadow'>Edit Habit</button>
-                    <button onClick={handleDelete} className='border-solid border-black border-2 px-1 m-1 font-display hover:shadow-black hover:shadow'>Delete Habit</button>
-                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-1 m-1 font-display hover:shadow-black hover:shadow'>Mark as Complete</button>
+                    <button onClick={edit} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit Habit</button>
+                    <button onClick={handleDelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Habit</button>
+                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
                 </div>}
         </div>
     )

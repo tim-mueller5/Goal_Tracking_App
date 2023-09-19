@@ -35,7 +35,7 @@ function GoalList({ currentGoal, setCurrentGoal, inventory, setInventory}) {
             </div>
             <div className="float-right w-1/4">
                 <div className="border-black border-2 h-64 flex flex-col items-center">
-                    Calander TBD
+                    Calender TBD
                 </div>
                 <div className="border-black border-2 h-64 flex flex-col items-center">
                     Timer TBD

@@ -22,7 +22,7 @@ function PlayerCard({ inventory }) {
         <div className="border-black border-solid border-2 font-display p-10">
             <p>User: {user.username}</p>
             <p>Health: {user.current_health}/{user.max_health}</p>
-            <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p>
+            <p>Equipped Weapon: {weapon ? weapon.item.name : "none"}</p>
             {/* <p>Equipped Magic: {magic ? magic.item.name : "none"}</p> */}
         </div>
     )

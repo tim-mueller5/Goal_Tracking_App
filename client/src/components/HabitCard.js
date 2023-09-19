@@ -72,7 +72,8 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
 
     return (
         <div  className=" mx-2 p-1 font-display">
-            <h4 className="text-lg">Habit: {habit.name}</h4>
+            <h4 className="text-lg font-bold">Habit: {habit.name}</h4>
+            <h5>&emsp;Habit Daily Checkins:</h5>
             <div className="max-h-24 flex overflow-x-auto overflow-y-hidden">
                 {habit.completed ? null : CheckInCardsToDisplay}
             </div>
@@ -82,9 +83,9 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
                     <button onClick={handleCompelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Undo complete</button>
                 </div>
                 : <div>
-                    <button onClick={edit} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit Habit</button>
-                    <button onClick={handleDelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Habit</button>
-                    <button onClick={handleCompelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
+                    <button onClick={edit} className='border-solid border-black border-2 text-sm px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit Habit</button>
+                    <button onClick={handleDelete} className='border-solid border-black border-2 text-sm px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Habit</button>
+                    <button onClick={handleCompelete} className='border-solid border-black border-2 text-sm px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
                 </div>}
         </div>
     )

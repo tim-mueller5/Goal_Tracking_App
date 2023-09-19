@@ -69,16 +69,16 @@ function TaskCard({ task, goal, currentGoal, setCurrentGoal }) {
 
     return (
         <div  className=" mx-2 p-1 font-display">
-            <h4 className="text-lg">Task: {task.name}</h4>
+            <h4 className="text-lg font-bold">Task: {task.name}</h4>
             { task.completed ?
                 <div className="flex ">
                     <p>Completed!</p> 
                     <button onClick={handleCompelete}className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Undo complete</button>
                 </div>
                 :   <div>
-                        <button onClick={edit} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit Task</button>
-                        <button onClick={handleDelete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Task</button>
-                        <button onClick={handleCompelete}className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
+                        <button onClick={edit} className='border-solid border-black border-2 text-sm px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit Task</button>
+                        <button onClick={handleDelete} className='border-solid border-black border-2 text-sm px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Task</button>
+                        <button onClick={handleCompelete}className='border-solid border-black border-2 text-sm px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
                     </div>}
         </div>
     )

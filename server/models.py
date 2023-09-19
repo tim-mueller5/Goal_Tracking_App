@@ -18,6 +18,8 @@ class User(db.Model, SerializerMixin):
     base_def_stat = db.Column(db.Integer)
     base_magic_stat = db.Column(db.Integer)
     equipped_weapon = db.Column(db.Integer)  # inventory_item id
+    level = db.Column(db.Integer)
+    xp = db.Column(db.Integer)
 
     inventory_items = db.relationship('InventoryItem', backref='user', cascade='all, delete-orphan')
     goals = db.relationship('Goal', backref='user', cascade='all, delete-orphan')
@@ -114,6 +116,7 @@ class Item(db.Model, SerializerMixin):
     def_stat = db.Column(db.Integer)
     magic_stat = db.Column(db.Integer)
     health_stat = db.Column(db.Integer)
+    level = db.Column(db.Integer)
 
     inventory_items = db.relationship('InventoryItem', backref='item', cascade='all, delete-orphan')
 
@@ -138,3 +141,5 @@ class Monster(db.Model, SerializerMixin):
     atk_stat = db.Column(db.Integer)
     def_stat = db.Column(db.Integer)
     magic_stat = db.Column(db.Integer)
+    level = db.Column(db.Integer)
+    xp = db.Column(db.Integer)

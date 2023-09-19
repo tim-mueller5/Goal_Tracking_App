@@ -24,10 +24,10 @@ if __name__ == '__main__':
         Monster.query.delete()
 
         print('Creating Users...')
-        user1 = User(username='Tim', password_hash="123", max_health=15, current_health=15, base_atk_stat=1, base_def_stat=1, base_magic_stat=0)
+        user1 = User(username='Tim', password_hash="123", max_health=15, current_health=15, base_atk_stat=1, base_def_stat=1, base_magic_stat=0, level=1, xp=0)
         db.session.add(user1)
         db.session.commit()
-        user2 = User(username='Peter', password_hash="123", max_health=15, current_health=15, base_atk_stat=1, base_def_stat=1, base_magic_stat=0)
+        user2 = User(username='Peter', password_hash="123", max_health=15, current_health=15, base_atk_stat=1, base_def_stat=1, base_magic_stat=0, level=1, xp=0)
         db.session.add(user2)
         db.session.commit()
 
@@ -137,13 +137,13 @@ if __name__ == '__main__':
         # db.session.commit()
 
         print("creating monster...")
-        blue_slime = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0)
+        blue_slime = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0, level=1, xp=1)
         db.session.add(blue_slime)
         db.session.commit()
-        red_slime = Monster(name="Red Slime", health=12, atk_stat=2, def_stat=1, magic_stat=0)
+        red_slime = Monster(name="Red Slime", health=12, atk_stat=2, def_stat=1, magic_stat=0, level=1, xp=2)
         db.session.add(red_slime)
         db.session.commit()
-        wolf = Monster(name="Wolf", health=16, atk_stat=2, def_stat=1, magic_stat=0)
+        wolf = Monster(name="Wolf", health=16, atk_stat=2, def_stat=1, magic_stat=0, level=1, xp=4)
         db.session.add(wolf)
         db.session.commit()
 

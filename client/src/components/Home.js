@@ -23,10 +23,11 @@ function Home() {
     const {user} = useContext(UserContext);
     const [currentGoal, setCurrentGoal] = useState(null)
     const [inventory, setInventory] = useState(user.inventory_items)
+    const [navDisplay, setNavDisplay] = useState('border-solid border-stone-300 border-8 mb-2 p-4 grid grid-cols-3 grid-rows-1 rounded-b-3xl font-display')
 
     return (
         <div>
-            <NavBar inventory={inventory}/>
+            <NavBar inventory={inventory} navDisplay={navDisplay}/>
             
             <Routes>
                 <Route path="/" element={<GoalList currentGoal={currentGoal} setCurrentGoal={setCurrentGoal} inventory={inventory} setInventory={setInventory}/>}/>
@@ -37,7 +38,7 @@ function Home() {
                 <Route path="/edit-habit/:habitId/:habitName" element={<EditHabit  currentGoal={currentGoal} />}/>
                 <Route path="/edit-task/:taskId/:taskName" element={<EditTask  currentGoal={currentGoal} />}/>
                 <Route path="/completed" element={<CompletedGoals  />}/>
-                <Route path="/fight" element={<Fight inventory={inventory}/>}/>
+                <Route path="/fight" element={<Fight inventory={inventory} setNavDisplay={setNavDisplay}/>}/>
                 <Route path="/inventory" element={<Inventory inventory={inventory} setInventory={setInventory} />}/>
                 <Route path="*" element={<MissingRoute/>}/>
             </Routes>

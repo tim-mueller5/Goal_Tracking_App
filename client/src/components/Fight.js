@@ -49,6 +49,7 @@ function Fight({ inventory, setNavDisplay }) {
     }
         
     const nextAction = () => {
+        let xp = 0
         if (playerHealth > 0 && monsterHealth > 0) {
             if (playerTurn === true) {
                 let damage
@@ -78,16 +79,17 @@ function Fight({ inventory, setNavDisplay }) {
         } else if (monsterHealth <= 0) {
             setCurrentMessage(messages.victory)
             setMonsterPresent(false)
+            xp = monster.xp
         } else {
             setCurrentMessage("else")
         }
-        setUser({...user, current_health: playerHealth})
+        setUser({...user, current_health: playerHealth, xp:(user.xp + xp)})
         fetch(`/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({current_health: playerHealth})
+            body: JSON.stringify({current_health: playerHealth, xp:(user.xp + xp)})
         })
     }
     

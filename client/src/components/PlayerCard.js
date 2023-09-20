@@ -19,9 +19,9 @@ function PlayerCard({ inventory }) {
     // const magic = magicArray[0]
     
     return (
-        <div className="font-display grid grid-cols-3 grid-rows-1">
-            <div className="m-auto">
-                <div id="triangle-up" className="relative">
+        <div className="font-display grid grid-cols-custom grid-rows-1">
+            <div className="m-auto w-min">
+                <div id="triangle-up" className="relative ">
                     <div id="triangle-up-2" className="relative top-4 right-5"></div>
                     <div id='rectangle' className='relative right-5 top-4'></div>
                 </div>
@@ -30,16 +30,17 @@ function PlayerCard({ inventory }) {
                 </div>
             </div>
 
-            <div>
+            <div className="w-max">
                 <p>User: {user.username}</p>
                 <p>Health: {user.current_health}/{user.max_health}</p>
+                <p>Level: {user.level} &emsp; xp: {user.xp}</p>
                 <p>Equipped Weapon: {weapon ? weapon.item.name : "none"}</p>
                 <p>Equipped Magic: none</p>
                 {/* <p>Equipped Magic: {magic ? magic.item.name : "none"}</p> */}
                 <p>Equipped Armor: none</p>
             </div>
 
-            <div className="m-auto">
+            <div className="m-auto w-min">
                 <div id="triangle-up" className="relative">
                     <div id="triangle-up-2" className="relative top-4 right-5"></div>
                     <div id='rectangle' className='relative right-5 top-4'></div>

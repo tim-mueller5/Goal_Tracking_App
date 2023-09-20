@@ -166,7 +166,7 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
                 </div>
             </div>
             
-            <div className="border-solid border-black border-2 m-2 p-[25%] text-center col-start-3">
+            <div className="border-solid border-black border-2 rounded-lg shadow shadow-black m-2 p-[25%] text-center col-start-3">
                 <p className="text-xl font-bold font-display">Goal: {goal.name}</p>
                 <p className="font-display">Details: {goal.details}</p>
                 {goal.due_date ? <p className="font-display">Due Date: {dueDate.toLocaleDateString()}</p> : null}

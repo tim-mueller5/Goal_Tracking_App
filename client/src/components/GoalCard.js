@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import HabitCard from "./HabitCard";
 import TaskCard from "./TaskCard";
 import { UserContext } from "../context/user";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 
 
@@ -101,6 +101,52 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
         }
     }
     
+    const totalHabitsaAndTasks = (goal.habits.length) + (goal.tasks.length)
+    const completedHabits = goal.habits.filter(habit => habit.completed).length
+    const completedTasks = goal.tasks.filter(task => task.completed).length
+    const completedHabitsAndTasks = completedHabits + completedTasks
+
+    const [percent, setPercent] = useState('none')
+    const exactFraction = completedHabitsAndTasks/totalHabitsaAndTasks
+    useEffect(() => {
+        if(exactFraction >= 1){
+            setPercent("full");
+        } else if(exactFraction >= 11/12){
+            setPercent('11/12')
+        } else if(exactFraction >= 10/12){
+            setPercent('10/12')
+        } else if(exactFraction >= 9/12){
+            setPercent('9/12')
+        } else if(exactFraction >= 8/12){
+            setPercent('8/12')
+        } else if(exactFraction >= 7/12){
+            setPercent('7/12')
+        } else if(exactFraction >= 6/12){
+            setPercent('6/12')
+        } else if(exactFraction >= 5/12){
+            setPercent('5/12')
+        } else if(exactFraction >= 4/12){
+            setPercent('4/12')
+        } else if(exactFraction >= 3/12){
+            setPercent('3/12')
+        } else if(exactFraction >= 2/12){
+            setPercent('2/12')
+        } else if(exactFraction >= 1/12){
+            setPercent('1/12')
+        } else{
+            setPercent('0')
+        }
+    }, [goal])
+    let color
+    if(percent === '0'){
+        color = 'white'
+    } else if(percent === 'full'){
+        color = 'green-300'
+    } else{
+        color = 'black'
+    }
+    const progressBar = `bg-${color} h-3 w-${percent} z-10 rounded-full`
+
 
     return (
         <div className="border-solid border-black border-2 mx-1 grid grid-cols-3 mb-2 font-display">
@@ -129,6 +175,12 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
                 <button onClick={edit} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Edit goal</button>
                 <button onClick={deleteGoal} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Delete Goal</button>
                 <button onClick={handleComplete} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Mark as Complete</button>
+                <p>Progress bar</p>
+                <p>total: {totalHabitsaAndTasks}</p>
+                <p>completed: {completedHabitsAndTasks}</p>
+                <div className="bg-white h-3 w-full rounded-full">
+                    <div className={progressBar}></div>
+                </div>
             </div>
 
         </div>

@@ -57,17 +57,17 @@ if __name__ == '__main__':
 
         print("creating items...")
         # level 1 weapons
-        stick = Item(name='Stick', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        stick = Item(name='Stick', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(stick)
         db.session.commit()
-        rock = Item(name='Rock', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        rock = Item(name='Rock', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(rock)
         db.session.commit()
         # Delute with more level 1 items
-        stick = Item(name='Stick', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        stick = Item(name='Stick', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(stick)
         db.session.commit()
-        rock = Item(name='Rock', type='weapon', atk_stat=1, def_stat=0, magic_stat=0, health_stat=0)
+        rock = Item(name='Rock', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(rock)
         db.session.commit()
 
@@ -77,25 +77,25 @@ if __name__ == '__main__':
         # db.session.commit()
 
         # Level 2 weapons
-        knife = Item(name='Knife', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
+        knife = Item(name='Knife', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(knife)
         db.session.commit()
-        brass_knuckles = Item(name='Brass knuckles', type='weapon', atk_stat=2, def_stat=0, magic_stat=0, health_stat=0)
+        brass_knuckles = Item(name='Brass knuckles', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(brass_knuckles)
         db.session.commit()
 
         # Level 3 weapons
-        short_sword = Item(name='Short sword', type='weapon', atk_stat=3, def_stat=0, magic_stat=0, health_stat=0)
+        short_sword = Item(name='Short sword', type='weapon', atk_stat=4, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(short_sword)
         db.session.commit()
 
         # Level 4 weapons
-        sword = Item(name='Sword', type='weapon', atk_stat=4, def_stat=0, magic_stat=0, health_stat=0)
+        sword = Item(name='Sword', type='weapon', atk_stat=5, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(sword)
         db.session.commit()
 
         # Level 5 weapons
-        axe = Item(name='Axe', type='weapon', atk_stat=5, def_stat=0, magic_stat=0, health_stat=0)
+        axe = Item(name='Axe', type='weapon', atk_stat=6, def_stat=0, magic_stat=0, health_stat=0)
         db.session.add(axe)
         db.session.commit()
 

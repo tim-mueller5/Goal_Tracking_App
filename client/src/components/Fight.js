@@ -19,13 +19,8 @@ function Fight({ inventory, setNavDisplay }) {
         } else return null
     })
     const weapon = weaponArray[0]
-    let playerDamage
-    if(weapon){
-        playerDamage = (user.base_atk_stat + weapon.item.atk_stat)
-    }else (
-        playerDamage = user.base_atk_stat
-        )
-        
+    const playerDamage = user.base_atk_stat
+
     const [monsterPresent, setMonsterPresent] = useState(false)
     const [monster, setMonster] = useState()
     const [monsterHealth, setMonsterHealth] = useState()
@@ -56,21 +51,33 @@ function Fight({ inventory, setNavDisplay }) {
     const nextAction = () => {
         if (playerHealth > 0 && monsterHealth > 0) {
             if (playerTurn === true) {
-                setMonsterHealth(monsterHealth - playerDamage)
-                setCurrentMessage(messages.playerTurn)
+                let damage
+                if(weapon){
+                   damage = user.base_atk_stat + Math.floor(Math.random() * user.base_atk_stat) + Math.floor(Math.random() * weapon.item.atk_stat)  
+                } else {
+                    damage = user.base_atk_stat + Math.floor(Math.random() * user.base_atk_stat)
+                }
+                console.log(playerDamage, damage)
+                setMonsterHealth(monsterHealth - playerDamage - damage)
+                setCurrentMessage(`You dealt ${playerDamage + damage} damage to the ${monster.name}`)
                 setPlayerTurn(!playerTurn)
-        } else if (playerTurn === false) {
-            setPlayerHealth(playerHealth - monster.atk_stat)
-            setCurrentMessage(messages.monsterTurn)
-            setPlayerTurn(!playerTurn)
-        }
+            } else if (playerTurn === false) {
+                const damage = monster.atk_stat + Math.floor(Math.random() * monster.atk_stat)
+                console.log(damage)
+                if((playerHealth - damage) < 0){
+                    setPlayerHealth(0)
+                } else {
+                    setPlayerHealth(playerHealth - damage)
+                }
+                setCurrentMessage(`${monster.name} attacked for ${damage} damage`)
+                setPlayerTurn(!playerTurn)
+            }
         } else if (playerHealth <= 0) {
-            setCurrentMessage(messages.defeat)
-            setPlayerTurn(true)
+            console.log("run?")
+            setCurrentMessage(messages.death)
         } else if (monsterHealth <= 0) {
             setCurrentMessage(messages.victory)
             setMonsterPresent(false)
-            setPlayerTurn(true)
         } else {
             setCurrentMessage("else")
         }
@@ -86,13 +93,12 @@ function Fight({ inventory, setNavDisplay }) {
     
     const flee = async ()=> {
         const num = Math.floor(Math.random()*2 )
-        if (monsterPresent && (num === 1)){
+        if (monsterPresent && (num === 1) && (playerHealth > 0)){
             setPlayerHealth(playerHealth - monster.atk_stat)
             setCurrentMessage(messages.runAway)
             setMonster(false)
-            await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+            await new Promise((resolve, reject) => setTimeout(resolve, 1000));
             setUser({...user, current_health: (playerHealth - monster.atk_stat)})
-            console.log("after set")
             fetch(`/users/${user.id}`, {
                 method: 'PATCH',
                 headers: {

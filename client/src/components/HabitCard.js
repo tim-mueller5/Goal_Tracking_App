@@ -14,7 +14,21 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
         navigate(`/edit-habit/${habit.id}/${habit.name}`)
     }
 
-    let CheckInCardsToDisplay = habit.checkins.map((checkin) => <HabitCheckIn key={checkin.id} checkin={checkin}/>)
+    const dates = habit.checkins.map((checkin) => checkin.date).sort()
+    const sortedcheckins = []
+    dates.map(date => {
+        const thing = habit.checkins.filter(checkin => {
+            if (checkin.date === date){
+                return checkin
+            }
+        })
+        sortedcheckins.push(thing[0])
+        return thing
+    });
+
+
+    let CheckInCardsToDisplay = sortedcheckins.map((checkin) => <HabitCheckIn key={checkin.id} checkin={checkin}/>)
+
 
     const handleDelete = () => {
         fetch(`/habits/${habit.id}`, {

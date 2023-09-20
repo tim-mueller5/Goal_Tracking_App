@@ -119,7 +119,7 @@ function Login( ) {
                 <button type="submit" className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow shadow-gray-600  hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Create New User</button>
             </form>
             <p>{error}</p>
-            <p className="text-lg m-8">Welcome to site-name-here!<br/> A website for tracking and accomplishing goals all while having fun! <br/> Set goals and break them down into daily habits and single tasks that will get you to your goal!</p>
+            <p className="text-xl font-bold m-10">Welcome to site-name-here!<br/> A website for tracking and accomplishing goals all while having fun! <br/> Set grand goals and then break them down into daily habits and single tasks that will get you to success!</p>
         </div>
 
 

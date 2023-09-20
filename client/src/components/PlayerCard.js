@@ -19,7 +19,7 @@ function PlayerCard({ inventory }) {
     // const magic = magicArray[0]
     
     return (
-        <div className="border-black border-solid border-2 font-display grid grid-cols-3 grid-rows-1">
+        <div className="font-display grid grid-cols-3 grid-rows-1">
             <div className="m-auto">
                 <div id="triangle-up" className="relative">
                     <div id="triangle-up-2" className="relative top-4 right-5"></div>

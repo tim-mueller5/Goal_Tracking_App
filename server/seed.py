@@ -129,8 +129,8 @@ if __name__ == '__main__':
 
         print("creating inventoryItems...")
         # Giving user 1 a item 1 (Stick)
-        give_sword = InventoryItem(user_id=1, item_id=1)
-        db.session.add(give_sword)
+        give_stick = InventoryItem(user_id=1, item_id=1)
+        db.session.add(give_stick)
         db.session.commit()
         # give_sparks = InventoryItem(user_id=1, item_id=5)
         # db.session.add(give_sparks)

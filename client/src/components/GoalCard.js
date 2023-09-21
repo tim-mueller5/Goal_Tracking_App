@@ -110,7 +110,7 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
     const exactFraction = completedHabitsAndTasks/totalHabitsaAndTasks
     useEffect(() => {
         if(exactFraction >= 1){
-            setProgressBar('bg-black h-3 w-full z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-full z-10 rounded-full')
         } else if(exactFraction >= 11/12){
             setProgressBar('bg-black h-3 w-11/12 z-10 rounded-full')
         } else if(exactFraction >= 10/12){

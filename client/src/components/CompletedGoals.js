@@ -23,9 +23,11 @@ function CompletedGoals() {
 
 
     return (
-        <div className='overflow-auto min-h-screen font-display'>
-            <h1 className='text-xl font-bold'>Completed Goals: </h1>
-            {completedGoalsToDisplay}
+        <div className='min-h-screen font-display grid justify-center '>
+            <div className='w-96 overflow-visible'>
+                <h1 className='text-xl font-bold'>Completed Goals: </h1>
+                {completedGoalsToDisplay ? completedGoalsToDisplay : "You have no completed goals. You can do this!"}
+            </div>
         </div>
     )
 }

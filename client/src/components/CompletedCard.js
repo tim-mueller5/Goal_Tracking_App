@@ -12,9 +12,9 @@ function CompletedCard({ goal }) {
         })
         if(habit.completed){
             return (
-                <div key={habit.id}>
+                <div key={habit.id} >
                     <li>&emsp; &emsp;{habit.name} - completed</li>
-                    {checkins.length > 0 ? <li>&emsp; &emsp;{checkins}</li> : null}
+                    {checkins.length > 0 ? <li className='w-96 h-10 overflow-x-auto overflow-y-auto'>&emsp; &emsp;{checkins}</li> : null}
                 </div>
             )
         } else return <li key={habit.id}>&emsp; &emsp;{habit.name} - Not completed</li>
@@ -30,7 +30,8 @@ function CompletedCard({ goal }) {
     return (
         <div className="m-4">
             <h2 className="font-bold">Goal: {goal.name}</h2>
-            <ul>&emsp;Habits: {habitsNames}</ul>
+            <h2>&emsp;Habits: </h2>
+            <ul>{habitsNames}</ul>
             <br/>
             <ul>&emsp;Tasks: {taskNames}</ul>
         </div>

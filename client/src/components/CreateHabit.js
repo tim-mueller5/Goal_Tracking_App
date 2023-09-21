@@ -77,9 +77,9 @@ function CreateHabit({ currentGoal }) {
     const loaderDesign = `inline-block border-solid border-gray-500 border-t-blue-300 border-4 rounded-full h-6 w-6 animate-spin mx-4 ${hidden}`
 
     return (
-        <div className='p-2 overflow-auto min-h-screen font-display'>
+        <div className='p-2 overflow-auto min-h-screen font-display grid justify-center'>
             <form onSubmit={formik.handleSubmit} className='py-2'>
-                <h3 className='py-4'>Create New Daily Habit Form:</h3>
+                <h3 className='py-4 text-lg font-bold'>Create New Daily Habit Form:</h3>
                 <label htmlFor="name">Habit: </label>
                 <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <button type='submit' className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Submit</button>

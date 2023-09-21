@@ -52,9 +52,9 @@ function EditGoal({ currentGoal }) {
     if(currentGoal) {
 
         return(
-            <div className='overflow-auto min-h-screen font-display'>
+            <div className='overflow-auto min-h-screen font-display grid justify-center'>
                 <form onSubmit={formik.handleSubmit}>
-                    <h3 className='text-lg font-bold'>Edit Goal: {currentGoal.name}</h3>
+                    <h3 className='text-lg font-bold py-4'>Edit Goal: {currentGoal.name}</h3>
                     <label htmlFor="name">Goal: </label>
                     <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                     <br/>

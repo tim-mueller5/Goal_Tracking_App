@@ -54,19 +54,20 @@ function CreateGoal() {
 
 
     return (
-        <div className='overflow-auto min-h-screen font-display'>
-            <h3>Create New Goal:</h3>
+        <div className='overflow-auto min-h-screen font-display grid justify-center'>
             <form onSubmit={formik.handleSubmit}>
+                <h3 className='text-lg font-bold py-4'>Create New Goal:</h3>
                 <label htmlFor="name">Goal: </label>
                 <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <br/>
-                <label htmlFor='details' className=''>Details: </label>
+                <label htmlFor='details'>Details: </label>
                 <input id='details' name='details' onChange={formik.handleChange} value={formik.values.details} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <p className='inline-block'>&#40;optional&#41;</p>
                 <br/>
                 <label htmlFor='due_date'>Due Date: </label>
                 <input id='due_date' name='due_date' type='date' onChange={formik.handleChange} value={formik.values.due_date} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <p className='inline-block'>&#40;optional&#41;</p>
+                <br></br>
                 <button type='submit' className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Submit</button>
             </form>
         </div>

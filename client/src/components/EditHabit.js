@@ -54,13 +54,13 @@ function EditHabit({ currentGoal }) {
     })
 
     return (
-        <div className='overflow-auto min-h-screen font-display'>
-            <h3 className='text-lg font-bold'>Edit Habit: {habitName}</h3>
-                <form onSubmit={formik.handleSubmit}>
-                    <label htmlFor="name" className='text-lg'>Habit: </label>
-                    <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
-                    <button type='submit' className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Submit</button>
-                </form>
+        <div className='overflow-auto min-h-screen font-display grid justify-center'>
+            <form onSubmit={formik.handleSubmit}>
+                <h3 className='text-lg font-bold py-4'>Edit Habit: {habitName}</h3>
+                <label htmlFor="name" className='text-lg'>Habit: </label>
+                <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
+                <button type='submit' className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Submit</button>
+            </form>
         </div>
     )
 }

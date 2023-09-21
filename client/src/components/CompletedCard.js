@@ -3,7 +3,6 @@
 function CompletedCard({ goal }) {
 
     const habitsNames = goal.habits.map((habit) => {
-        console.log(habit.checkins)
         const checkins = habit.checkins.map(checkin => {
             if(checkin.completed) 
                 return <ul key={checkin.id} className="h-2 w-2 bg-green-300 rounded-full inline-block"></ul>

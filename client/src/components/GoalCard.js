@@ -105,48 +105,39 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
     const completedHabits = goal.habits.filter(habit => habit.completed).length
     const completedTasks = goal.tasks.filter(task => task.completed).length
     const completedHabitsAndTasks = completedHabits + completedTasks
-
-    const [percent, setPercent] = useState('none')
+    
+    const [progressBar, setProgressBar] = useState(`bg-black h-3 w-1/12 z-10 rounded-full`)
     const exactFraction = completedHabitsAndTasks/totalHabitsaAndTasks
     useEffect(() => {
         if(exactFraction >= 1){
-            setPercent("full");
+            setProgressBar('bg-black h-3 w-full z-10 rounded-full')
         } else if(exactFraction >= 11/12){
-            setPercent('11/12')
+            setProgressBar('bg-black h-3 w-11/12 z-10 rounded-full')
         } else if(exactFraction >= 10/12){
-            setPercent('10/12')
+            setProgressBar('bg-black h-3 w-10/12 z-10 rounded-full')
         } else if(exactFraction >= 9/12){
-            setPercent('9/12')
+            setProgressBar('bg-black h-3 w-9/12 z-10 rounded-full')
         } else if(exactFraction >= 8/12){
-            setPercent('8/12')
+            setProgressBar('bg-black h-3 w-8/12 z-10 rounded-full')
         } else if(exactFraction >= 7/12){
-            setPercent('7/12')
+            setProgressBar('bg-black h-3 w-7/12 z-10 rounded-full')
         } else if(exactFraction >= 6/12){
-            setPercent('6/12')
+            setProgressBar('bg-black h-3 w-6/12 z-10 rounded-full')
         } else if(exactFraction >= 5/12){
-            setPercent('5/12')
+            setProgressBar('bg-black h-3 w-5/12 z-10 rounded-full')
         } else if(exactFraction >= 4/12){
-            setPercent('4/12')
+            setProgressBar('bg-black h-3 w-4/12 z-10 rounded-full')
         } else if(exactFraction >= 3/12){
-            setPercent('3/12')
+            setProgressBar('bg-black h-3 w-3/12 z-10 rounded-full')
         } else if(exactFraction >= 2/12){
-            setPercent('2/12')
+            setProgressBar('bg-black h-3 w-2/12 z-10 rounded-full')
         } else if(exactFraction >= 1/12){
-            setPercent('1/12')
+            setProgressBar("bg-black h-3 w-1/12 z-10 rounded-full")
         } else{
-            setPercent('0')
+            setProgressBar("bg-black h-3 w-0 z-10 rounded-full")
         }
     }, [goal])
-    let color
-    if(percent === '0'){
-        color = 'white'
-    } else if(percent === 'full'){
-        color = 'green-300'
-    } else{
-        color = 'black'
-    }
-    const progressBar = `bg-${color} h-3 w-${percent} z-10 rounded-full`
-
+    
 
     return (
         <div className="border-solid border-black border-2 mx-1 grid grid-cols-3 mb-2 font-display">

@@ -9,9 +9,6 @@ function CreateGoal() {
 
     const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
-    const goHome = ()=> {
-        navigate('/')
-    }
 
     
     const formShema = yup.object().shape({
@@ -58,7 +55,6 @@ function CreateGoal() {
 
     return (
         <div className='overflow-auto min-h-screen font-display'>
-            {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
             <h3>Create New Goal:</h3>
             <form onSubmit={formik.handleSubmit}>
                 <label htmlFor="name">Goal: </label>

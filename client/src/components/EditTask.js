@@ -10,9 +10,6 @@ function EditTask({ currentGoal }) {
     const {user, setUser} = useContext(UserContext);
     let  { taskId, taskName } = useParams();
     const navigate = useNavigate();
-    const goHome = ()=> {
-        navigate('/')
-    }
 
 
     const formShema = yup.object().shape({
@@ -59,7 +56,6 @@ function EditTask({ currentGoal }) {
     return (
         <div className='overflow-auto min-h-screen font-display'>
             <h3 className='text-lg font-bold'>Edit Task: {taskName}</h3>
-            {/* <button onClick={goHome}>Home</button> */}
                 <form onSubmit={formik.handleSubmit}>
                     <label htmlFor="name" className='text-lg'>Task: </label>
                     <input id='name' name='name' autoFocus onChange={formik.handleChange} value={formik.values.name} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>

@@ -10,9 +10,6 @@ function CreateHabit({ currentGoal }) {
     
     const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
-    const goHome = ()=> {
-        navigate('/')
-    }
     const [hidden, setHidden] = useState('hidden')
     
     const formShema = yup.object().shape({
@@ -81,7 +78,6 @@ function CreateHabit({ currentGoal }) {
 
     return (
         <div className='p-2 overflow-auto min-h-screen font-display'>
-            {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
             <form onSubmit={formik.handleSubmit} className='py-2'>
                 <h3 className='py-4'>Create New Habit Form:</h3>
                 <label htmlFor="name">Habit: </label>

@@ -9,9 +9,6 @@ function CreateTask({ currentGoal }) {
     
     const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
-    const goHome = ()=> {
-        navigate('/')
-    }
 
     const formShema = yup.object().shape({
         name: yup.string().required("Must have name"),
@@ -56,7 +53,6 @@ function CreateTask({ currentGoal }) {
 
     return (
         <div className='overflow-auto min-h-screen font-display'>
-            {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
             <form onSubmit={formik.handleSubmit}>
                 <h3>Create New Task:</h3>
                 <label htmlFor="name">Task: </label>

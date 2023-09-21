@@ -9,9 +9,6 @@ function EditGoal({ currentGoal }) {
 
     const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
-    const goHome = ()=> {
-        navigate('/')
-    }
 
     const formShema = yup.object().shape({
         name: yup.string(),
@@ -56,7 +53,6 @@ function EditGoal({ currentGoal }) {
 
         return(
             <div className='overflow-auto min-h-screen font-display'>
-                {/* <button onClick={goHome}>Home</button> */}
                 <form onSubmit={formik.handleSubmit}>
                     <h3 className='text-lg font-bold'>Edit Goal: {currentGoal.name}</h3>
                     <label htmlFor="name">Goal: </label>

@@ -20,7 +20,7 @@ function PlayerCard({ inventory }) {
     
     return (
         <div className="font-display grid grid-cols-custom grid-rows-1">
-            <div className="m-auto w-min">
+            <div className="m-auto w-min relative">
                 <div id="triangle-up" className="relative ">
                     <div id="triangle-up-2" className="relative top-4 right-5"></div>
                     <div id='rectangle' className='relative right-5 top-4'></div>
@@ -28,6 +28,9 @@ function PlayerCard({ inventory }) {
                 <div id="triangle-down" className="relative">
                     <div id="triangle-down-2" className="relative bottom-16 right-5"></div>
                 </div>
+                {/* <div id="animation-1" className="absolute top-1">
+                    <div id="rectangle-animate" className="animate-flash"></div>
+                </div> */}
             </div>
 
             <div className="w-max">

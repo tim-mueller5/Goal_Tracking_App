@@ -65,3 +65,9 @@
   border-top: 50px solid rgb(134, 1, 1);
   z-index: 1;
 }
+#rectangle-animate {
+  width: 5px;
+  height: 20px;
+  background: rgb(207, 41, 41);
+  z-index: 1;
+}

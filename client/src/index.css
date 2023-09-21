@@ -65,9 +65,27 @@
   border-top: 50px solid rgb(134, 1, 1);
   z-index: 1;
 }
-#rectangle-animate {
+#rectangle-top {
   width: 5px;
   height: 20px;
   background: rgb(207, 41, 41);
-  z-index: 1;
+  z-index: 99;
+}
+#rectangle-right {
+  width: 20px;
+  height: 5px;
+  background: rgb(83, 20, 20);
+  z-index: 99;
+}
+#rectangle-bottom {
+  width: 5px;
+  height: 20px;
+  background: rgb(131, 72, 72);
+  z-index: 99;
+}
+#rectangle-left {
+  width: 20px;
+  height: 5px;
+  background: rgb(141, 5, 5);
+  z-index: 99;
 }

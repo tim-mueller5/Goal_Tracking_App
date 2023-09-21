@@ -28,8 +28,11 @@ function PlayerCard({ inventory }) {
                 <div id="triangle-down" className="relative">
                     <div id="triangle-down-2" className="relative bottom-16 right-5"></div>
                 </div>
-                {/* <div id="animation-1" className="absolute top-1">
-                    <div id="rectangle-animate" className="animate-flash"></div>
+                {/* <div id="animation-1" className="absolute top-1 animate-flash">
+                    <div id="rectangle-top" className=""></div>
+                    <div id="rectangle-right" className=""></div>
+                    <div id="rectangle-bottom" className=""></div>
+                    <div id="rectangle-left" className=" relative bottom-6 right-5"></div>
                 </div> */}
             </div>
 

@@ -58,7 +58,9 @@ function Login( ) {
             current_health: 15,
             base_atk_stat:1,
             base_def_stat:1,
-            base_magic_stat:0
+            base_magic_stat:0,
+            level: 1,
+            xp: 0
         },
         validationSchema: newformSchema,
         onSubmit: (values) => {

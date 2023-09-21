@@ -87,7 +87,7 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
     return (
         <div  className=" mx-2 p-1 font-display">
             <h4 className="text-lg font-bold">Habit: {habit.name}</h4>
-            <h5>&emsp;Habit Daily Checkins:</h5>
+            <h5>&emsp;Habit Daily Checkins: {CheckInCardsToDisplay.length !== 0 ? null : "None"}</h5>
             <div className="max-h-24 flex overflow-x-auto overflow-y-hidden">
                 {habit.completed ? null : CheckInCardsToDisplay}
             </div>

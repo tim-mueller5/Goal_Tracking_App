@@ -27,7 +27,7 @@ function CompletedGoals() {
     return (
         <div className='overflow-auto min-h-screen font-display'>
             {/* <button onClick={goHome} className='border-solid border-black border-2 px-1'>Home</button> */}
-            <h1>Completed Goals: </h1>
+            <h1 className='text-xl font-bold'>Completed Goals: </h1>
             {completedGoalsToDisplay}
         </div>
     )

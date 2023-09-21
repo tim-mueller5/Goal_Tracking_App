@@ -14,7 +14,7 @@ function CompletedCard({ goal }) {
             return (
                 <div key={habit.id}>
                     <li>&emsp; &emsp;{habit.name} - completed</li>
-                    <li>&emsp; &emsp;{checkins}</li>
+                    {checkins.length > 0 ? <li>&emsp; &emsp;{checkins}</li> : null}
                 </div>
             )
         } else return <li key={habit.id}>&emsp; &emsp;{habit.name} - Not completed</li>

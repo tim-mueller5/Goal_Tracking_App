@@ -121,11 +121,12 @@ function Fight({ inventory, setNavDisplay }) {
     
     return (
         <div className='overflow-auto min-h-screen font-display text-center p-10'>
-            <p className='text-lg font-bold'>Fight!</p>
+            <p className='text-xl font-bold my-4'>Fight!</p>
             <p>Your Health: {playerHealth} hp</p>
             <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p> 
             {/* <p>Monster Health: {monsterHealth < 0 ? 0 : monsterHealth}</p> */}
             <p>{currentMessage}</p>
+            <br/>
             {monsterPresent 
             ? <button onClick={nextAction} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>{playerTurn === true ? "Attack" : "Next"}</button>
             : <button onClick={findAMonster} className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow-lg shadow-gray-600 hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Find a Monster to fight!</button>}

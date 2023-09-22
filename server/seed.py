@@ -135,6 +135,9 @@ if __name__ == '__main__':
         # give_sparks = InventoryItem(user_id=1, item_id=5)
         # db.session.add(give_sparks)
         # db.session.commit()
+        give_health_potion = InventoryItem(user_id=1, item_id=11)
+        db.session.add(give_health_potion)
+        db.session.commit()
 
         print("creating monster...")
         blue_slime = Monster(name="Blue Slime", health=6, atk_stat=1, def_stat=0, magic_stat=0, level=1, xp=1)

@@ -35,8 +35,14 @@ function Login( ) {
                     response.json().then((user) => setUser(user));
                     setError(null)
                     navigate(`/`)
-                  }
-            })
+                } else{
+                    response.json().then((e) => {
+                        setError(e.error)
+                    })
+                }
+            }).catch((e) => {
+                setError(e)
+            });
         }
     })
 

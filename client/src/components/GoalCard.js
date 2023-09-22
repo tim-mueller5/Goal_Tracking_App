@@ -94,7 +94,14 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
                     }).then((resp) => resp.json())
                     .then((item)=> {
                         setInventory([...inventory, item])
-                        setNewItemMessage(`A ${item.item.name} has been found!`)
+                        console.log(item.item.name)
+                        console.log(item.item.name.charAt(0).toLowerCase())
+                        if(item.item.name.charAt(0).toLowerCase() === "a"){
+                            setNewItemMessage(`An ${item.item.name} has been found!`)
+                        }else{
+                            setNewItemMessage(`A ${item.item.name} has been found!`)
+                        }
+                        
                     })
                 }
             )
@@ -106,35 +113,35 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
     const completedTasks = goal.tasks.filter(task => task.completed).length
     const completedHabitsAndTasks = completedHabits + completedTasks
     
-    const [progressBar, setProgressBar] = useState(`bg-black h-3 w-1/12 z-10 rounded-full`)
+    const [progressBar, setProgressBar] = useState(`bg-green-300 h-3 w-1/12 z-10 rounded-full`)
     const exactFraction = completedHabitsAndTasks/totalHabitsaAndTasks
     useEffect(() => {
         if(exactFraction >= 1){
             setProgressBar('bg-green-300 h-3 w-full z-10 rounded-full')
         } else if(exactFraction >= 11/12){
-            setProgressBar('bg-black h-3 w-11/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-11/12 z-10 rounded-full')
         } else if(exactFraction >= 10/12){
-            setProgressBar('bg-black h-3 w-10/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-10/12 z-10 rounded-full')
         } else if(exactFraction >= 9/12){
-            setProgressBar('bg-black h-3 w-9/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-9/12 z-10 rounded-full')
         } else if(exactFraction >= 8/12){
-            setProgressBar('bg-black h-3 w-8/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-8/12 z-10 rounded-full')
         } else if(exactFraction >= 7/12){
-            setProgressBar('bg-black h-3 w-7/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-7/12 z-10 rounded-full')
         } else if(exactFraction >= 6/12){
-            setProgressBar('bg-black h-3 w-6/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-6/12 z-10 rounded-full')
         } else if(exactFraction >= 5/12){
-            setProgressBar('bg-black h-3 w-5/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-5/12 z-10 rounded-full')
         } else if(exactFraction >= 4/12){
-            setProgressBar('bg-black h-3 w-4/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-4/12 z-10 rounded-full')
         } else if(exactFraction >= 3/12){
-            setProgressBar('bg-black h-3 w-3/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-3/12 z-10 rounded-full')
         } else if(exactFraction >= 2/12){
-            setProgressBar('bg-black h-3 w-2/12 z-10 rounded-full')
+            setProgressBar('bg-green-300 h-3 w-2/12 z-10 rounded-full')
         } else if(exactFraction >= 1/12){
-            setProgressBar("bg-black h-3 w-1/12 z-10 rounded-full")
+            setProgressBar("bg-green-300 h-3 w-1/12 z-10 rounded-full")
         } else{
-            setProgressBar("bg-black h-3 w-0 z-10 rounded-full")
+            setProgressBar("bg-green-300 h-3 w-0 z-10 rounded-full")
         }
     }, [goal])
     

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+from dotenv import load_dotenv
+load_dotenv()
 
-from flask import request, make_response, session
+from flask import request, make_response, session, render_template
 from flask_restful import Resource
 from config import app, db, api
 from models import User, Goal, Habit, Task, HabitCheckIn, Item, InventoryItem, Monster
@@ -8,8 +10,9 @@ import datetime
 app.secret_key = b'\xf6\xd03L\x0fq%\xbat\xe0\x15r\x054\xbe\xcc'
 
 @app.route('/')
-def index():
-    return '<h1>Phase 5 Project Server</h1>'
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
 
 class Users(Resource):
     def post(self):

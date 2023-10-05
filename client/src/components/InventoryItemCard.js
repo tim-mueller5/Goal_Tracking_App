@@ -37,6 +37,7 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
     const handleEquipItem = (itemType) => {
         const alreadyEquipped = inventory.filter((item) => {
             if (item.equipped ) return item
+            else return null
         })
         if(alreadyEquipped.length === 0){
             fetch(`inventoryitems/${inventory_item.id}`, {

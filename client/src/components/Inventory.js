@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import InventoryItemCard from "./InventoryItemCard"
 import { useEffect, useState } from 'react';
 
@@ -12,11 +11,6 @@ function Inventory ({ inventory, setInventory }) {
             setPopup(false)
         }, 3000)
     },[popup])
-
-    const navigate = useNavigate();
-    const goHome = ()=> {
-        navigate('/')
-    }
 
     const inventoryToDisplay = inventory.map((inventory_item, index) => <InventoryItemCard key={inventory_item.id} inventory_item={inventory_item} item={inventory_item.item} inventory={inventory} setInventory={setInventory} index={index} setPopup={setPopup}/>)
 

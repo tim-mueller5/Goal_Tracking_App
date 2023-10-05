@@ -18,6 +18,7 @@ function App() {
         console.log('Not logged in yet.')
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
 

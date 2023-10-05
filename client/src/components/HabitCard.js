@@ -20,7 +20,7 @@ function HabitCard({ habit, goal, currentGoal, setCurrentGoal, daysLeft }) {
         const thing = habit.checkins.filter(checkin => {
             if (checkin.date === date){
                 return checkin
-            }
+            } else return null
         })
         sortedcheckins.push(thing[0])
         return thing

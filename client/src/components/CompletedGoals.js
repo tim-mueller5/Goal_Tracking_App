@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import CompletedCard from './CompletedCard';
 import { UserContext } from "../context/user";
 import { useContext } from "react";
@@ -6,7 +5,6 @@ import { useContext } from "react";
 
 function CompletedGoals() {
     const {user} = useContext(UserContext);
-    const navigate = useNavigate();
 
 
     let completedGoalsToDisplay

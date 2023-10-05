@@ -11,6 +11,7 @@ function Fight({ inventory, setNavDisplay }) {
     
     useEffect(() => {
         setNavDisplay('hidden')
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const weaponArray = inventory.filter((inventory_item) => {

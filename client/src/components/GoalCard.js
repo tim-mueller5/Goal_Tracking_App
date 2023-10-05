@@ -143,6 +143,7 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
         } else{
             setProgressBar("bg-green-300 h-3 w-0 z-10 rounded-full")
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [goal])
     
 

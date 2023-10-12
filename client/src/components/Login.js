@@ -117,11 +117,11 @@ function Login( ) {
             </form>
             <h2 className="text-xl font-bold">Or Create New User</h2>
             <form onSubmit={formikNew.handleSubmit}>
-                <label htmlFor="username">username: </label>
-                <input id="username" name="username" onChange={formikNew.handleChange} value={formikNew.values.username} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
+                <label htmlFor="username-new">username: </label>
+                <input id="username-new" name="username-new" onChange={formikNew.handleChange} value={formikNew.values.username} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <p style={{ color: "red" }}> {formikNew.errors.username}</p>
-                <label className='' htmlFor="password">password: </label>
-                <input id="password" name="password" type="password" onChange={formikNew.handleChange} value={formikNew.values.password} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
+                <label className='' htmlFor="password-new">password: </label>
+                <input id="password-new" name="password-new" type="password" onChange={formikNew.handleChange} value={formikNew.values.password} className="bg-white p-1 m-1 rounded-full shadow-inner shadow-black"/>
                 <p style={{ color: "red" }}> {formikNew.errors.password}</p>
                 <button type="submit" className='border-solid border-black border-2 px-4 m-1 bg-blue-500 rounded-full shadow shadow-gray-600  hover:rounded-full hover:bg-blue-700 hover:border-gray-50 hover:text-gray-50 hover:shadow-white hover:shadow-inner'>Create New User</button>
             </form>

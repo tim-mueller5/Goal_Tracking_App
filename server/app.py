@@ -97,6 +97,7 @@ api.add_resource(Goals, '/goals')
 class GoalById(Resource):
     def patch(self, id):
         try:
+            print("Started...")
             goal = Goal.query.filter_by(id=id).first()
             data = request.get_json()
             for key in data:
@@ -110,12 +111,14 @@ class GoalById(Resource):
                         day = int(data[key].split('/')[::-1][1])+2
                         setattr(goal, key, datetime.date(year,month,day))
                     else:
+                        print("Else")
                         setattr(goal, key, data[key])
             db.session.add(goal)
             db.session.commit()
             return make_response(goal.to_dict(), 200)
         except ValueError as e:
-            return make_response({"error": str(e)}, 400)
+            print("Error!!!")
+            return make_response({"error": str(e)}, 401)
         
     def delete(self, id):
         goal = Goal.query.filter_by(id=id).first()

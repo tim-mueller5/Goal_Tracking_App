@@ -97,28 +97,24 @@ api.add_resource(Goals, '/goals')
 class GoalById(Resource):
     def patch(self, id):
         try:
-            print("Started...")
             goal = Goal.query.filter_by(id=id).first()
             data = request.get_json()
             for key in data:
                 if data[key] != '':
-                    if key == "password":
-                        key = "password_hash"
-                        setattr(goal, key, data["password"])
-                    elif key == 'due_date':
-                        year = int(data[key].split('/')[::-1][0])
-                        month = int(data[key].split('/')[::-1][2])
-                        day = int(data[key].split('/')[::-1][1])+2
-                        setattr(goal, key, datetime.date(year,month,day))
+                    if key == 'due_date':
+                        print(data[key])
+                        if data[key] != "Invalid Date":
+                            year = int(data[key].split('/')[::-1][0])
+                            month = int(data[key].split('/')[::-1][2])
+                            day = int(data[key].split('/')[::-1][1])+2
+                            setattr(goal, key, datetime.date(year,month,day))
                     else:
-                        print("Else")
                         setattr(goal, key, data[key])
             db.session.add(goal)
             db.session.commit()
             return make_response(goal.to_dict(), 200)
         except ValueError as e:
-            print("Error!!!")
-            return make_response({"error": str(e)}, 401)
+            return make_response({"error": str(e)}, 400)
         
     def delete(self, id):
         goal = Goal.query.filter_by(id=id).first()

@@ -20,7 +20,6 @@ function InventoryItemCard({ inventory_item, item, inventory, setInventory, inde
             body: JSON.stringify({current_health: newHealth})
         }).then(() => {
             handleDelete()
-        }).then(() => {
             setUser({...user, current_health: newHealth})
         })
     }

@@ -80,7 +80,7 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
 
     const giveReward = () => {
             const num = Math.floor(Math.random() * 10)
-            if (num > 0) {
+            if (num >+ 0) {
                 fetch(`/items`)
                 .then(resp => resp.json())
                 .then((items) => {
@@ -94,8 +94,6 @@ function GoalCard({ goal, currentGoal, setCurrentGoal, inventory, setInventory, 
                     }).then((resp) => resp.json())
                     .then((item)=> {
                         setInventory([...inventory, item])
-                        console.log(item.item.name)
-                        console.log(item.item.name.charAt(0).toLowerCase())
                         if(item.item.name.charAt(0).toLowerCase() === "a"){
                             setNewItemMessage(`An ${item.item.name} has been found!`)
                         }else{

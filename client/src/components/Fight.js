@@ -59,13 +59,11 @@ function Fight({ inventory, setNavDisplay }) {
                 } else {
                     damage = user.base_atk_stat + Math.floor(Math.random() * user.base_atk_stat)
                 }
-                console.log(playerDamage, damage)
                 setMonsterHealth(monsterHealth - playerDamage - damage)
                 setCurrentMessage(`You dealt ${playerDamage + damage} damage to the ${monster.name}`)
                 setPlayerTurn(!playerTurn)
             } else if (playerTurn === false) {
                 const damage = monster.atk_stat + Math.floor(Math.random() * monster.atk_stat)
-                console.log(damage)
                 if((playerHealth - damage) < 0){
                     setPlayerHealth(0)
                 } else {
@@ -75,15 +73,17 @@ function Fight({ inventory, setNavDisplay }) {
                 setPlayerTurn(!playerTurn)
             }
         } else if (playerHealth <= 0) {
-            console.log("run?")
             setCurrentMessage(messages.death)
         } else if (monsterHealth <= 0) {
             setCurrentMessage(messages.victory)
             setMonsterPresent(false)
             xp = monster.xp
+            calculateIfLevelUp()
         } else {
             setCurrentMessage("else")
         }
+        
+        calculateIfLevelUp()
         setUser({...user, current_health: playerHealth, xp:(user.xp + xp)})
         fetch(`/users/${user.id}`, {
             method: 'PATCH',
@@ -117,7 +117,20 @@ function Fight({ inventory, setNavDisplay }) {
             setNavDisplay('border-solid border-stone-300 border-8 mb-2 p-4 grid grid-cols-3 grid-rows-1 rounded-b-3xl font-display')
             navigate('/')
         }
-        
+    }
+
+    const calculateIfLevelUp = () => {
+        if (user.xp >= (user.level*10)){
+            setUser({...user, level: (user.level + 1)})
+            fetch(`/users/${user.id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({level: (user.level + 1)})
+
+            })
+        }
     }
     
     return (

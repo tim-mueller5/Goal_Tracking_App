@@ -78,7 +78,6 @@ function Fight({ inventory, setNavDisplay }) {
             setCurrentMessage(messages.victory)
             setMonsterPresent(false)
             xp = monster.xp
-            calculateIfLevelUp()
         } else {
             setCurrentMessage("else")
         }
@@ -138,7 +137,7 @@ function Fight({ inventory, setNavDisplay }) {
             <p className='text-xl font-bold my-4'>Fight!</p>
             <p>Your Health: {playerHealth} hp</p>
             <p>Equiped Weapon: {weapon ? weapon.item.name : "none"}</p> 
-            {/* <p>Monster Health: {monsterHealth < 0 ? 0 : monsterHealth}</p> */}
+            {/* <p>Monster Health: {monsterHealth < 0 ? 0 : monsterHealth}</p>   Should a message pop up saying how the monster looks? */} 
             <p>{currentMessage}</p>
             <br/>
             {monsterPresent 

@@ -46,8 +46,3 @@ running:
 ```sh
 npm start --prefix client
 ```
-
-## Conclusion
-
-
-## Resources

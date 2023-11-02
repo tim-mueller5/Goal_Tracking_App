@@ -2,7 +2,6 @@
 
 ## Introduction
 
-### Removing Existing Git Configuration
 
 
 ## Setup
